@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+	<!--<link rel="stylesheet/less" type="text/css" href="/theme/css/style.less">-->
+	<!--<script src="/theme/js/less.js" type="text/javascript"></script>-->
+	<link rel="stylesheet" type="text/css" href="/theme/css/pygments.css">
+	<link href='//fonts.googleapis.com/css?family=Open+Sans:800,400,300|Inconsolata' rel='stylesheet' type='text/css'>
+
+	<link href="/" type="application/atom+xml" rel="alternate" title="Random Access Knowledge ATOM Feed" />
+
+
+		<title>Random Access Knowledge</title>
+		<meta charset="utf-8" />
+</head>
+<body>
+	<section id="sidebar">
+		<figure id="user_logo">
+            <a href=""><div class="logo">&nbsp;</div></a>
+		</figure>
+
+		<div class="user_meta">
+            <h1 id="user"><a href="" class="">Diogo Silva</a></h1>
+			<h2></h2>
+			<ul>
+					<li><a href="http://rak.diogoaos.eu">Blog</a></li>
+			</ul>
+		</div>
+		<footer>
+			<address>
+				Powered by <a href="http://pelican.notmyidea.org/">Pelican</a>,
+		                theme by <a href="https://github.com/wting/pelican-svbtle">wting</a>.
+			</address>
+		</footer>
+	</section>
+
+	<section id="posts">
+	<header>
+		<h1>Diogo Silva's blog</h1>
+		<h3>Posted Qui 09 Julho 2015</h3>
+	</header>
+	<article>
+		<h1 id="title">
+			<a href="/scipys-csr-matrix-problem.html" rel="bookmark"
+				title="Permalink to SciPy's CSR matrix problem">SciPy's CSR matrix problem</a>
+		</h1>
+		<p>While creating a CSR matrix the SciPy <em>_cs_matrix</em> class computes the appropriate datatype for the <em>indices</em> and <em>indptr</em> arrays. For the matrix to work the <em>indptr</em> must have a datatype that can index the number of non-zero values existent in the matrix and the <em>indices</em> array must have  a datatype that can index the number of columns. For my use, the number of non-zero elements is much bigger than the number of columns, which usually means that the datatypes if <em>indices</em> and <em>indptr</em> are <em>numpy.int32</em> and <em>numpy.int64</em>, respectively.</p>
+<p>The problem is that the class uses the same datatype for both arrays and then the <em>indices</em> array doesn't fit in memory. It first does this in the <em>scipy/sparse/compressed.py</em> file at the <em><strong>init</strong></em> method. As such, I changed this</p>
+<div class="highlight"><pre><span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">arg1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="c"># (data, indices, indptr) format</span>
+    <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">indptr</span><span class="p">)</span> <span class="o">=</span> <span class="n">arg1</span>
+    <span class="n">idx_dtype</span> <span class="o">=</span> <span class="n">get_index_dtype</span><span class="p">((</span><span class="n">indices</span><span class="p">,</span> <span class="n">indptr</span><span class="p">),</span> <span class="n">check_contents</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">idx_dtype</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">indptr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">indptr</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">idx_dtype</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">getdtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span>
+</pre></div>
+
+
+<p>to this</p>
+<div class="highlight"><pre><span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">arg1</span><span class="p">)</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">indices</span><span class="p">,</span> <span class="n">indptr</span><span class="p">)</span> <span class="o">=</span> <span class="n">arg1</span>
+    <span class="n">indptr_dtype</span> <span class="o">=</span> <span class="n">get_index_dtype</span><span class="p">(</span><span class="n">maxval</span><span class="o">=</span><span class="n">indices</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">indices_dtype</span> <span class="o">=</span> <span class="n">get_index_dtype</span><span class="p">(</span><span class="n">maxval</span><span class="o">=</span><span class="n">indptr</span><span class="o">.</span><span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">indices_dtype</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">indptr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">indptr</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">indptr_dtype</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">copy</span><span class="o">=</span><span class="n">copy</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">getdtype</span><span class="p">(</span><span class="n">dtype</span><span class="p">,</span> <span class="n">data</span><span class="p">))</span>
+</pre></div>
+
+
+<p>Then I found that this was happening in yet another place, in the same file, when the <em><strong>init</strong></em> method calls the <em>self.check_format(full_check=False)</em> method. So I had to do the same this as before, with a slight change. I changed this</p>
+<div class="highlight"><pre><span class="n">idx_dtype</span> <span class="o">=</span> <span class="n">get_index_dtype</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">indptr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="p">))</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">indptr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">indptr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">idx_dtype</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">idx_dtype</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">to_native</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+
+<p>to this</p>
+<div class="highlight"><pre><span class="n">indptr_dtype</span> <span class="o">=</span> <span class="n">get_index_dtype</span><span class="p">(</span><span class="n">maxval</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="n">indices_dtype</span> <span class="o">=</span> <span class="n">get_index_dtype</span><span class="p">(</span><span class="n">maxval</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">indptr</span><span class="o">.</span><span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">indices</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">indices_dtype</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">indptr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">indptr</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">indptr_dtype</span><span class="p">)</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">to_native</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+
+		<div id="article_meta">
+				Category:
+					<a href="/category/.html"></a>
+				<br />Tags:
+					<a href="/tag/python.html">python</a>
+					<a href="/tag/scipy.html">scipy</a>
+		</div>
+	</article>
+
+	<footer>
+		<a href="/" class="button_accent">&larr;&nbsp;&nbsp;&nbsp;Back to blog</a>
+	</footer>
+
+
+	</section>
+
+</body>
+</html>
