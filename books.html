@@ -1,6 +1,9 @@
-<header>
+<!DOCTYPE html>
+<html>
+<head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-   
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -8,7 +11,7 @@ body {
 
 .flip-card {
   background-color: transparent;
-  width: 300px;
+  width: 200px;
   height: 300px;
   perspective: 1000px;
 }
@@ -36,7 +39,7 @@ body {
 }
 
 .flip-card-front {
-  background-color: #bbb;
+  background-color: transparent;
   color: black;
 }
 
@@ -46,170 +49,251 @@ body {
   transform: rotateY(180deg);
 }
 </style>
-   
-</header>
+</head>
 <body>
-   <h1>Recommended List</h1>
-  <div class="container">
+
+<h1>Recommended List
+</h1>
+
+ <div class="container">
   <div class="row"> <!-- start of row-->
      
      <div class="col-sm">
+     
      <div class="flip-card">
   <div class="flip-card-inner">
     <div class="flip-card-front">
-      <img src="http://xahlee.info/3d/i/GEB_cover.jpg" alt="GEB cover" width="300">
+      <img src="http://xahlee.info/3d/i/GEB_cover.jpg" alt="Avatar" width="200" height="300">
     </div>
     <div class="flip-card-back">
-      <h1>Gödel, Escher, Bach: an Eternal Golden Braid - Douglas Hofstadter</h1>
+<b>Gödel, Escher, Bach: an Eternal Golden Braid - Douglas Hofstadter</b>
       <p>Intelectual adventure on the nature of thought and consciousness.</p>
     </div>
   </div>
 </div>
+
+     
      </div>
      
-     <!--
-    <div class="col-sm">
-      <p> <img src="http://xahlee.info/3d/i/GEB_cover.jpg" alt="GEB cover" width="100"> </p>
-    </div> -->
-    <div class="col-sm">
-      <b>
-        Gödel, Escher, Bach: an Eternal Golden Braid - Douglas Hofstadter
-      </b>
-      <p>
-       Intelectual adventure on the nature of thought and consciousness.
-      </p>
-    </div>  
-  </div> <!-- end of row-->
-      <div class="row"> <!-- start of row-->
-    <div class="col-sm">
-      <p> <img src="https://thedrunkenodyssey.files.wordpress.com/2014/11/zen-and-the-art-of-motorcycle-maintenance.jpg?w=529" alt="GEB cover" width="100"> </p>
+     <div class="col-sm">
+          
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="https://thedrunkenodyssey.files.wordpress.com/2014/11/zen-and-the-art-of-motorcycle-maintenance.jpg?w=529" alt="Avatar"  width="200" height="300">
     </div>
-    <div class="col-sm">
-      <b>
-        Zen and the Art of Motorcycle Maintenance - Robert Pirsig
-      </b>
-      <p>
-       Quality metaphysics.
-      </p>
-    </div>  
-  </div> <!-- end of row-->
-    
-   <div class="row"> <!-- start of row-->
-    <div class="col-sm">
-      <p> <img src="http://www.age-of-the-sage.org/history/quotations/durant-lessons_of_history.jpg" alt="GEB cover" width="100"> </p>
+    <div class="flip-card-back">
+      <b>      Zen and the Art of Motorcycle Maintenance - Robert Pirsig
+</b> 
+      <p>   Quality metaphysics.</p> 
+
     </div>
-    <div class="col-sm">
-      <b>
-        Lessons From History - Will Durant
-      </b>
-      <p>
-       A quick glance at history and its trends.
-      </p>
-    </div>  
-  </div> <!-- end of row-->
-    
-    
-       <div class="row"> <!-- start of row-->
-    <div class="col-sm">
-      <p> <img src="http://images.amazon.com/images/P/0393061310.01.LZZZZZZZ.jpg" alt="GEB cover" width="100"> </p>
-    </div>
-    <div class="col-sm">
-      <b>
-        Guns, Germs and Steel - Jared Diamond
-      </b>
-      <p>
-      How the world came to be as it is and the forces that shaped it.
-      </p>
-    </div>  
-  </div> <!-- end of row-->
-    
-           <div class="row"> <!-- start of row-->
-    <div class="col-sm">
-      <p> <img src="http://prodimage.images-bn.com/pimages/9781532706714_p0_v1_s1200x630.jpg" alt="GEB cover" width="100"> </p>
-    </div>
-    <div class="col-sm">
-      <b>
-        Meditations - Marcus Aurelius
-      </b>
-      <p>
-      Timeless wisdom from the personal diary of a Roman emperor.
-      </p>
-    </div>  
-  </div> <!-- end of row-->
-    
-    
-   <div class="row"> <!-- start of row-->
-    <div class="col-sm">
-      <p> <img src="https://s.hdnux.com/photos/73/27/00/15560728/5/rawImage.jpg" alt="GEB cover" width="100"> </p>
-    </div>
-    <div class="col-sm">
-      <b>
-        How to Change Your Mind - Michael Pollan
-      </b>
-      <p>
-      How a class of harmless drugs came to be demonized and its potential to cure mental diseases.
-      </p>
-    </div>  
-  </div> <!-- end of row-->
-    
-    
-    
-   <div class="row"> <!-- start of row-->
-    <div class="col-sm">
-      <p> <img src="https://img1.od-cdn.com/ImageType-100/5054-1/%7B11CBC8DF-6E25-4787-AB13-A14910C7F534%7DImg100.jpg" alt="GEB cover" width="100"> </p>
-    </div>
-    <div class="col-sm">
-      <b>
-        Why We Sleep - Matthew Walker
-      </b>
-      <p>
-      Why sleep is so damn important, why we're not getting enough of it and tips on how to get more.
-      </p>
-    </div>  
-  </div> <!-- end of row-->
-    
- <div class="row"> <!-- start of row-->
-    <div class="col-sm">
-      <p> <img src="http://barbaramcnichol.com/wp-content/uploads/2015/11/Essentialism-book-cover-200x300.jpg" alt="GEB cover" width="100"> </p>
-    </div>
-    <div class="col-sm">
-      <b>
-        Essentialism: The Disciplined Pursuit of Less - Greg McKeown
-      </b>
-      <p>
-  	 Less is more and why it matters.
-      </p>
-    </div>  
-  </div> <!-- end of row-->
-    
-    
- <div class="row"> <!-- start of row-->
-    <div class="col-sm">
-      <p> <img src="https://rajatu.files.wordpress.com/2013/08/dune_frank_herbert.jpg" alt="GEB cover" width="100"> </p>
-    </div>
-    <div class="col-sm">
-      <b>
-        Dune - Frank Herbert
-      </b>
-      <p>
-      The epic science fiction novel, covering global strategy, ecology, interstellar travel and much more.
-      </p>
-    </div>  
-  </div> <!-- end of row-->
-    
- <div class="row"> <!-- start of row-->
-    <div class="col-sm">
-      <p> <img src="https://images.squarespace-cdn.com/content/51b3dc8ee4b051b96ceb10de/1372480491642-GY8HK1TC9T7JFGMKT4G2/Isaac+Asimov_1951_Foundation.jpg?content-type=image%2Fjpeg" alt="GEB cover" width="100"> </p>
-    </div>
-    <div class="col-sm">
-      <b>
-        Foundation Trilogy - Isaac Asimov
-      </b>
-      <p>
-      
-      </p>
-    </div>  
-  </div> <!-- end of row-->
-    
+  </div>
 </div>
+          
+     </div>
+
+     
+     
+     <div class="col-sm">
+          
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="http://www.age-of-the-sage.org/history/quotations/durant-lessons_of_history.jpg" alt="Avatar"  width="200" height="300">
+    </div>
+    <div class="flip-card-back">
+      <b>      Lessons From History - Will Durant
+</b> 
+      <p>   A quick glance at history and its trends.</p> 
+
+    </div>
+  </div>
+</div>
+          
+     </div>
+
+  </div>  <!-- end row-->
+
+
+
+
+<div class="row"> <!-- start of row-->
+
+<div class="col-sm">  <!-- start of column-->
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="http://images.amazon.com/images/P/0393061310.01.LZZZZZZZ.jpg" alt="Avatar"  width="200" height="300">
+    </div>
+    <div class="flip-card-back">
+      <b>      Guns, Germs and Steel - Jared Diamond
+</b> 
+      <p>         How the world came to be as it is and the forces that shaped it.
+</p> 
+
+    </div>
+  </div>
+</div>
+
+</div>  <!-- end of column-->
+
+<div class="col-sm">  <!-- start of column-->
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="http://prodimage.images-bn.com/pimages/9781532706714_p0_v1_s1200x630.jpg" alt="Avatar"  width="200" height="300">
+    </div>
+    <div class="flip-card-back">
+      <b>              Meditations - Marcus Aurelius
+
+</b> 
+      <p>         Timeless wisdom from the personal diary of a Roman emperor.
+</p> 
+
+    </div>
+  </div>
+</div>
+
+</div>  <!-- end of column-->
+
+<div class="col-sm">  <!-- start of column-->
+
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="https://s.hdnux.com/photos/73/27/00/15560728/5/rawImage.jpg" alt="Avatar"  width="200" height="300">
+    </div>
+    <div class="flip-card-back">
+      <b>              How to Change Your Mind - Michael Pollan</b> 
+      <p>         How a class of drugs came to be demonized and its potential to cure mental diseases.
+</p> 
+
+    </div>
+  </div>
+</div>
+
+
+</div>  <!-- end of column-->
+
+</div>  <!-- end row-->
+
+<div class="row"> <!-- start of row-->
+
+<div class="col-sm">  <!-- start of column-->
+
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="https://img1.od-cdn.com/ImageType-100/5054-1/%7B11CBC8DF-6E25-4787-AB13-A14910C7F534%7DImg100.jpg" alt="Avatar"  width="200" height="300">
+    </div>
+    <div class="flip-card-back">
+      <b>              Why We Sleep - Matthew Walker</b> 
+      <p>         Why sleep is so damn important, why we're not getting enough of it and tips on how to get more.
+</p> 
+
+    </div>
+  </div>
+</div>
+
+
+</div>  <!-- end of column-->
+
+
+<div class="col-sm">  <!-- start of column-->
+
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="http://barbaramcnichol.com/wp-content/uploads/2015/11/Essentialism-book-cover-200x300.jpg" alt="Avatar"  width="200" height="300">
+    </div>
+    <div class="flip-card-back">
+      <b>              Essentialism: The Disciplined Pursuit of Less - Greg McKeown</b> 
+      <p>         Less is more and why it matters.
+</p> 
+
+    </div>
+  </div>
+</div>
+
+
+</div>  <!-- end of column-->
+
+<div class="col-sm">  <!-- start of column-->
+
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="https://rajatu.files.wordpress.com/2013/08/dune_frank_herbert.jpg" alt="Avatar"  width="200" height="300">
+    </div>
+    <div class="flip-card-back">
+      <b>              Dune - Frank Herbert</b> 
+      <p>         The epic science fiction novel, covering global strategy, ecology, interstellar travel and much more.
+</p> 
+
+    </div>
+  </div>
+</div>
+
+
+</div>  <!-- end of column-->
+
+</div>  <!-- end row-->
+
+
+
+<div class="row"> <!-- start of row-->
+
+<div class="col-sm">  <!-- start of column-->
+
+
+<div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="https://images.squarespace-cdn.com/content/51b3dc8ee4b051b96ceb10de/1372480491642-GY8HK1TC9T7JFGMKT4G2/Isaac+Asimov_1951_Foundation.jpg?content-type=image%2Fjpeg" alt="Avatar"  width="200" height="300">
+    </div>
+    <div class="flip-card-back">
+      <b>              Foundation Trilogy - Isaac Asimov</b> 
+      <p>         SF at its finest.
+</p> 
+
+    </div>
+  </div>
+</div>
+
+
+</div>  <!-- end of column-->
+
+
+<div class="col-sm">  <!-- start of column-->
+
+
+
+
+</div>  <!-- end of column-->
+
+<div class="col-sm">  <!-- start of column-->
+
+
+
+
+
+</div>  <!-- end of column-->
+
+</div>  <!-- end row-->
+
+
+
+  </div>  <!-- end grid-->
+
+
+
+
 </body>
+</html>
