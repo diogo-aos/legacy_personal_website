@@ -1,232 +1,3499 @@
-<header>
+<!DOCTYPE html>
+<html>
+<head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-</header>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+  align-items: center;
+  grid-gap: 15px;
+}
+
+.flip-card {
+  border-style: hidden;
+  background-color: transparent;
+  width: 200px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #222e36ef;
+  color: white;
+  transform: rotateY(180deg);
+}
+</style>
+</head>
 <body>
-   <h1>Read Queue</h1>
-   <h2>2020 September</h2>
-<p>	? - A36 - The Warren Buffett Way: 3rd Edition	[10h31] </p>
-<p>	? - L15 - Farewell to Arms	[252p] </p>
-<p>	50 - A35 - Algorithms to Live By [11h50]	</p>
-<p>	49 - L14 - Sacred Journey of the Peaceful Warrior [249p]	</p>
-   <h2>2020 August</h2>
-<p>	48 - A34 - Caffeine Michael Pollan [2h00m]	</p>
-<p>	47 - L13 - Infinite Powers How Calculus Reveals the Secrets of the World [ler 389p]	</p>
-<p>	46 - A33 - Creativity Inc. [12h52]	</p>
-<p>	45 - A32 - Side Hustle: From Idea to Income in 27 Days [4h51]	</p>
-<p>	44  - A31 - The Phoenix Project [14h46]	</p>
-<p>	43 - A30 - Drawdown [18h53]	</p>
-<p>	42 - A29 - Autobiography of Benjamin Franklin [6h35]	</p>
-<p>	41 - A28 - Merchants of Doubt [XXhYYm]	</p>
-   <h2>2020 July</h2>
-<p>	40 - A27 - Killing Rommel [10h22]	</p>
-   <h2>2020 June</h2>
-<p>	39 - A26 - Solve for Happy [11h02]	</p>
-<p>	37 - L12 - The Way of the Peaceful Warrior [240p]	</p>
-<p>	36 - A25 - Superintelligence [14h17m]	</p>
-<p>	35 - L11 - Ferdydurke [308p]	</p>
-<p>	34 - A24 - The Invisible Hook	[7h40]</p>
-<p>	33 - A23 - The Bogleheads Guide to Investing [10h3m]	</p>
-<p>	32 - A22 - The Obsticle is The Way [6h7m]	</p>
-<p>	31- A21 - Newton James Gleick [5h45]	</p>
-   <h2>2020 May</h2>
-<p>	30 - A20 - Personal MBA [13h25m] -> reler capitulos com frequência	</p>
-<p>	29 - A19 - Economics in on lesson [6h55]	</p>
-<p>	28 - A18 - Enlightment Now - Stephen Pinker [19h49]	</p>
-<p>	27 - L10 - The Road - Cormac McArthy [324p]	</p>
-<p>	26 - A17 - Shoe Dog - Phil Knight [13h21]	</p>
-<p>	25 - A16 - The Gene [19h20]	</p>
-<p>	24 - L09 - On the Psychology of Military Incompetence [528p]	</p>
-   <h2>2020 April</h2>
-<p>	23 - A15 - I Will Teach You to be Rich - Ramit Sethi [12h08]	</p>
-<p>	22 - A14 - Loonshots - Sari Bahcal [10h14]	</p>
-<p>	21 - A13 - SuperFreakonomics [7h28]	</p>
-<p>	20 - A12 - Giants of Political Thought Wealth of Nations [5h07]	</p>
-<p>	19 - A11 - Four hour workweek - Tim Feriss[8h19]	</p>
-   <h2>2020 March</h2>
-<p>	18 - A10 - The Road to Character [12h17]	</p>
-<p>	17 - L08 - Call of the Wild - Jack London [232p]	</p>
-<p>	16 - A09 - Concious - Hanaka Arris [2h20] -> ler Cp 5,6,7	</p>
-<p>	15 - A08 - Your money or your life [11h20]	</p>
-<p>	14 - L07 - Self-Hypnosis and Other Mind-Expanding Techniques [140p]	</p>
-<p>	13 - A07 - Shantaram [42h59]	</p>
-<p>	12 - L06 - Presence - Amy Cuddy [353p]	</p>
-   <h2>2020 February</h2>
-<p>	11 - L05 - Body by Science [306p]	</p>
-<p>	10 - A06 - 21 lessons for the 21st century [11h40]	</p>
-<p>	09 - L04 - Broken Earth #3 The Stone Sky [464p ]	</p>
-<p>	08 - A05 - Antifragile [16h14] -> ler	</p>
-   <h2>2020 January</h2>
-<p>	07 - L03 - Awareness - Anthony de Mello [ 193p] -> comprar	</p>
-<p>	06 - A04 - Leaders Eat Last [9h23]	</p>
-<p>	05 - L02 - Broken Earth #2 Obelisk Gate [448p]	</p>
-<p>	04 - A03 - The Five Love Languages [4h46]	</p>
-<p>	03 - A02 - Freakonomics [315p]	</p>
-<p>	02 - A01 - Lessons From History [5h33]	</p>
-<p>	01 - L01 - The Longevity Diet [317p]	</p>
-   
- 
-    <h2>	2019	</h2>
-<p>	18 - Finite and Infinite Games 	</p>
-<p>	17 - The Fifth Season (Broke Earth #1)	</p>
-<p>	16 - Death by Black Hole	</p>
-<p>	15 - Principles: Life and Work audio	</p>
-<p>	14 - Man's Search for Meaning	</p>
-<p>	13 - Stories of Your life	</p>
-<p>	12 - Slow Sex	</p>
-<p>	11 - Data Minimalism	</p>
-<p>	10 - Range	</p>
-<p>	9 - Tell Me What You Want	</p>
-<p>	8 - Triggers	</p>
-<p>	7 - The man in the high castle	</p>
-<p>	6 - Good Omens	</p>
-<p>	5 - The Art of Fermentation	</p>
-<p>	4 - My first summer in the Sierra	</p>
-<p>	3 - The Songs of Trees	</p>
-<p>	2 - Tae Te Ching (audiobook)	</p>
-<p>	1 - The Living Mountain	</p>
-   
-   <h2>	2018	</h2>
-<p>	26 - How to read a book (Pending review)	</p>
-<p>	25 - The Graveyard Book	</p>
-<p>	24 - Mycelium Running (Pending review, last chapter skipped)	</p>
-<p>	23 - Zen in the Art of Archery (Pending review)	</p>
-<p>	22 - Artificial Condition	</p>
-<p>	21 - Being a Dog (Pending review)	</p>
-<p>	20 - In Defense of Food (Pending review)	</p>
-<p>	19 - Siddhartha (Pending review)	</p>
-<p>	18 - Eat Stop Eat (Pending review)	</p>
-<p>	17 - Why We Sleep (Pending review)	</p>
-<p>	16 - Models (Pending review)	</p>
-<p>	15 - How To Change Your Mind (Pending review)	</p>
-<p>	14 - One Bullet Away (Pending review)	</p>
-<p>	13 - Extreme Ownership (Pending review)	</p>
-<p>	12 - Deep Work (Pending review)	</p>
-<p>	11 - When: The Scientific Secrets of Perfect Timing (Pending review)	</p>
-<p>	10 - The Start-Up of You (Pending review)	</p>
-<p>	09 - Flavor (Pending Review)	</p>
-<p>	08 - I Contain Multitudes (Pending Review)	</p>
-<p>	07 - The Bonobo and the Atheist (Pending Review)	</p>
-<p>	06 - Homo Deus (Pending Review)	</p>
-<p>	05 - All Systems Red	</p>
-<p>	04 - The Salt Fix (Pending Review)	</p>
-<p>	03 - Extra Virginity (Pending Review)	</p>
-<p>	02 - Mating In Captivity (Reviewed)	</p>
-<p>	01 - GEB	</p>
 
-   <h2>		2017		</h2>
-<p>	15	 - 	Logicomix: An Epic Search for Truth	</p>
-<p>	14	 - 	Why Buddhism is True: The Science and Philosophy of Meditation and Enlightenment	</p>
-<p>	13	 - 	Nexus (Nexus, #1)	</p>
-<p>	12	 - 	Tripping Over the Truth: The Metabolic Theory of Cancer	</p>
-<p>	11	 - 	Death's End (Remembrance of Earth’s Past #3)	</p>
-<p>	10	 - 	The Complete Guide to Fasting: Heal Your Body Through Intermittent, Alternate-Day, and Extended Fasting	</p>
-<p>	9	 - 	The Dark Forest (Remembrance of Earth’s Past, #2)	</p>
-<p>	8	 - 	The Three-Body Problem (Remembrance of Earth’s Past #1)	</p>
-<p>	7	 - 	The Storytelling Animal: How Stories Make Us Human	</p>
-<p>	6	 - 	Sapiens: A Brief History of Humankind	</p>
-<p>	5	 - 	Screenwriting 101 by Film Crit Hulk!	</p>
-<p>	4	 - 	Born to Run: A Hidden Tribe, Superathletes, and the Greatest Race the World Has Never Seen	</p>
-<p>	3	 - 	The Shock Doctrine: The Rise of Disaster Capitalism	</p>
-<p>	2	 - 	Lying	</p>
-<p>	1	 - 	Free Will	</p>
-   
-   
-<h2>		2016		</h2>
-<p>	7	 - 	The Dictator's Handbook: Why Bad Behavior is Almost Always Good Politics	</p>
-<p>	6	 - 	The Moral Landscape: How Science Can Determine Human Values	</p>
-<p>	5	 - 	Waking Up: A Guide to Spirituality Without Religion	</p>
-<p>	4	 - 	Meditations	</p>
-<p>	3	 - 	An Astronaut's Guide to Life on Earth	</p>
-<p>	2	 - 	God Emperor of Dune (Dune Chronicles #4)	</p>
-<p>	1	 - 	Thinking, Fast and Slow	</p>
+<h1>Years in reading</h1>
 
-<h2>	<2016	</h2>
-<p>	A Game of Thrones (A Song of Ice and Fire, #1)	</p>
-<p>	A Hologram for the King	</p>
-<p>	A Journey to the Center of the Earth	</p>
-<p>	A Tale of Two Cities	</p>
-<p>	American Gods (American Gods, #1)	</p>
-<p>	Animal Farm	</p>
-<p>	Brave New World	</p>
-<p>	Children of Dune (Dune Chronicles #3)	</p>
-<p>	Children of the Mind (Ender's Saga, #4)	</p>
-<p>	Critical Chain	</p>
-<p>	Dataclysm: Who We Are	</p>
-<p>	Deep Work: Rules for Focused Success in a Distracted World	</p>
-<p>	Dune (Dune Chronicles, #1)	</p>
-<p>	Dune Messiah (Dune Chronicles #2)	</p>
-<p>	East of Eden	</p>
-<p>	Emma	</p>
-<p>	Ender's Game (Ender's Saga, #1)	</p>
-<p>	Ender's Shadow (The Shadow Series, #1)	</p>
-<p>	Essentialism: The Disciplined Pursuit of Less	</p>
-<p>	Fahrenheit 451	</p>
-<p>	Faz o Curso na Maior	</p>
-<p>	Five Weeks in a Balloon (Extraordinary Voyages, #1)	</p>
-<p>	Foundation (Foundation, #1)	</p>
-<p>	Foundation and Empire (Foundation #2)	</p>
-<p>	Foundation's Edge (Foundation #4)	</p>
-<p>	Freedom Evolves	</p>
-<p>	Ganhar com as Apostas Desportivas	</p>
-<p>	Ganhar em Bolsa	</p>
-<p>	God Is Not One: The Eight Rival Religions That Run the World--and Why Their Differences Matter	</p>
-<p>	Guns, Germs, and Steel: The Fates of Human Societies	</p>
-<p>	How to Become a Straight-A Student	</p>
-<p>	How to Win Friends and Influence People	</p>
-<p>	I Am Legend and Other Stories	</p>
-<p>	Ishmael: An Adventure of the Mind and Spirit (Ishmael, #1)	</p>
-<p>	iWoz	</p>
-<p>	Making History - Stephen Fry	</p>
-<p>	Mastermind: How to Think Like Sherlock Holmes	</p>
-<p>	Natural Born Heroes: How a Daring Band of Misfits Mastered the Lost Secrets of Strength and Endurance	</p>
-<p>	On the Road	</p>
-<p>	One Hundred Years of Solitude	</p>
-<p>	Os Maias	</p>
-<p>	Pride and Prejudice	</p>
-<p>	Quiet: The Power of Introverts in a World That Can't Stop Talking	</p>
-<p>	Rework	</p>
-<p>	Robinson Crusoe	</p>
-<p>	Second Foundation (Foundation #3)	</p>
-<p>	Sense and Sensibility	</p>
-<p>	Shadow of the Hegemon (The Shadow Series, #2)	</p>
-<p>	Slaughterhouse-Five	</p>
-<p>	Space Chronicles: Facing the Ultimate Frontier	</p>
-<p>	Spd Rdng	</p>
-<p>	Speaker for the Dead (Ender's Saga, #2)	</p>
-<p>	Stranger in a Strange Land	</p>
-<p>	Surely You're Joking, Mr. Feynman!: Adventures of a Curious Character	</p>
-<p>	The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change	</p>
-<p>	The Alchemist	</p>
-<p>	The Art of Learning: A Journey in the Pursuit of Excellence	</p>
-<p>	The Art of War Machiavelli	</p>
-<p>	The Art of War Sun Tzu	</p>
-<p>	The Book Thief	</p>
-<p>	The Colour of Magic (Discworld, #1)	</p>
-<p>	The Definitive Book of Body Language	</p>
-<p>	The Dice Man	</p>
-<p>	The Fault in Our Stars	</p>
-<p>	The Grand Design	</p>
-<p>	The Graveyard Book	</p>
-<p>	The Great Gatsby	</p>
-<p>	The Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy, #1)	</p>
-<p>	The Judgement and In the Penal Colony	</p>
-<p>	The Karamazov Brothers	</p>
-<p>	The Last Question	</p>
-<p>	The Martian	</p>
-<p>	The Martian Chronicles	</p>
-<p>	The Master Algorithm: How the Quest for the Ultimate Learning Machine Will Remake Our World	</p>
-<p>	The Metamorphosis	</p>
-<p>	The Old Man and the Sea	</p>
-<p>	The Power of Habit: Why We Do What We Do in Life and Business	</p>
-<p>	The Restaurant at the End of the Universe (Hitchhiker's Guide to the Galaxy, #2)	</p>
-<p>	The Selfish Gene	</p>
-<p>	The Strange Order of Things: Life, Feeling, and the Making of Cultures	</p>
-<p>	The Stranger	</p>
-<p>	The Symposium	</p>
-<p>	The Time Machine	</p>
-<p>	To Sell Is Human: The Surprising Truth About Moving Others	</p>
-<p>	Walden	</p>
-<p>	Xenocide (Ender's Saga, #3)	</p>
-<p>	Zen and the Art of Motorcycle Maintenance: An Inquiry Into Values (Phaedrus, #1)	</p>
-   
+
+<h1>2020</h1>
+
+ <section id="team">  <!-- start of section-->
+  <div class="container"> <!-- start of container-->
+    <div class="grid">  <!-- start of grid-->
+      <!-- #str heroes -->
+      <!-- #abaddon -->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0743264746-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Einstein </b>
+              <p>Walter Isaacson</p>
+            <p>Duration: 21h30</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/1476764522-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Farewell to Arms </b>
+              <p>Ernest Hemingway</p>
+            <p>Duration: 347p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/1118503252-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Warren Buffett Way: 3rd Edition </b>
+              <p></p>
+            <p>Duration: 10h31</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/1627790365-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Algorithms to Live By </b>
+              <p></p>
+            <p>Duration: 11h50</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/1932073108-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Sacred Journey of the Peaceful Warrior </b>
+              <p></p>
+            <p>Duration: 249p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="https://englewoodreview.org/wp-content/uploads/2020/02/Pollan-Caffeine.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Caffeine </b>
+              <p>Michael Pollan</p>
+            <p>Duration: 2h00</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0358299284-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Infinite Powers How Calculus Reveals the Secrets of the World </b>
+              <p></p>
+            <p>Duration: 389p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0812993012-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b>  Creativity Inc. </b>
+              <p></p>
+            <p>Duration: 12h52</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/150985908X-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Side Hustle: From Idea to Income in 27 Days </b>
+              <p></p>
+            <p>Duration: 4h51</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="https://cs.cheggcdn.com/covers2/62650000/62655636_1534724327_Width288.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Phoenix Project </b>
+              <p></p>
+            <p>Duration: 14h46</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="https://mihirsmusings.files.wordpress.com/2017/04/drawdown_book_cover.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Drawdown </b>
+              <p></p>
+            <p>Duration: 18h53</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/1640320032-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Autobiography of Benjamin Franklin </b>
+              <p></p>
+            <p>Duration: 6h35</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://goinggreen.recorder.com/wp-content/uploads/2016/01/merchants-of-doubt.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Merchants of Doubt </b>
+              <p></p>
+            <p>Duration: ?</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0767926161-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Killing Rommel </b>
+              <p></p>
+            <p>Duration: 10h22</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://d28hgpri8am2if.cloudfront.net/book_images/onix/cvr9781501157554/solve-for-happy-9781501157554_hr.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Solve for Happy </b>
+              <p></p>
+            <p>Duration: 11h02</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/1932073205-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Way of the Peaceful Warrior </b>
+              <p></p>
+            <p>Duration: 240p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0199678111-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Superintelligence </b>
+              <p></p>
+            <p>Duration: 14h17m</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="https://images.booksense.com/images/401/082/9780300082401.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Ferdydurke </b>
+              <p></p>
+            <p>Duration: 308p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0691150095-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Invisible Hook </b>
+              <p></p>
+            <p>Duration: 7h40</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0470067365-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Bogleheads Guide to Investing </b>
+              <p></p>
+            <p>Duration: 10h3m</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="https://www.getflashnotes.com/wp-content/uploads/2015/05/the-obstacle-is-the-way-cover.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Obsticle is The Way </b>
+              <p></p>
+            <p>Duration: 6h7m</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/1400032954-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Newton  </b>
+              <p>James Gleick</p>
+            <p>Duration: 5h45</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://www.penguin.com.au/covers/catalog/9780670919536.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Personal MBA </b>
+              <p></p>
+            <p>Duration: 13h25m</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0983541469-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Economics in on lesson </b>
+              <p></p>
+            <p>Duration: 6h55</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0525427570-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Enlightment Now </b>
+              <p>Steven Pinker</p>
+            <p>Duration: 19h49</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0307277925-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Road </b>
+              <p>Cormac McArthy</p>
+            <p>Duration: 324p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="https://images.contentreserve.com/ImageType-400/5054-1/B26/84B/09/%7BB2684B09-7465-47B8-9CBA-DE6F1A045A8F%7DImg400.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Shoe Dog </b>
+              <p>Phil Knight</p>
+            <p>Duration: 13h21</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="https://cdn.penguin.com.au/covers/1440/9780099584575.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Gene </b>
+              <p></p>
+            <p>Duration: 19h20</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://blankbooks.co.za/9221/on-the-psychology-of-military-incompetence.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> On the Psychology of Military Incompetence </b>
+              <p></p>
+            <p>Duration: 528p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0761147489-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> I Will Teach You to be Rich </b>
+              <p>Ramit Sethi</p>
+            <p>Duration: 12h08</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/1250185963-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Loonshots </b>
+              <p>Sari Bahcal</p>
+            <p>Duration: 10h14</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0060889578-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> SuperFreakonomics </b>
+              <p></p>
+            <p>Duration: 7h28</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="https://images.booksense.com/images/058/825/9781470825058.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Giants of Political Thought Wealth of Nations </b>
+              <p></p>
+            <p>Duration: 5h07</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0307465357-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Four Hour Workweek </b>
+              <p>Tim Feriss</p>
+            <p>Duration: 8h19</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/1594139377-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Road to Character </b>
+              <p></p>
+            <p>Duration: 12h17</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0486264726-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Call of the Wild </b>
+              <p>Jack London</p>
+            <p>Duration: 232p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0062906712-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Concious </b>
+              <p>Hanaka Arris</p>
+            <p>Duration: 2h20</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://mediad.publicbroadcasting.net/p/wvxu/files/styles/x_large/public/201804/money_or_your_life_cover_amazon.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Your money or your life </b>
+              <p></p>
+            <p>Duration: 11h20</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="https://lh3.googleusercontent.com/proxy/a6HU96H1VG64vVzHNwN7K2XfK2TvUBfCxxq-RGpKpBCyGO42vsGHhuZGWb38y24Bs_K9mBYNux76A4sJgi-r0xdPoXsI1sq09J-dQEdVEoqjbOor=w1200-h630-p-k-no-nu" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Self-Hypnosis and Other Mind-Expanding Techniques </b>
+              <p></p>
+            <p>Duration: 140p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0349117543-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Shantaram </b>
+              <p></p>
+            <p>Duration: 42h59</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/1478930152-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Presence </b>
+              <p>Amy Cuddy</p>
+            <p>Duration: 353p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/145057341X-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Body by Science </b>
+              <p></p>
+            <p>Duration: 306p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0525512179-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> 21 lessons for the 21st century </b>
+              <p>Yuval Noah Harari</p>
+            <p>Duration: 11h40</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0316229245-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Stone Sky (Broken Earth #3) </b>
+              <p>N.K. Jemisin</p>
+            <p>Duration: 464p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0812979680-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Antifragile </b>
+              <p></p>
+            <p>Duration: 16h14</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0385249373-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Awareness </b>
+              <p>Anthony de Mello</p>
+            <p>Duration: 193p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/1543614620-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Leaders Eat Last </b>
+              <p></p>
+            <p>Duration: 9h23</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0316229261-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Obelisk Gate (Broken Earth #2) </b>
+              <p>N.K. Jemisin</p>
+            <p>Duration: 448p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/080241270X-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Five Love Languages </b>
+              <p></p>
+            <p>Duration: 4h46</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0060731338-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Freakonomics </b>
+              <p></p>
+            <p>Duration: 315p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/143914995X-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Lessons From History </b>
+              <p></p>
+            <p>Duration: 5h33</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/1405933941-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Longevity Diet </b>
+              <p></p>
+            <p>Duration: 317p</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      </div>  <!-- end of grid-->
+  </div>  <!-- end of container-->
+</section>  <!-- end of section-->
+
+
+<h1>2019</h1>
+
+ <section id="team">  <!-- start of section-->
+  <div class="container"> <!-- start of container-->
+    <div class="grid">  <!-- start of grid-->
+      <!-- #str heroes -->
+      <!-- #abaddon -->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/1476731713-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Finite and Infinite Games </b>
+              <p></p>
+            <p>Duration: x</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0316229296-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Fifth Season (Broke Earth #1) </b>
+              <p>N.K. Jemisin</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0393062244-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Death by Black Hole </b>
+              <p>Neil deGrasse Tyson</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/1501124021-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Principles: Life and Work </b>
+              <p>Ray Dalio</p>
+            <p>Duration: x</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Man's Search for Meaning </b>
+              <p></p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Stories of Your life </b>
+              <p></p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Slow Sex </b>
+              <p></p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Data Minimalism </b>
+              <p>Cal Newport</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Range </b>
+              <p></p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Tell Me What You Want </b>
+              <p></p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Triggers </b>
+              <p></p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The man in the high castle </b>
+              <p></p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Good Omens </b>
+              <p></p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Becoming Cliterate: Why Orgasm Equality Matters—And How to Get It </b>
+              <p>Laurie Mintz</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Art of Fermentation </b>
+              <p></p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> My first summer in the Sierra </b>
+              <p>John Muir</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Songs of Trees </b>
+              <p></p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Tae Te Ching </b>
+              <p></p>
+            <p>Duration: x</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Living Mountain </b>
+              <p></p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      </div>  <!-- end of grid-->
+  </div>  <!-- end of container-->
+</section>  <!-- end of section-->
+
+
+<h1>2018</h1>
+
+ <section id="team">  <!-- start of section-->
+  <div class="container"> <!-- start of container-->
+    <div class="grid">  <!-- start of grid-->
+      <!-- #str heroes -->
+      <!-- #abaddon -->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> How to read a book </b>
+              <p></p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Graveyard Book </b>
+              <p>Neil Gaiman</p>
+            <p>Duration: x</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Mycelium Running </b>
+              <p></p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Zen in the Art of Archery </b>
+              <p>Eugen Herrigel</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Artificial Condition </b>
+              <p>Martha Wells</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Being a Dog </b>
+              <p></p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Strange Order of Things: Life, Feeling, and the Making of Cultures </b>
+              <p>António Damásio</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> In Defense of Food </b>
+              <p>Michael Pollan</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Siddhartha </b>
+              <p>Hermann Hesse</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Eat Stop Eat  </b>
+              <p>Eat Stop Eat </p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Why We Sleep  </b>
+              <p>Matthew Walker</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Models </b>
+              <p>Models</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> How to Change Your Mind: What the New Science of Psychedelics Teaches Us About Consciousness, Dying, Addiction, Depression, and Transcendence </b>
+              <p>Michael Pollan</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> One Bullet Away </b>
+              <p>Nathaniel Fick</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Extreme Ownership: How U.S. Navy SEALs Lead and Win </b>
+              <p>Jocko Willink, Leif Babin</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Deep Work: Rules for Focused Success in a Distracted World </b>
+              <p>Cal Newport</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> When: The Scientific Secrets of Perfect Timing </b>
+              <p>Daniel Pink</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Start-Up of You </b>
+              <p>Reid Hoffman, Ben Casnocha</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0393244423-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Flavor: The Science of Our Most Neglected Sense </b>
+              <p>Bob Holmes</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0062368591-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> I Contain Multitudes </b>
+              <p>Ed Yong</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0393073777-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Bonobo and the Atheist </b>
+              <p>Frans de Waal</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Homo Deus </b>
+              <p>Yuval Noah Harari</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> All Systems Red </b>
+              <p>Martha Wells</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0451496965-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Salt Fix  </b>
+              <p>James DiNicolantonio</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Extra Virginity </b>
+              <p>Tom Mueller</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Mating in Captivity: Reconciling the Erotic and the Domestic </b>
+              <p>Esther Perel</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Gödel, Escher, Bach: an Eternal Golden Braid </b>
+              <p>Douglas Hofstader</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      </div>  <!-- end of grid-->
+  </div>  <!-- end of container-->
+</section>  <!-- end of section-->
+
+
+<h1>2017</h1>
+
+ <section id="team">  <!-- start of section-->
+  <div class="container"> <!-- start of container-->
+    <div class="grid">  <!-- start of grid-->
+      <!-- #str heroes -->
+      <!-- #abaddon -->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Logicomix: An Epic Search for Truth </b>
+              <p>Apostolos Doxiadis, Christos H. Papadimitriou, Alecos Papadatos</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/1508235406-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Why Buddhism is True: The Science and Philosophy of Meditation and Enlightenment </b>
+              <p>Robert Wright</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Nexus (Nexus, #1) </b>
+              <p>Ramez Naam</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Tripping Over the Truth: The Metabolic Theory of Cancer </b>
+              <p>Travis Christofferson</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> 11 - Death's End (Remembrance of Earth’s Past #3) </b>
+              <p>Liu Cixin</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Complete Guide to Fasting: Heal Your Body Through Intermittent, Alternate-Day, and Extended Fasting </b>
+              <p>Jason Fung</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Dark Forest (Remembrance of Earth’s Past, #2) </b>
+              <p>Liu Cixin</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Three-Body Problem (Remembrance of Earth’s Past #1) </b>
+              <p>Liu Cixin</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Storytelling Animal: How Stories Make Us Human </b>
+              <p>Jonathan Gottschall</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="http://covers.openlibrary.org/b/isbn/0062316095-M.jpg" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Sapiens: A Brief History of Humankind </b>
+              <p>Yuval Noah Harari</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Screenwriting 101 </b>
+              <p>Film Crit Hulk!</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Born to Run: A Hidden Tribe, Superathletes, and the Greatest Race the World Has Never Seen </b>
+              <p>Christopher McDougall</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Shock Doctrine: The Rise of Disaster Capitalism </b>
+              <p>Naomi Klein</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Lying </b>
+              <p>Sam Harris</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Free Will </b>
+              <p>Sam Harris</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      </div>  <!-- end of grid-->
+  </div>  <!-- end of container-->
+</section>  <!-- end of section-->
+
+
+<h1>2016</h1>
+
+ <section id="team">  <!-- start of section-->
+  <div class="container"> <!-- start of container-->
+    <div class="grid">  <!-- start of grid-->
+      <!-- #str heroes -->
+      <!-- #abaddon -->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Dictator's Handbook: Why Bad Behavior is Almost Always Good Politics </b>
+              <p>Bruce Bueno de Mesquita,Alastair Smith</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Moral Landscape: How Science Can Determine Human Values </b>
+              <p>Sam Harris</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Waking Up: A Guide to Spirituality Without Religion </b>
+              <p>Sam Harris</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Meditations </b>
+              <p>Marcus Aurelius</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> An Astronaut's Guide to Life on Earth </b>
+              <p>Chris Hadfield</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> God Emperor of Dune (Dune Chronicles #4) </b>
+              <p>Frank Herbert</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Thinking, Fast and Slow </b>
+              <p>Daniel Kahneman</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      </div>  <!-- end of grid-->
+  </div>  <!-- end of container-->
+</section>  <!-- end of section-->
+
+
+<h1>2015</h1>
+
+ <section id="team">  <!-- start of section-->
+  <div class="container"> <!-- start of container-->
+    <div class="grid">  <!-- start of grid-->
+      <!-- #str heroes -->
+      <!-- #abaddon -->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> A Game of Thrones (A Song of Ice and Fire, #1) </b>
+              <p>George R. R. Martin</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      </div>  <!-- end of grid-->
+  </div>  <!-- end of container-->
+</section>  <!-- end of section-->
+
+
+<h1><2015</h1>
+
+ <section id="team">  <!-- start of section-->
+  <div class="container"> <!-- start of container-->
+    <div class="grid">  <!-- start of grid-->
+      <!-- #str heroes -->
+      <!-- #abaddon -->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> A Hologram for the King </b>
+              <p>Dave Eggers</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> A Journey to the Center of the Earth </b>
+              <p>Jules Verne</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> A Tale of Two Cities </b>
+              <p>Charles Dickens</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> American Gods (American Gods, #1) </b>
+              <p>Neil Gaiman</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Animal Farm </b>
+              <p>George Orwell</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Brave New World </b>
+              <p>Aldous Huxley</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Children of Dune (Dune Chronicles #3) </b>
+              <p>Frank Herbert</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Children of the Mind (Ender's Saga, #4) </b>
+              <p>Orson Scott Card</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Critical Chain </b>
+              <p>Eliyahu M. Goldratt</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Dataclysm: Who We Are </b>
+              <p> Christian Rudder</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Deep Work: Rules for Focused Success in a Distracted World </b>
+              <p>Cal Newport </p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Dune (Dune Chronicles, #1) </b>
+              <p>Frank Herbert</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Dune Messiah (Dune Chronicles #2) </b>
+              <p>Frank Herbert</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> East of Eden </b>
+              <p>John Steinbeck</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Emma </b>
+              <p>Jane Austen</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Ender's Game (Ender's Saga, #1) </b>
+              <p>Orson Scott Card</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Ender's Shadow (The Shadow Series, #1) </b>
+              <p>Orson Scott Card</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Essentialism: The Disciplined Pursuit of Less </b>
+              <p>Greg McKeown </p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Fahrenheit 451 </b>
+              <p>Ray Bradbury</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Faz o Curso na Maior </b>
+              <p>Bruno Ricardo Caldeira, Nuno Abrantes Ferreira</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Five Weeks in a Balloon (Extraordinary Voyages, #1) </b>
+              <p>Jules Verne</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Foundation (Foundation, #1) </b>
+              <p>Isaac Asimov</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Foundation and Empire (Foundation #2) </b>
+              <p>Isaac Asimov</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Foundation's Edge (Foundation #4) </b>
+              <p>Isaac Asimov</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Freedom Evolves </b>
+              <p>Daniel Dennet</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Ganhar com as Apostas Desportivas </b>
+              <p>Paulo Rebelo</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Ganhar em Bolsa </b>
+              <p>Fernando Braga de Matos </p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> God Is Not One: The Eight Rival Religions That Run the World--and Why Their Differences Matter </b>
+              <p>Stephen R. Prothero</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Guns, Germs, and Steel: The Fates of Human Societies </b>
+              <p>Jared Diamond</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> How to Become a Straight-A Student </b>
+              <p>Cal Newport</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> How to Win Friends and Influence People </b>
+              <p>Dale Carnegie</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> I Am Legend and Other Stories </b>
+              <p>Richard Matheson</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Ishmael: An Adventure of the Mind and Spirit (Ishmael, #1) </b>
+              <p>Daniel Quinn</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> iWoz </b>
+              <p>Steve Wozniak</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Making History </b>
+              <p>Stephen Fry</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Mastermind: How to Think Like Sherlock Holmes </b>
+              <p>Maria Konnikova</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Natural Born Heroes: How a Daring Band of Misfits Mastered the Lost Secrets of Strength and Endurance </b>
+              <p>Christopher McDougall</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> On the Road </b>
+              <p>Jack Kerouac</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> One Hundred Years of Solitude </b>
+              <p>Gabriel Garcia Marquez</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Os Maias </b>
+              <p>Eça de Queirós</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Pride and Prejudice </b>
+              <p>Jane Austen</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Quiet: The Power of Introverts in a World That Can't Stop Talking </b>
+              <p>Susan Cain</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Rework </b>
+              <p>Jason Fried, David Heinemeier Hansson</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Robinson Crusoe </b>
+              <p>Daniel Defoe</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Second Foundation (Foundation #3) </b>
+              <p>Isaac Asimov</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Sense and Sensibility </b>
+              <p>Jane Austen</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Shadow of the Hegemon (The Shadow Series, #2) </b>
+              <p>Orson Scott Card</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Slaughterhouse-Five </b>
+              <p>Kurt Vonnegut</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Space Chronicles: Facing the Ultimate Frontier </b>
+              <p>Neil deGrasse Tyson</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Spd Rdng </b>
+              <p>Susan Norman, Jan Cisek</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Speaker for the Dead (Ender's Saga, #2) </b>
+              <p>Orson Scott Card</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Stranger in a Strange Land </b>
+              <p>Robert A. Heinlein</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Surely You're Joking, Mr. Feynman!: Adventures of a Curious Character </b>
+              <p>Richard Feynman</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The 7 Habits of Highly Effective People: Powerful Lessons in Personal Change </b>
+              <p>Stephen Covey</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Alchemist </b>
+              <p>Paulo Coelho</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Art of Learning: A Journey in the Pursuit of Excellence </b>
+              <p>Josh Waitzkin</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Art of War  </b>
+              <p>Nicolai Machiavelli</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Art of War  </b>
+              <p>Sun Tzu</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Book Thief </b>
+              <p>Markus Zusak</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Colour of Magic (Discworld, #1) </b>
+              <p>Terry Pratchett</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Definitive Book of Body Language </b>
+              <p>Allan Pease, Barbara Pease</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Dice Man </b>
+              <p>Luke Rhinehart</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Fault in Our Stars </b>
+              <p>John Green</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Grand Design </b>
+              <p>Stephen Hawking, Leonard Mlodinow</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Great Gatsby </b>
+              <p>F. Scott Fitzgerald</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Hitchhiker's Guide to the Galaxy (Hitchhiker's Guide to the Galaxy, #1) </b>
+              <p>Douglas Adams</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Judgement and In the Penal Colony </b>
+              <p>Franz Kafka</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Karamazov Brothers </b>
+              <p>Fyodor Dostoevsky</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Last Question </b>
+              <p>Isaac Asimov</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Martian </b>
+              <p>Andy Weir</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Martian Chronicles </b>
+              <p>Ray Bradbury</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Master Algorithm: How the Quest for the Ultimate Learning Machine Will Remake Our World </b>
+              <p>Pedro Domingos</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Metamorphosis </b>
+              <p>Franz Kafka</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Old Man and the Sea </b>
+              <p>Ernest Hemingway</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Power of Habit: Why We Do What We Do in Life and Business </b>
+              <p>Charles Duhigg</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Restaurant at the End of the Universe (Hitchhiker's Guide to the Galaxy, #2) </b>
+              <p>Douglas Adams</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Selfish Gene </b>
+              <p>Richard Dawkins</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Stranger </b>
+              <p>Albert Camus</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Symposium </b>
+              <p>Plato</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> The Time Machine </b>
+              <p>H. G. Wells</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> To Sell Is Human: The Surprising Truth About Moving Others </b>
+              <p>Daniel Pink</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Walden </b>
+              <p>Henry David Thoreau</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Xenocide (Ender's Saga, #3) </b>
+              <p>Orson Scott Card</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Zen and the Art of Motorcycle Maintenance: An Inquiry Into Values (Phaedrus, #1) </b>
+              <p>Robert Pirsig</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Four Hour Body </b>
+              <p>Tim Feriss</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Four Hour Chef </b>
+              <p>Tim Feriss</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> Fifty Shades of Grey </b>
+              <p>E.L. James</p>
+            <p>Duration: </p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    
+
+      </div>  <!-- end of grid-->
+  </div>  <!-- end of container-->
+</section>  <!-- end of section-->
+
+
+     
+
 </body>
+</html>

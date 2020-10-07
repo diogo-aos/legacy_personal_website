@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+  align-items: center;
+  grid-gap: 15px;
+}
+
+.flip-card {
+  border-style: hidden;
+  background-color: transparent;
+  width: 200px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #222e36ef;
+  color: white;
+  transform: rotateY(180deg);
+}
+</style>
+</head>
+<body>
+
+<h1>Years in reading</h1>
+
+{% for year in years_lst %}
+<h1>{{ year }}</h1>
+
+ <section id="team">  <!-- start of section-->
+  <div class="container"> <!-- start of container-->
+    <div class="grid">  <!-- start of grid-->
+      <!-- #str heroes -->
+      <!-- #abaddon -->
+
+    {% for book in years[year] %}
+
+      <div class="flip-card">  <!-- start of flipcard-->
+        <div class="flip-card-inner">  <!-- start of flipcard-inner -->
+          <div class="flip-card-front">  <!-- start of flipcard-front -->
+            <img src="{{ book['cover_url'] }}" alt="Avatar" style="width:200px;height:300px;" />
+          </div>
+          <div class="flip-card-back">
+            <br />
+              <b> {{book['book']}} </b>
+              <p>{{book['author']}}</p>
+            <p>Duration: {{book['duration']}}</p>
+          </div>  <!-- end of flipcard-front -->
+        </div>  <!-- end of flipcard-inner -->
+      </div>   <!-- end of flipcard-->
+
+    {% endfor %}
+
+      </div>  <!-- end of grid-->
+  </div>  <!-- end of container-->
+</section>  <!-- end of section-->
+
+{% endfor %}
+     
+
+</body>
+</html>
