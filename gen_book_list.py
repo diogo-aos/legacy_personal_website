@@ -1,6 +1,8 @@
 from __future__ import print_function
 import pickle
 import os.path
+import os
+
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
@@ -12,10 +14,13 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 SAMPLE_SPREADSHEET_ID = '1uT4RsmSDOSmkEqfRnWkAwDodkWS09-fBS1Ll-rrC9Bs'
 SAMPLE_RANGE_NAME = 'read_list'
 
+APP_CREDENTIALS_FILE = os.environ["APP_CREDENTIALS_FILE"]
+
 def get_data_google_sheets():
     """Shows basic usage of the Sheets API.
     Prints values from a sample spreadsheet.
     """
+    print("logging in...")
     creds = None
     # The file token.pickle stores the user's access and refresh tokens, and is
     # created automatically when the authorization flow completes for the first
@@ -29,13 +34,16 @@ def get_data_google_sheets():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'credentials.json', SCOPES)
-            creds = flow.run_local_server(port=0)
+                APP_CREDENTIALS_FILE, SCOPES)
+            #creds = flow.run_local_server(port=0)
+            creds = flow.run_console()
         # Save the credentials for the next run
         with open('token.pickle', 'wb') as token:
             pickle.dump(creds, token)
 
     service = build('sheets', 'v4', credentials=creds)
+
+    print("getting data...")
 
     # Call the Sheets API
     sheet = service.spreadsheets()
@@ -56,6 +64,8 @@ def get_data_google_sheets():
 def run():
     data = get_data_google_sheets()
 
+    print("processing data...")
+
     headers = data[0]
     for l in data:
         diff = len(headers) - len(l)
@@ -71,7 +81,7 @@ def run():
     for d in data[1:]:
         b = {h:d[i] for i,h in enumerate(headers)}
         books.append(b)
-    
+
     for i in range(len(books)):
         books[i]['year'] = int(books[i]['year'])
 
@@ -87,11 +97,6 @@ def run():
             isbn = '0' + isbn
         return isbn
 
-
-
-
-
-
     for year, year_books in years.items():
         if year in [-1,0]:
             continue
@@ -105,10 +110,6 @@ def run():
             else:
                 b['cover_url'] = ''
         years[year] = sorted(years[year],key=lambda x: x['year count'],reverse=True)
-        
-        
-
-
 
     # template_fn = 'book_list_template.html'
     template_fn = 'book_list_template_flipcard.html'
