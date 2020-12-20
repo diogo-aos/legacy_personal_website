@@ -85,30 +85,30 @@ def run():
     for i in range(len(books)):
         books[i]['year'] = int(books[i]['year'])
 
-
-    years = {}
-    for b in books:
-        if b['year'] not in years:
-            years[b['year']] = []
-        years[b['year']].append(b)
-
     def fix_isbn(isbn):
         while len(isbn) < 10:
             isbn = '0' + isbn
         return isbn
 
+    years = {}
+    for b in books:
+        if b['year'] not in years:
+            years[b['year']] = []
+        if b['year count']:
+            b['year count'] = int(b['year count'])
+        b['duration'] = b['read'] if b['read'] else b['audio']
+        if b['cover_url']:
+            continue
+        if b['isbn-10']:
+            b['cover_url'] = 'http://covers.openlibrary.org/b/isbn/{}-M.jpg'.format(fix_isbn(b['isbn-10']))
+        else:
+            b['cover_url'] = ''
+
+        years[b['year']].append(b)
+
     for year, year_books in years.items():
         if year in [-1,0]:
             continue
-        for i, b in enumerate(year_books):
-            b['year count'] = int(b['year count'])
-            b['duration'] = b['read'] if b['read'] else b['audio']
-            if b['cover_url']:
-                continue
-            if b['isbn-10']:
-                b['cover_url'] = 'http://covers.openlibrary.org/b/isbn/{}-M.jpg'.format(fix_isbn(b['isbn-10']))
-            else:
-                b['cover_url'] = ''
         years[year] = sorted(years[year],key=lambda x: x['year count'],reverse=True)
 
     # template_fn = 'book_list_template.html'
@@ -127,7 +127,7 @@ def run():
     years_lst.remove(0)
 
 
-    html = template.render(years_lst=years_lst, years=years)
+    html = template.render(years_lst=years_lst, years=years, currently_reading=years[-1])
     out_fn = 'the_book_list.html'
     with open(out_fn, 'w') as file_:
         file_.write(html)
