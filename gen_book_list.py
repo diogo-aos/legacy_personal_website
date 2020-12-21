@@ -97,12 +97,8 @@ def run():
         if b['year count']:
             b['year count'] = int(b['year count'])
         b['duration'] = b['read'] if b['read'] else b['audio']
-        if b['cover_url']:
-            continue
-        if b['isbn-10']:
+        if not b['cover_url'] and b['isbn-10']:
             b['cover_url'] = 'http://covers.openlibrary.org/b/isbn/{}-M.jpg'.format(fix_isbn(b['isbn-10']))
-        else:
-            b['cover_url'] = ''
 
         years[b['year']].append(b)
 
