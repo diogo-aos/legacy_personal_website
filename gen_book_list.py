@@ -66,6 +66,9 @@ def run():
 
     print("processing data...")
 
+    # get headers
+    # some lines have empty cells on the last columns (on the google sheet)
+    # these empty cells don't show up in the retrieved data and need to be added
     headers = data[0]
     for l in data:
         diff = len(headers) - len(l)
@@ -75,8 +78,10 @@ def run():
 
     template = Template('book_list_template.html')
 
-    # year 0 -> undatted
-    # year -1 -> currently reading
+
+    # build collection of books
+    # year <0 -> undatted
+    # year 0 -> currently reading
     books = []
     for d in data[1:]:
         b = {h:d[i] for i,h in enumerate(headers)}
@@ -103,7 +108,7 @@ def run():
         years[b['year']].append(b)
 
     for year, year_books in years.items():
-        if year in [-1,0]:
+        if year <= 0:
             continue
         years[year] = sorted(years[year],key=lambda x: x['year count'],reverse=True)
 
@@ -113,17 +118,17 @@ def run():
     with open(template_fn) as file_:
         template = Template(file_.read())
 
-    years_lst = list(years.keys())
+    years_lst = [y for y in years.keys() if y < 0]
     years_lst = sorted(years_lst, reverse=True)
-    years_lst.append('<2015')
-    years['<2015'] = years[0]
+    undated_key = "< 2015"
+    years_lst.append(undated_key)
+    undated_books = []
+    for y, books in years.items():
+        undated_books += books if y < 0 else []
+    years[undated_key] = undated_books
 
-    if -1 in years_lst:
-        years_lst.remove(-1)
-    years_lst.remove(0)
 
-
-    html = template.render(years_lst=years_lst, years=years, currently_reading=years[-1])
+    html = template.render(years_lst=years_lst, years=years, currently_reading=years[0])
     out_fn = 'the_book_list.html'
     with open(out_fn, 'w') as file_:
         file_.write(html)
