@@ -41,7 +41,8 @@ DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU = False
 
 
-SITESUBTITLE = 'Air Force Captain, Computer Engineer, Climber'
+SITESUBTITLE = 'Computer Engineer, Climber'
+#SITESUBTITLE = 'Air Force Captain, Computer Engineer, Climber'
 
 MENUITEMS = (
 #  ('Home','/'),
