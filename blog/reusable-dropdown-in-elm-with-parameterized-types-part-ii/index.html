@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Reusable dropdown in Elm with parameterized types — part II — Diogo Silva</title>
+	<meta name="description" content="Title: Reusable dropdown in Elm with parameterized types — part II; Date: 2021-05-27; Author: Diogo Silva">
+	<meta name="author" content="Diogo Silva">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://localhost:5555/theme/html5.js"></script>
+		<![endif]-->
+	<link href="http://localhost:5555/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="http://localhost:5555/theme/css/local.css" rel="stylesheet">
+	<link href="http://localhost:5555/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="http://localhost:5555/">Diogo Silva</a>
+			<br><small>Air Force Captain, Computer Engineer, Climber</small></h1>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">Reusable dropdown in Elm with parameterized types — part II</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">Diogo Silva</h4>
+		</span>
+		<time datetime="2021-05-27T00:00:00+01:00" itemprop="datePublished">qui 27 maio 2021</time>
+	</div>
+<!---	
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="http://localhost:5555/category/blog.html" rel="category">blog</a>
+		</span>
+	</div>
+--->
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="http://localhost:5555/tag/elm.html" rel="tag">Elm</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://localhost:5555/tag/elm-ui.html" rel="tag">elm-ui</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://localhost:5555/tag/algebraic-datatypes.html" rel="tag">algebraic-datatypes</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><p>Ever needed to have a dropdown on a form? Or on a configuration page? Maybe multiple dropdowns for different ends with different types? elm-ui is great, but it doesn't offer a primitive for dropdowns. In this guide, you'll build a reusable dropdown and, along the way, you'll learn about parametrized types.</p>
+<p>We'll build on top of work done in the [TODO add link] part I, but if you're familiar with Elm, you should have no trouble jumping right in. The complete code from part I is available in this <a href="https://github.com/diogo-aos/elm-ui-dropdown/releases/tag/partI">Github</a> repository.</p>
+<p>In part I we built this:</p>
+<p><img alt="Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Kazam_screencast_00005.gif" src="Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Kazam_screencast_00005.gif"></p>
+<p>The way we did it, we can't reuse it for other types. We'll build a simple reusable component with consistent styling that can be reused by calling a function in our views and little added logic.</p>
+<p>Here's a refresher of the view and update logic of what we built in part I:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="kr">alias</span> <span class="kt">Model</span> <span class="nf">=</span>
+    <span class="p">{</span> <span class="nv">favoriteFood</span> <span class="nf">:</span> <span class="kt">Maybe</span> <span class="kt">Food</span>
+    <span class="p">,</span> <span class="nv">status</span> <span class="nf">:</span> <span class="kt">Status</span><span class="p">}</span>
+
+<span class="kr">type</span> <span class="kt">Status</span>
+    <span class="nf">=</span> <span class="kt">Normal</span>
+    <span class="nf">|</span> <span class="kt">SelectFood</span>
+
+<span class="nv">view</span> <span class="nf">:</span> <span class="kt">Model</span> <span class="nf">-&gt;</span> <span class="kt">Html</span><span class="nf">.</span><span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="nv">view</span> <span class="nv">model</span> <span class="nf">=</span>
+    <span class="kr">let</span>
+        <span class="nv">selectedFoodName</span> <span class="nf">=</span> 
+            <span class="kr">case</span> <span class="nv">model</span><span class="nf">.</span><span class="nv">favoriteFood</span> <span class="kr">of</span>
+                <span class="kt">Nothing</span> <span class="nf">-&gt;</span> <span class="s">&quot;No food selected. Click here to select.&quot;</span>
+                <span class="kt">Just</span> <span class="nv">food</span> <span class="nf">-&gt;</span> <span class="nv">food</span><span class="nf">.</span><span class="nv">name</span>
+                <span class="nv">dropdown</span> <span class="nf">=</span>
+            <span class="kr">case</span> <span class="nv">model</span><span class="nf">.</span><span class="nv">status</span> <span class="kr">of</span>
+                <span class="kt">Normal</span> <span class="nf">-&gt;</span>
+                    <span class="kt">E</span><span class="nf">.</span><span class="nv">el</span>
+                        <span class="p">[</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">width</span> <span class="mi">1</span>
+                        <span class="p">,</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">dashed</span>
+                        <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">padding</span> <span class="mi">3</span>
+                        <span class="p">,</span> <span class="kt">Events</span><span class="nf">.</span><span class="nv">onClick</span> <span class="kt">ClickedSelectFood</span>
+                        <span class="p">]</span>
+                        <span class="p">(</span><span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="nv">selectedFoodName</span><span class="p">)</span>
+                <span class="kt">SelectFood</span> <span class="nf">-&gt;</span>
+                    <span class="kt">E</span><span class="nf">.</span><span class="nv">el</span>
+                        <span class="p">[</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">width</span> <span class="mi">1</span>
+                        <span class="p">,</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">dashed</span>
+                        <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">padding</span> <span class="mi">3</span>
+                        <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">below</span> <span class="p">(</span><span class="nv">viewFoodList</span> <span class="nv">foodList</span><span class="p">)</span>
+                        <span class="p">]</span>
+                        <span class="p">(</span><span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="nv">selectedFoodName</span><span class="p">)</span>
+    <span class="kr">in</span>
+    <span class="kt">E</span><span class="nf">.</span><span class="nv">layout</span>
+        <span class="p">[]</span>
+        <span class="p">(</span>
+        <span class="kt">E</span><span class="nf">.</span><span class="nv">column</span>
+            <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">centerX</span>
+            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">centerY</span>
+        <span class="p">]</span>
+            <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="s">&quot;You favorite food is:&quot;</span>
+            <span class="p">,</span> <span class="nv">dropdown</span>
+            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="s">&quot;... the best food.&quot;</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+<span class="kr">type</span> <span class="kt">Msg</span>
+    <span class="nf">=</span> <span class="kt">NoAction</span>
+    <span class="nf">|</span> <span class="kt">ClickedSelectFood</span>
+
+
+<span class="nv">update</span> <span class="nf">:</span> <span class="kt">Msg</span> <span class="nf">-&gt;</span> <span class="kt">Model</span> <span class="nf">-&gt;</span> <span class="kt">Model</span>
+<span class="nv">update</span> <span class="nv">msg</span> <span class="nv">model</span> <span class="nf">=</span>
+    <span class="kr">case</span> <span class="nv">msg</span> <span class="kr">of</span>
+        <span class="kt">NoAction</span> <span class="nf">-&gt;</span>
+            <span class="nv">model</span>
+        <span class="kt">ClickedSelectFood</span> <span class="nf">-&gt;</span>
+            <span class="p">{</span> <span class="nv">model</span> <span class="nf">|</span> <span class="nv">status</span> <span class="nf">=</span> <span class="kt">SelectFood</span> <span class="p">}</span>
+</code></pre></div>
+
+<p>For a single dropdown this is fine, but if we had, say, 5 dropdowns, we'd need 5 different Status. That is a lot of boilerplate. We'll create a new Dropdown type to keep the state and value of the dropdown.</p>
+<p>Let's change that. Associated with dropdown is a list of options and a function that will convert an option to a string (to display). We'll also need a message to trigger when an option is selected.</p>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="kt">Dropdown</span> <span class="nv">a</span>
+    <span class="nf">=</span> <span class="kt">Normal</span> <span class="p">(</span><span class="kt">Maybe</span> <span class="nv">a</span><span class="p">)</span>
+    <span class="nf">|</span> <span class="kt">Select</span>
+</code></pre></div>
+
+<p>This is a parameterized type. This dropdown can receive any type (foods, countries, people, cars, whatever you need). See that <code>a</code> there? That's the type variable.</p>
+<p>This <code>Normal</code> is in conflict with our previous Status type. Go ahead and delete that entire type. Now, we'll change the model to reference this dropdown type. we'll need a <code>Food</code> dropdown - the <code>Food</code> will be the type of the <code>Dropdown</code>.</p>
+<p>While we're at it, change the initial model too.</p>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="kr">alias</span> <span class="kt">Model</span> <span class="nf">=</span>
+    <span class="p">{</span> <span class="nv">favoriteFood</span> <span class="nf">:</span> <span class="kt">Maybe</span> <span class="kt">Food</span>
+    <span class="p">}</span>
+
+<span class="nv">initialModel</span> <span class="nf">:</span> <span class="kt">Model</span>
+<span class="nv">initialModel</span> <span class="nf">=</span>
+    <span class="p">{</span> <span class="nv">favoriteFood</span> <span class="nf">=</span> <span class="kt">Normal</span> <span class="kt">Nothing</span>
+    <span class="p">}</span>
+</code></pre></div>
+
+<p>We also don't need status anymore. <code>Dropdown</code> will keep its state within the type. </p>
+<p>Next, let's tackle update. Since we don't have <code>Status</code> anymore, we'll need to start using the new <code>Dropdown</code> type here too.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">update</span> <span class="nf">:</span> <span class="kt">Msg</span> <span class="nf">-&gt;</span> <span class="kt">Model</span> <span class="nf">-&gt;</span> <span class="kt">Model</span>
+<span class="nv">update</span> <span class="nv">msg</span> <span class="nv">model</span> <span class="nf">=</span>
+    <span class="kr">case</span> <span class="nv">msg</span> <span class="kr">of</span>
+        <span class="kt">NoAction</span> <span class="nf">-&gt;</span>
+            <span class="nv">model</span>
+
+        <span class="kt">ClickedSelectFood</span> <span class="nf">-&gt;</span>
+            <span class="p">{</span> <span class="nv">model</span> <span class="nf">|</span> <span class="nv">favoriteFood</span> <span class="nf">=</span> <span class="kt">Select</span> <span class="p">}</span>
+
+        <span class="kt">ClickedDropdownFood</span> <span class="nv">food</span> <span class="nf">-&gt;</span>
+            <span class="p">{</span> <span class="nv">model</span> <span class="nf">|</span> <span class="nv">favoriteFood</span> <span class="nf">=</span> <span class="kt">Normal</span> <span class="p">(</span><span class="kt">Just</span> <span class="nv">food</span><span class="p">)</span> <span class="p">}</span>
+</code></pre></div>
+
+<p>Let's head over to the <code>view</code> function now. Go ahead and delete the entire let expression. Delete the <code>viewFood</code> and <code>viewFoodList</code> while you're at it. We'll replace these with generic functions. Now, create a <code>dropdownView</code> function.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">dropdownView</span> <span class="nf">:</span> <span class="kt">Dropdown</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">List</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="p">(</span><span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">String</span><span class="p">)</span> <span class="nf">-&gt;</span> <span class="kt">Msg</span> <span class="nf">-&gt;</span> <span class="p">(</span><span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">Msg</span><span class="p">)</span> <span class="nf">-&gt;</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Element</span> <span class="kt">Msg</span>
+<span class="nv">dropdownView</span> <span class="nv">dropdownState</span> <span class="nv">options</span> <span class="nv">toString</span> <span class="nv">openMenuMsg</span> <span class="nv">clickedOptionMsg</span> <span class="nf">=</span>
+    <span class="kr">let</span>
+        <span class="nv">selectedName</span> <span class="nf">=</span>
+            <span class="kr">case</span> <span class="nv">dropdownState</span> <span class="kr">of</span>
+                <span class="kt">Normal</span> <span class="p">(</span><span class="kt">Just</span> <span class="nv">someA</span><span class="p">)</span> <span class="nf">-&gt;</span> <span class="nv">toString</span> <span class="nv">someA</span>
+                <span class="nv">_</span> <span class="nf">-&gt;</span> <span class="s">&quot;Click to select&quot;</span>
+        <span class="nv">menu</span> <span class="nf">:</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Element</span> <span class="kt">Msg</span>
+        <span class="nv">menu</span> <span class="nf">=</span>
+            <span class="kr">if</span> <span class="nv">not</span> <span class="p">(</span><span class="nv">dropdownState</span> <span class="nf">==</span> <span class="kt">Select</span><span class="p">)</span> <span class="kr">then</span>
+                    <span class="kt">E</span><span class="nf">.</span><span class="nv">el</span>
+                        <span class="p">[</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">width</span> <span class="mi">1</span>
+                        <span class="p">,</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">dashed</span>
+                        <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">padding</span> <span class="mi">3</span>
+                        <span class="p">,</span> <span class="kt">Events</span><span class="nf">.</span><span class="nv">onClick</span> <span class="nv">openMenuMsg</span>
+                        <span class="p">]</span>
+                        <span class="p">(</span><span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="nv">selectedName</span><span class="p">)</span>
+            <span class="kr">else</span>
+                <span class="kr">let</span>
+                    <span class="nv">mouseOverColor</span> <span class="nf">:</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Color</span>
+                    <span class="nv">mouseOverColor</span> <span class="nf">=</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">rgb</span> <span class="mf">0.</span><span class="mi">9</span> <span class="mf">0.</span><span class="mi">9</span> <span class="mf">0.</span><span class="mi">1</span>
+
+                    <span class="nv">backgroundColor</span> <span class="nf">:</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Color</span>
+                    <span class="nv">backgroundColor</span> <span class="nf">=</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">rgb</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span>
+
+                    <span class="nv">viewOption</span> <span class="nf">:</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Element</span> <span class="kt">Msg</span>
+                    <span class="nv">viewOption</span> <span class="nv">option</span> <span class="nf">=</span>
+                        <span class="kt">E</span><span class="nf">.</span><span class="nv">el</span>
+                            <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">width</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">fill</span>
+                            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">mouseOver</span> <span class="p">[</span><span class="kt">Background</span><span class="nf">.</span><span class="nv">color</span> <span class="nv">overColor</span><span class="p">]</span>
+                            <span class="p">,</span> <span class="kt">Background</span><span class="nf">.</span><span class="nv">color</span> <span class="nv">white</span>
+                            <span class="p">,</span> <span class="kt">Events</span><span class="nf">.</span><span class="nv">onClick</span> <span class="p">(</span><span class="nv">clickedOptionMsg</span> <span class="nv">option</span><span class="p">)</span>
+                            <span class="p">]</span>
+                            <span class="p">(</span><span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="nf">&lt;|</span> <span class="nv">toString</span> <span class="nv">option</span><span class="p">)</span>
+
+                    <span class="nv">viewOptionList</span> <span class="nf">:</span> <span class="kt">List</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Element</span> <span class="kt">Msg</span>
+                    <span class="nv">viewOptionList</span> <span class="nv">inputOptions</span> <span class="nf">=</span>
+                        <span class="kt">E</span><span class="nf">.</span><span class="nv">column</span> <span class="p">[]</span> <span class="nf">&lt;|</span>
+                            <span class="kt">List</span><span class="nf">.</span><span class="nv">map</span> <span class="nv">viewOption</span> <span class="nv">inputOptions</span>
+
+                <span class="kr">in</span>
+                    <span class="kt">E</span><span class="nf">.</span><span class="nv">el</span>
+                        <span class="p">[</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">width</span> <span class="mi">1</span>
+                        <span class="p">,</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">dashed</span>
+                        <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">padding</span> <span class="mi">3</span>
+                        <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">below</span> <span class="p">(</span><span class="nv">viewOptionList</span> <span class="nv">options</span><span class="p">)</span>
+                        <span class="p">]</span>
+                        <span class="p">(</span><span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="nv">selectedName</span><span class="p">)</span>
+    <span class="kr">in</span>
+        <span class="nv">menu</span>
+</code></pre></div>
+
+<p>Let's go step by step. There are 5 arguments to the function. Yes, that's a lot. What do they do?</p>
+<ul>
+<li><code>dropdownState</code>: gives the state of the dropdown to draw.</li>
+<li><code>options</code>: gives the list of possible options from which the user can select.</li>
+<li><code>toString</code>: function to convert the type of the option to a string</li>
+<li><code>openMenuMsg</code>: the message that will be triggered when the user clicks the dropdown to select an option.</li>
+<li><code>clickedOptionMsg</code>: the message that will be triggered when the user selects an option.</li>
+</ul>
+<p>We'll simplify this further, but that will come later. For now, pay attention to the let expression - all the logic resides there. It's pretty much what we had before in the original view. The <code>viewFood</code> was replaced by <code>viewOption</code>, which now is parameterized on <code>a</code>. <em>Idem</em> for <code>viewFoodList</code> and <code>viewOptionList</code>. All the styling is the same. The big different now is the conditions. We now check whether the dropdown state is on <code>Select</code> (meaning the select menu is open).</p>
+<p>On view, we'll now have the following:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">view</span> <span class="nf">:</span> <span class="kt">Model</span> <span class="nf">-&gt;</span> <span class="kt">Html</span><span class="nf">.</span><span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="nv">view</span> <span class="nv">model</span> <span class="nf">=</span>
+    <span class="kt">E</span><span class="nf">.</span><span class="nv">layout</span>
+        <span class="p">[]</span>
+        <span class="p">(</span>
+        <span class="kt">E</span><span class="nf">.</span><span class="nv">column</span>
+            <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">centerX</span>
+            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">centerY</span>
+        <span class="p">]</span>
+            <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="s">&quot;You favorite food is:&quot;</span>
+            <span class="p">,</span> <span class="nv">dropdownView</span> <span class="nv">model</span><span class="nf">.</span><span class="nv">favoriteFood</span> <span class="nv">foodList</span> <span class="nf">.</span><span class="nv">name</span> <span class="kt">ClickedSelectFood</span> <span class="kt">ClickedDropdownFood</span>
+            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="s">&quot;... the best food.&quot;</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+</code></pre></div>
+
+<p>The dropdown state is the <code>favoriteFood</code> in the model. <code>foodList</code> is the list of foods defined in [TODO add link] part I. <code>.name</code> is the function that will be used to convert <code>Food</code> to <code>String</code>. Then we have the two messages triggered by the two relevant events.</p>
+<p>And that's it. We now, once again, have a working dropdown. Lets simplify this further. Let's have a single message for each dropdown and keep the option list inside the dropdown state.</p>
+<h1>Further simplification</h1>
+<p>The first modification is to add the option list to the <code>Select</code> variant of <code>Dropdown</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="kt">Dropdown</span> <span class="nv">a</span>
+    <span class="nf">=</span> <span class="kt">Normal</span> <span class="p">(</span><span class="kt">Maybe</span> <span class="nv">a</span><span class="p">)</span>
+    <span class="nf">|</span> <span class="kt">Select</span> <span class="p">(</span><span class="kt">List</span> <span class="nv">a</span><span class="p">)</span>
+</code></pre></div>
+
+<p>Then, we just have to follow the compiler error messages and make some changes in <code>update</code> and in the <code>view</code> conditions. </p>
+<div class="highlight"><pre><span></span><code><span class="nv">update</span> <span class="nf">:</span> <span class="kt">Msg</span> <span class="nf">-&gt;</span> <span class="kt">Model</span> <span class="nf">-&gt;</span> <span class="kt">Model</span>
+<span class="nv">update</span> <span class="nv">msg</span> <span class="nv">model</span> <span class="nf">=</span>
+    <span class="kr">case</span> <span class="nv">msg</span> <span class="kr">of</span>
+        <span class="c1">-- ...</span>
+
+        <span class="kt">ClickedSelectFood</span> <span class="nf">-&gt;</span>
+            <span class="p">{</span> <span class="nv">model</span> <span class="nf">|</span> <span class="nv">favoriteFood</span> <span class="nf">=</span> <span class="kt">Select</span> <span class="nv">foodList</span> <span class="p">}</span>
+
+        <span class="c1">-- ...</span>
+
+
+
+<span class="nv">dropdownView</span> <span class="nf">:</span> <span class="kt">Dropdown</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="p">(</span><span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">String</span><span class="p">)</span> <span class="nf">-&gt;</span> <span class="kt">Msg</span> <span class="nf">-&gt;</span> <span class="p">(</span><span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">Msg</span><span class="p">)</span> <span class="nf">-&gt;</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Element</span> <span class="kt">Msg</span>
+<span class="nv">dropdownView</span> <span class="nv">dropdownState</span> <span class="nv">toString</span> <span class="nv">openMenuMsg</span> <span class="nv">clickedOptionMsg</span> <span class="nf">=</span>
+    <span class="kr">let</span>
+        <span class="nv">selectedName</span> <span class="nf">=</span>
+            <span class="kr">case</span> <span class="nv">dropdownState</span> <span class="kr">of</span>
+                <span class="kt">Normal</span> <span class="p">(</span><span class="kt">Just</span> <span class="nv">someA</span><span class="p">)</span> <span class="nf">-&gt;</span> <span class="nv">toString</span> <span class="nv">someA</span>
+                <span class="nv">_</span> <span class="nf">-&gt;</span> <span class="s">&quot;Click to select&quot;</span>
+
+        <span class="nv">menu</span> <span class="nf">:</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Element</span> <span class="kt">Msg</span>
+        <span class="nv">menu</span> <span class="nf">=</span>
+            <span class="kr">case</span> <span class="nv">dropdownState</span> <span class="kr">of</span>
+                <span class="kt">Select</span> <span class="nv">options</span> <span class="nf">-&gt;</span>
+                    <span class="kr">let</span>
+                        <span class="nv">mouseOverColor</span> <span class="nf">:</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Color</span>
+                        <span class="nv">mouseOverColor</span> <span class="nf">=</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">rgb</span> <span class="mf">0.</span><span class="mi">9</span> <span class="mf">0.</span><span class="mi">9</span> <span class="mf">0.</span><span class="mi">1</span>
+
+                        <span class="nv">backgroundColor</span> <span class="nf">:</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Color</span>
+                        <span class="nv">backgroundColor</span> <span class="nf">=</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">rgb</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span>
+
+                        <span class="nv">viewOption</span> <span class="nf">:</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Element</span> <span class="kt">Msg</span>
+                        <span class="nv">viewOption</span> <span class="nv">option</span> <span class="nf">=</span>
+                            <span class="kt">E</span><span class="nf">.</span><span class="nv">el</span>
+                                <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">width</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">fill</span>
+                                <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">mouseOver</span> <span class="p">[</span><span class="kt">Background</span><span class="nf">.</span><span class="nv">color</span> <span class="nv">overColor</span><span class="p">]</span>
+                                <span class="p">,</span> <span class="kt">Background</span><span class="nf">.</span><span class="nv">color</span> <span class="nv">white</span>
+                                <span class="p">,</span> <span class="kt">Events</span><span class="nf">.</span><span class="nv">onClick</span> <span class="p">(</span><span class="nv">clickedOptionMsg</span> <span class="nv">option</span><span class="p">)</span>
+                                <span class="p">]</span>
+                                <span class="p">(</span><span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="nf">&lt;|</span> <span class="nv">toString</span> <span class="nv">option</span><span class="p">)</span>
+
+                        <span class="nv">viewOptionList</span> <span class="nf">:</span> <span class="kt">List</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Element</span> <span class="kt">Msg</span>
+                        <span class="nv">viewOptionList</span> <span class="nv">inputOptions</span> <span class="nf">=</span>
+                            <span class="kt">E</span><span class="nf">.</span><span class="nv">column</span> <span class="p">[]</span> <span class="nf">&lt;|</span>
+                                <span class="kt">List</span><span class="nf">.</span><span class="nv">map</span> <span class="nv">viewOption</span> <span class="nv">inputOptions</span>
+
+                    <span class="kr">in</span>
+                        <span class="kt">E</span><span class="nf">.</span><span class="nv">el</span>
+                            <span class="p">[</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">width</span> <span class="mi">1</span>
+                            <span class="p">,</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">dashed</span>
+                        <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">padding</span> <span class="mi">3</span>
+                        <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">below</span> <span class="p">(</span><span class="nv">viewOptionList</span> <span class="nv">options</span><span class="p">)</span>
+                        <span class="p">]</span>
+                        <span class="p">(</span><span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="nv">selectedName</span><span class="p">)</span>                
+                <span class="nv">_</span> <span class="nf">-&gt;</span>
+                    <span class="kt">E</span><span class="nf">.</span><span class="nv">el</span>
+                        <span class="p">[</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">width</span> <span class="mi">1</span>
+                        <span class="p">,</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">dashed</span>
+                        <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">padding</span> <span class="mi">3</span>
+                        <span class="p">,</span> <span class="kt">Events</span><span class="nf">.</span><span class="nv">onClick</span> <span class="nv">openMenuMsg</span>
+                        <span class="p">]</span>
+                        <span class="p">(</span><span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="nv">selectedName</span><span class="p">)</span>
+    <span class="kr">in</span>
+        <span class="nv">menu</span>
+
+
+<span class="nv">view</span> <span class="nf">:</span> <span class="kt">Model</span> <span class="nf">-&gt;</span> <span class="kt">Html</span><span class="nf">.</span><span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="nv">view</span> <span class="nv">model</span> <span class="nf">=</span>
+    <span class="kt">E</span><span class="nf">.</span><span class="nv">layout</span>
+        <span class="p">[]</span>
+        <span class="p">(</span>
+        <span class="kt">E</span><span class="nf">.</span><span class="nv">column</span>
+            <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">centerX</span>
+            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">centerY</span>
+        <span class="p">]</span>
+            <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="s">&quot;You favorite food is:&quot;</span>
+            <span class="p">,</span> <span class="nv">dropdownView</span>  <span class="nv">model</span><span class="nf">.</span><span class="nv">favoriteFood</span> <span class="nf">.</span><span class="nv">name</span> <span class="kt">ClickedSelectFood</span> <span class="kt">ClickedDropdownFood</span>
+            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="s">&quot;... the best food.&quot;</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+</code></pre></div>
+
+<p>The if expression was replaced by a case, since now we needed to get the option list from the dropdown <code>Select</code> variant.</p>
+<p>Now, let's have a single message for each dropdown. We'll create a new type, specifying the available actions, namely, open the menu and click an option. Afterwards, we'll just need a message for each dropdown. From there, it's just following the compiler errors to refactor the rest of the program.</p>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="kt">DropdownAction</span> <span class="nv">a</span>
+    <span class="nf">=</span> <span class="kt">OpenList</span>
+    <span class="nf">|</span> <span class="kt">ClickedOption</span> <span class="nv">a</span>
+
+<span class="kr">type</span> <span class="kt">Msg</span>
+    <span class="nf">=</span> <span class="kt">FoodDropdown</span> <span class="p">(</span><span class="kt">DropdownAction</span> <span class="kt">Food</span><span class="p">)</span>
+</code></pre></div>
+
+<p><code>DropdownAction</code> is also parameterized and we now have a single message for our food dropdown, which contains a <code>DropdownAction</code> triggered by user activity. We also got rid of the <code>NoAction</code> message which had been dragging along since the first example of part I.</p>
+<p>Next, we'll change the logic in <code>update.</code></p>
+<div class="highlight"><pre><span></span><code><span class="nv">update</span> <span class="nf">:</span> <span class="kt">Msg</span> <span class="nf">-&gt;</span> <span class="kt">Model</span> <span class="nf">-&gt;</span> <span class="kt">Model</span>
+<span class="nv">update</span> <span class="nv">msg</span> <span class="nv">model</span> <span class="nf">=</span>
+    <span class="kr">case</span> <span class="nv">msg</span> <span class="kr">of</span>
+        <span class="kt">FoodDropdown</span> <span class="nv">action</span> <span class="nf">-&gt;</span>
+            <span class="kr">case</span> <span class="nv">action</span> <span class="kr">of</span>
+                <span class="kt">OpenList</span> <span class="nf">-&gt;</span>
+                    <span class="p">{</span> <span class="nv">model</span> <span class="nf">|</span> <span class="nv">favoriteFood</span> <span class="nf">=</span> <span class="kt">Select</span> <span class="nv">foodList</span> <span class="p">}</span>
+                <span class="kt">ClickedOption</span> <span class="nv">food</span> <span class="nf">-&gt;</span>
+                    <span class="p">{</span> <span class="nv">model</span> <span class="nf">|</span> <span class="nv">favoriteFood</span> <span class="nf">=</span> <span class="kt">Normal</span> <span class="p">(</span><span class="kt">Just</span> <span class="nv">food</span><span class="p">)</span> <span class="p">}</span>
+</code></pre></div>
+
+<p>Our two previous messages, in essence, are still there, but now they're just variants of the possible dropdown actions, typified in <code>DropdownAction</code>. This actually makes a lot more sense. If we wanted to add more actions to a dropdown, we wouldn't have to change this message, just the type and the  resulting logic.</p>
+<p>The last bit is the <code>view</code>. Since there is very little change, I'll only cover the few lines that are refactored. First of all, we now only receive one message (which is actually a function that receives a <code>DropdownAction</code> and transforms it in a <code>Msg</code>, since all type variants also double up as functions).</p>
+<div class="highlight"><pre><span></span><code><span class="nv">dropdownView</span> <span class="nf">:</span> <span class="kt">Dropdown</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="p">(</span><span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">String</span><span class="p">)</span> <span class="nf">-&gt;</span> <span class="p">(</span><span class="kt">DropdownAction</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">Msg</span><span class="p">)</span> <span class="nf">-&gt;</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Element</span> <span class="kt">Msg</span>
+<span class="nv">dropdownView</span> <span class="nv">dropdownState</span> <span class="nv">toString</span> <span class="nv">toMsg</span> <span class="nf">=</span>
+</code></pre></div>
+
+<p>Afterwards, we need to replace the onClick events by the corresponding DropdownAction messages. First, inside <code>viewOption</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="p">,</span> <span class="kt">Events</span><span class="nf">.</span><span class="nv">onClick</span> <span class="p">(</span><span class="nv">toMsg</span> <span class="p">(</span><span class="kt">ClickedOption</span> <span class="nv">option</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Then, inside the Element that renders the default (closed) dropdown.</p>
+<div class="highlight"><pre><span></span><code><span class="p">,</span> <span class="kt">Events</span><span class="nf">.</span><span class="nv">onClick</span> <span class="p">(</span><span class="nv">toMsg</span> <span class="kt">OpenList</span><span class="p">)</span>
+</code></pre></div>
+
+<p>And there you have it. After around 1500 words (counting code, that's cheating you say, yes I know, but I still had to write it), we're exactly where we were in the beginning. Ah... the circle of life.</p>
+<p><img alt="Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Untitled.png" src="Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Untitled.png"></p>
+<p>But now, we can add another dropdown with very little work. Let's add a favorite car dropdown. We create a <code>Car</code> type, add it to the <code>Model</code>, initialize it in <code>initialModel</code>, create a <code>CarDropdown</code> message, basically copy / paste the logic from the <code>FoodDropdown</code> and finally add two lines in <code>view</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="kr">alias</span> <span class="kt">Model</span> <span class="nf">=</span>
+    <span class="p">{</span> <span class="nv">favoriteFood</span> <span class="nf">:</span> <span class="kt">Dropdown</span> <span class="kt">Food</span>
+    <span class="p">,</span> <span class="nv">favoriteCar</span> <span class="nf">:</span> <span class="kt">Dropdown</span> <span class="kt">Car</span>
+    <span class="p">}</span>
+
+<span class="kr">type</span> <span class="kr">alias</span> <span class="kt">Car</span> <span class="nf">=</span> <span class="p">{</span><span class="nv">id</span> <span class="nf">:</span> <span class="kt">Int</span><span class="p">,</span> <span class="nv">name</span><span class="nf">:</span> <span class="kt">String</span><span class="p">}</span>
+
+<span class="kr">type</span> <span class="kt">Msg</span>
+    <span class="nf">=</span> <span class="kt">FoodDropdown</span> <span class="p">(</span><span class="kt">DropdownAction</span> <span class="kt">Food</span><span class="p">)</span>
+    <span class="nf">|</span> <span class="kt">CarDropdown</span> <span class="p">(</span><span class="kt">DropdownAction</span> <span class="kt">Car</span><span class="p">)</span>
+
+<span class="nv">update</span> <span class="nf">:</span> <span class="kt">Msg</span> <span class="nf">-&gt;</span> <span class="kt">Model</span> <span class="nf">-&gt;</span> <span class="kt">Model</span>
+<span class="nv">update</span> <span class="nv">msg</span> <span class="nv">model</span> <span class="nf">=</span>
+    <span class="kr">case</span> <span class="nv">msg</span> <span class="kr">of</span>
+        <span class="c1">-- ...</span>
+
+        <span class="kt">CarDropdown</span> <span class="nv">action</span> <span class="nf">-&gt;</span>
+            <span class="kr">case</span> <span class="nv">action</span> <span class="kr">of</span>
+                <span class="kt">OpenList</span> <span class="nf">-&gt;</span>
+                    <span class="p">{</span> <span class="nv">model</span> <span class="nf">|</span> <span class="nv">favoriteCar</span> <span class="nf">=</span> <span class="kt">Select</span> <span class="p">[</span><span class="kt">Car</span> <span class="mi">0</span> <span class="s">&quot;BMW&quot;</span><span class="p">,</span> <span class="kt">Car</span> <span class="mi">1</span> <span class="s">&quot;Tesla&quot;</span><span class="p">]</span> <span class="p">}</span>
+                <span class="kt">ClickedOption</span> <span class="nv">car</span> <span class="nf">-&gt;</span>
+                    <span class="p">{</span> <span class="nv">model</span> <span class="nf">|</span> <span class="nv">favoriteCar</span> <span class="nf">=</span> <span class="kt">Normal</span> <span class="p">(</span><span class="kt">Just</span> <span class="nv">car</span><span class="p">)</span> <span class="p">}</span>
+
+<span class="nv">view</span> <span class="nf">:</span> <span class="kt">Model</span> <span class="nf">-&gt;</span> <span class="kt">Html</span><span class="nf">.</span><span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="nv">view</span> <span class="nv">model</span> <span class="nf">=</span>
+    <span class="kt">E</span><span class="nf">.</span><span class="nv">layout</span>
+        <span class="p">[]</span>
+        <span class="p">(</span>
+        <span class="kt">E</span><span class="nf">.</span><span class="nv">column</span>
+            <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">centerX</span>
+            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">centerY</span>
+        <span class="p">]</span>
+            <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="s">&quot;You favorite food is:&quot;</span>
+            <span class="p">,</span> <span class="nv">dropdownView</span>  <span class="nv">model</span><span class="nf">.</span><span class="nv">favoriteFood</span> <span class="nf">.</span><span class="nv">name</span> <span class="kt">FoodDropdown</span>
+            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="s">&quot;... the best food.&quot;</span>
+            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="s">&quot;Favorite car:&quot;</span>
+            <span class="p">,</span> <span class="nv">dropdownView</span> <span class="nv">model</span><span class="nf">.</span><span class="nv">favoriteCar</span> <span class="nf">.</span><span class="nv">name</span> <span class="kt">CarDropdown</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Untitled%201.png" src="Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Untitled%201.png"></p>
+<p>We're done here! A simple, reusable dropdown. If you've never used parameterized types, take a moment to ponder their potential and simplicity. We can actually simplify this further depending on the needs, e.g. having a function to update a dropdown based on its inputs. One of the advantages is the consistent style of every dropdown (or the lack of it in these examples). You can check the full code in this <a href="https://github.com/diogo-aos/elm-ui-dropdown/releases/tag/partII_done">Github</a> repository.</p>
+<p>In part III, we'll use the knowledge and practice of parameterized types to make something a little more complex. We'll build a component that will allow us to choose several options, or none depending on the parameters. It will all be configurable. It will basically be a dropdown on steroids.</p></div>
+	<hr>
+	<!---
+	<h2>Comments</h2>
+	--->
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://localhost:5555">Diogo Silva</a></li>
+							<li><a href="http://localhost:5555/blog/"><i class="fa fa-Blog "></i> Blog</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://github.com/diogo-aos">Github</a></li>
+							<li><a href="https://www.linkedin.com/in/diogoaos">LinkedIn</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<!---
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Diogo Silva 2016</p>
+		</div>
+	</div>
+</div>
+--->
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>
