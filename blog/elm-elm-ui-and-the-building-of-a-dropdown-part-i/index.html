@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Elm, elm-ui and the building of a dropdown — Part I — Diogo Silva</title>
+	<meta name="description" content="Title: Elm, elm-ui and the building of a dropdown — Part I; Date: 2021-04-27; Author: Diogo Silva">
+	<meta name="author" content="Diogo Silva">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="http://localhost:5555/theme/html5.js"></script>
+		<![endif]-->
+	<link href="http://localhost:5555/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="http://localhost:5555/theme/css/local.css" rel="stylesheet">
+	<link href="http://localhost:5555/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="http://localhost:5555/">Diogo Silva</a>
+			<br><small>Air Force Captain, Computer Engineer, Climber</small></h1>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">Elm, elm-ui and the building of a dropdown — Part I</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">Diogo Silva</h4>
+		</span>
+		<time datetime="2021-04-27T00:00:00+01:00" itemprop="datePublished">ter 27 abril 2021</time>
+	</div>
+<!---	
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="http://localhost:5555/category/blog.html" rel="category">blog</a>
+		</span>
+	</div>
+--->
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="http://localhost:5555/tag/elm.html" rel="tag">Elm</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="http://localhost:5555/tag/elm-ui.html" rel="tag">elm-ui</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><p><img alt="elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled.png" src="elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled.png"></p>
+<p>If you're getting into Elm and still handling CSS files, just thrash them. Really. Go ahead and do it, because in Elm, we have the beautiful Elm-UI. You'll get to write design in a language that's actually understandable. However, Elm-UI probably still doesn't have everything you might need. One simple thing it doesn't have builtin is a dropdown, something you see everywhere.</p>
+<p>Follow along and learn how to build a barebones dropdown using Elm's powerful types. More specifically, you'll master parametrized types!</p>
+<h1>Setup</h1>
+<p>Start a new a Elm project with <code>elm init</code> and create a <code>Main.elm</code> file inside the <code>src</code> folder. You can also follow along using <a href="https://ellie-app.com/new">Ellie</a> for this first part (when we start using parametrized types we'll create a new module for a reusable dropdown).</p>
+<p>Install <code>elm-ui</code> with <code>elm install mdgriffith/elm-ui</code>.</p>
+<p>Start with the following barebones structure:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">module </span><span class="nc">Main</span> <span class="nv">exposing</span> <span class="p">(</span><span class="nv">main</span><span class="p">)</span>
+
+<span class="kn">import </span><span class="nc">Browser</span>
+<span class="kn">import </span><span class="nc">Html</span>
+
+<span class="kn">import </span><span class="nc">Element</span> <span class="kr">as</span> <span class="kt">E</span>
+<span class="kn">import </span><span class="nc">Element.Background</span> <span class="kr">as</span> <span class="kt">Background</span>
+<span class="kn">import </span><span class="nc">Element.Border</span> <span class="kr">as</span> <span class="kt">Border</span>
+<span class="kn">import </span><span class="nc">Element.Events</span> <span class="kr">as</span> <span class="kt">Events</span>
+
+<span class="kr">type</span> <span class="kr">alias</span> <span class="kt">Model</span> <span class="nf">=</span>
+    <span class="p">{</span> <span class="p">}</span>
+
+
+<span class="nv">initialModel</span> <span class="nf">:</span> <span class="kt">Model</span>
+<span class="nv">initialModel</span> <span class="nf">=</span>
+    <span class="p">{</span> 
+    <span class="p">}</span>
+
+<span class="kr">type</span> <span class="kt">Msg</span>
+    <span class="nf">=</span> <span class="kt">NoAction</span>
+
+
+<span class="nv">update</span> <span class="nf">:</span> <span class="kt">Msg</span> <span class="nf">-&gt;</span> <span class="kt">Model</span> <span class="nf">-&gt;</span> <span class="kt">Model</span>
+<span class="nv">update</span> <span class="nv">msg</span> <span class="nv">model</span> <span class="nf">=</span>
+    <span class="kr">case</span> <span class="nv">msg</span> <span class="kr">of</span>
+        <span class="kt">NoAction</span> <span class="nf">-&gt;</span>
+            <span class="nv">model</span>
+
+<span class="nv">view</span> <span class="nf">:</span> <span class="kt">Model</span> <span class="nf">-&gt;</span> <span class="kt">Html</span><span class="nf">.</span><span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="nv">view</span> <span class="nv">model</span> <span class="nf">=</span>
+    <span class="kt">E</span><span class="nf">.</span><span class="nv">layout</span>
+        <span class="p">[]</span>
+        <span class="p">(</span>
+        <span class="kt">E</span><span class="nf">.</span><span class="nv">column</span>
+            <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">centerX</span>
+            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">centerY</span>
+        <span class="p">]</span>
+            <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="s">&quot;You favorite food is:&quot;</span>
+            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="s">&quot;... the best food.&quot;</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+<span class="kr">main </span><span class="nf">:</span> <span class="kt">Program</span> <span class="p">()</span> <span class="kt">Model</span> <span class="kt">Msg</span>
+<span class="kr">main </span><span class="nf">=</span>
+    <span class="kt">Browser</span><span class="nf">.</span><span class="nv">sandbox</span>
+        <span class="p">{</span> <span class="nv">init</span> <span class="nf">=</span> <span class="nv">initialModel</span>
+        <span class="p">,</span> <span class="nv">view</span> <span class="nf">=</span> <span class="nv">view</span>
+        <span class="p">,</span> <span class="nv">update</span> <span class="nf">=</span> <span class="nv">update</span>
+        <span class="p">}</span>
+</code></pre></div>
+
+<p><code>elm make src/main.elm</code> and go the <code>index.html</code> file created in the project folder. Right off the start, you get a nice centered layout like this:</p>
+<p><img alt="elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%201.png" src="elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%201.png"></p>
+<p>Uau, look at the code to center the column. Isn't life wonderful? I'll never get tired of this.</p>
+<h1>The dropdown</h1>
+<p>Ok, let's focus. What is a dropdown anyway? A dropdown allows the user to choose one option from a predefined list. Let's build a simple dropdown to select our favorite food. We need some options to choose from. We'll create a <code>Food</code> type that has an <code>id</code>, <code>name</code> and <code>foodType</code>, which can be <code>FastFood</code> or <code>Regional</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="kt">FoodType</span>
+    <span class="nf">=</span> <span class="kt">FastFood</span>
+    <span class="nf">|</span> <span class="kt">Regional</span>
+
+<span class="kr">type</span> <span class="kr">alias</span> <span class="kt">Food</span> <span class="nf">=</span>
+    <span class="p">{</span> <span class="nv">id</span> <span class="nf">:</span> <span class="kt">Int</span>
+    <span class="p">,</span> <span class="nv">name</span> <span class="nf">:</span> <span class="kt">String</span>
+    <span class="p">,</span> <span class="nv">foodType</span> <span class="nf">:</span> <span class="kt">FoodType</span>
+    <span class="p">}</span>
+
+<span class="nv">foodList</span> <span class="nf">:</span> <span class="kt">List</span> <span class="kt">Food</span>
+<span class="nv">foodList</span> <span class="nf">=</span>
+    <span class="p">[</span> <span class="kt">Food</span> <span class="mi">0</span> <span class="s">&quot;Hotdog&quot;</span> <span class="kt">FastFood</span>
+    <span class="p">,</span> <span class="kt">Food</span> <span class="mi">1</span> <span class="s">&quot;Hamburguer&quot;</span> <span class="kt">FastFood</span>
+    <span class="p">,</span> <span class="kt">Food</span> <span class="mi">2</span> <span class="s">&quot;Taco&quot;</span> <span class="kt">FastFood</span>
+    <span class="p">,</span> <span class="kt">Food</span> <span class="mi">3</span> <span class="s">&quot;Francesinha aka Little French&quot;</span> <span class="kt">Regional</span>
+    <span class="p">,</span> <span class="kt">Food</span> <span class="mi">4</span> <span class="s">&quot;Sauerkraut&quot;</span> <span class="kt">Regional</span>
+    <span class="p">,</span> <span class="kt">Food</span> <span class="mi">5</span> <span class="s">&quot;Kimchi&quot;</span> <span class="kt">Regional</span>
+    <span class="p">]</span>
+</code></pre></div>
+
+<p>Add that after the imports. Our model needs to know what is the currently selected favorite food and also if we're currently selecting any food from the dropdown or not.</p>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="kr">alias</span> <span class="kt">Model</span> <span class="nf">=</span>
+    <span class="p">{</span> <span class="nv">favoriteFood</span> <span class="nf">:</span> <span class="kt">Maybe</span> <span class="kt">Food</span>
+    <span class="p">,</span> <span class="nv">status</span> <span class="nf">:</span> <span class="kt">Status</span><span class="p">}</span>
+
+<span class="kr">type</span> <span class="kt">Status</span>
+    <span class="nf">=</span> <span class="kt">Normal</span>
+    <span class="nf">|</span> <span class="kt">SelectFood</span>
+
+<span class="nv">initialModel</span> <span class="nf">:</span> <span class="kt">Model</span>
+<span class="nv">initialModel</span> <span class="nf">=</span>
+    <span class="p">{</span> <span class="nv">favoriteFood</span> <span class="nf">=</span> <span class="kt">Nothing</span>
+    <span class="p">,</span> <span class="nv">status</span> <span class="nf">=</span> <span class="kt">Normal</span>
+    <span class="p">}</span>
+</code></pre></div>
+
+<p><code>favoriteFood</code> might have a <code>Food</code> that was selected, or not, in which case it will be <code>Nothing</code> (which is also the starting value, since the user hasn't selected anything yet). <code>Status</code> just tells us whether we're currently selecting a food from the list or not. When the user clicks the dropdown, status changes to <code>SelectFood</code>. When the user clicks one of the dropdown options it goes back to Normal (which is also the starting status).</p>
+<p>For now, let's start working on actually designing the dropdown in our <code>view</code>. Let's create a column with all our possible options written.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">view</span> <span class="nf">:</span> <span class="kt">Model</span> <span class="nf">-&gt;</span> <span class="kt">Html</span><span class="nf">.</span><span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="nv">view</span> <span class="nv">model</span> <span class="nf">=</span>
+    <span class="kr">let</span>
+        <span class="nv">selectedFoodName</span> <span class="nf">=</span> 
+            <span class="kr">case</span> <span class="nv">model</span><span class="nf">.</span><span class="nv">favoriteFood</span> <span class="kr">of</span>
+                <span class="kt">Nothing</span> <span class="nf">-&gt;</span> <span class="s">&quot;No food selected. Click here to select.&quot;</span>
+                <span class="kt">Just</span> <span class="nv">food</span> <span class="nf">-&gt;</span> <span class="nv">food</span><span class="nf">.</span><span class="nv">name</span>
+        <span class="nv">dropdown</span> <span class="nf">=</span> 
+            <span class="kt">E</span><span class="nf">.</span><span class="nv">el</span>
+                <span class="p">[</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">width</span> <span class="mi">1</span>
+                <span class="p">,</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">dashed</span>
+                <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">padding</span> <span class="mi">3</span>
+                <span class="p">,</span> <span class="kt">Events</span><span class="nf">.</span><span class="nv">onClick</span> <span class="kt">ClickedSelectFood</span>
+                <span class="p">]</span>
+                <span class="p">(</span><span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="nv">selectedFoodName</span><span class="p">)</span>
+    <span class="kr">in</span>
+    <span class="kt">E</span><span class="nf">.</span><span class="nv">layout</span>
+        <span class="p">[]</span>
+        <span class="p">(</span>
+        <span class="kt">E</span><span class="nf">.</span><span class="nv">column</span>
+            <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">centerX</span>
+            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">centerY</span>
+        <span class="p">]</span>
+            <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="s">&quot;You favorite food is:&quot;</span>
+            <span class="p">,</span> <span class="nv">dropdown</span>
+            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="s">&quot;... the best food.&quot;</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+</code></pre></div>
+
+<p>We just created a placeholder for the name of our favorite food. It already manages the case when there is no food selected. And, if we click on the box, we'll send the <code>ClickedSelectFood</code> message. We need to create this message and deal with it in the update.</p>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="kt">Msg</span>
+    <span class="nf">=</span> <span class="kt">NoAction</span>
+    <span class="nf">|</span> <span class="kt">ClickedSelectFood</span>
+
+
+<span class="nv">update</span> <span class="nf">:</span> <span class="kt">Msg</span> <span class="nf">-&gt;</span> <span class="kt">Model</span> <span class="nf">-&gt;</span> <span class="kt">Model</span>
+<span class="nv">update</span> <span class="nv">msg</span> <span class="nv">model</span> <span class="nf">=</span>
+    <span class="kr">case</span> <span class="nv">msg</span> <span class="kr">of</span>
+        <span class="kt">NoAction</span> <span class="nf">-&gt;</span>
+            <span class="nv">model</span>
+        <span class="kt">ClickedSelectFood</span> <span class="nf">-&gt;</span>
+            <span class="p">{</span> <span class="nv">model</span> <span class="nf">|</span> <span class="nv">status</span> <span class="nf">=</span> <span class="kt">SelectFood</span> <span class="p">}</span>
+</code></pre></div>
+
+<p>When we click on the dropdown, a <code>ClickedSelectFood</code> is sent and our status changes to <code>SelectFood</code>. Makes sense, right? We'll need to do something with that status, but for now, you'll get something like this:</p>
+<p><img alt="elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%202.png" src="elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%202.png"></p>
+<p>What we want is for a list of food options to appear <strong>below</strong> the dropdown, and <strong>over</strong> the remaining content, without changing the existing layout. Thankfully, <code>elm-ui</code> has a nice attribute for this, it's called <code>below</code>. The content to be added will be inside this attribute. We'll create a function to view a list of foods and a function to view a single food and compose them inside our view.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">view</span> <span class="nf">:</span> <span class="kt">Model</span> <span class="nf">-&gt;</span> <span class="kt">Html</span><span class="nf">.</span><span class="kt">Html</span> <span class="kt">Msg</span>
+<span class="nv">view</span> <span class="nv">model</span> <span class="nf">=</span>
+    <span class="kr">let</span>
+        <span class="nv">selectedFoodName</span> <span class="nf">=</span> 
+            <span class="kr">case</span> <span class="nv">model</span><span class="nf">.</span><span class="nv">favoriteFood</span> <span class="kr">of</span>
+                <span class="kt">Nothing</span> <span class="nf">-&gt;</span> <span class="s">&quot;No food selected. Click here to select.&quot;</span>
+                <span class="kt">Just</span> <span class="nv">food</span> <span class="nf">-&gt;</span> <span class="nv">food</span><span class="nf">.</span><span class="nv">name</span>
+                <span class="nv">dropdown</span> <span class="nf">=</span>
+            <span class="kr">case</span> <span class="nv">model</span><span class="nf">.</span><span class="nv">status</span> <span class="kr">of</span>
+                <span class="kt">Normal</span> <span class="nf">-&gt;</span>
+                    <span class="kt">E</span><span class="nf">.</span><span class="nv">el</span>
+                        <span class="p">[</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">width</span> <span class="mi">1</span>
+                        <span class="p">,</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">dashed</span>
+                        <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">padding</span> <span class="mi">3</span>
+                        <span class="p">,</span> <span class="kt">Events</span><span class="nf">.</span><span class="nv">onClick</span> <span class="kt">ClickedSelectFood</span>
+                        <span class="p">]</span>
+                        <span class="p">(</span><span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="nv">selectedFoodName</span><span class="p">)</span>
+                <span class="kt">SelectFood</span> <span class="nf">-&gt;</span>
+                    <span class="kt">E</span><span class="nf">.</span><span class="nv">el</span>
+                        <span class="p">[</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">width</span> <span class="mi">1</span>
+                        <span class="p">,</span> <span class="kt">Border</span><span class="nf">.</span><span class="nv">dashed</span>
+                        <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">padding</span> <span class="mi">3</span>
+                        <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">below</span> <span class="p">(</span><span class="nv">viewFoodList</span> <span class="nv">foodList</span><span class="p">)</span>
+                        <span class="p">]</span>
+                        <span class="p">(</span><span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="nv">selectedFoodName</span><span class="p">)</span>
+    <span class="kr">in</span>
+    <span class="kt">E</span><span class="nf">.</span><span class="nv">layout</span>
+        <span class="p">[]</span>
+        <span class="p">(</span>
+        <span class="kt">E</span><span class="nf">.</span><span class="nv">column</span>
+            <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">centerX</span>
+            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">centerY</span>
+        <span class="p">]</span>
+            <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="s">&quot;You favorite food is:&quot;</span>
+            <span class="p">,</span> <span class="nv">dropdown</span>
+            <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="s">&quot;... the best food.&quot;</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+<span class="nv">viewFoodList</span> <span class="nf">:</span> <span class="kt">List</span> <span class="kt">Food</span> <span class="nf">-&gt;</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Element</span> <span class="kt">Msg</span>
+<span class="nv">viewFoodList</span> <span class="nv">foods</span> <span class="nf">=</span>
+    <span class="kt">E</span><span class="nf">.</span><span class="nv">column</span>
+        <span class="p">[</span> <span class="p">]</span>
+        <span class="nf">&lt;|</span>
+            <span class="kt">List</span><span class="nf">.</span><span class="nv">map</span> <span class="nv">viewFood</span> <span class="nv">foods</span>
+
+<span class="nv">overColor</span> <span class="nf">:</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Color</span>
+<span class="nv">overColor</span> <span class="nf">=</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">rgb</span> <span class="mf">0.</span><span class="mi">9</span> <span class="mf">0.</span><span class="mi">9</span> <span class="mf">0.</span><span class="mi">1</span>
+
+<span class="nv">viewFood</span> <span class="nf">:</span> <span class="kt">Food</span> <span class="nf">-&gt;</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Element</span> <span class="kt">Msg</span>
+<span class="nv">viewFood</span> <span class="nv">food</span> <span class="nf">=</span>
+    <span class="kt">E</span><span class="nf">.</span><span class="nv">el</span>
+        <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">width</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">fill</span>
+        <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">mouseOver</span> <span class="p">[</span><span class="kt">Background</span><span class="nf">.</span><span class="nv">color</span> <span class="nv">overColor</span><span class="p">]</span>
+        <span class="p">]</span>
+        <span class="p">(</span><span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="nv">food</span><span class="nf">.</span><span class="nv">name</span><span class="p">)</span>
+</code></pre></div>
+
+<p>That's a bit step. The important part is inside the let block in view. If <code>status</code> is <code>SelectFood</code>, then we will have a list of <code>Element.text</code> with the names of the foods attached to the <code>below</code> attribute. Otherwise, we'll not use that attribute. Also note that the <code>onClick</code> attribute only appears when status is <code>Normal</code>. This is because is we kept it on both cases, the event would be triggered when clicked one of the options, because this list lives inside the dropdown element. We don't want that. The <code>ClickedSelectFood</code> message should only be sent then the status is <code>Normal</code>. If we're already selecting an option from the food list, it doesn't make sense to send a message that triggers the logic to open the dropdown (it's already opened). Now, when we click the dropdown, we'll get the desired list.</p>
+<p><img alt="elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%203.png" src="elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%203.png"></p>
+<p>In <code>viewFood</code>, we already added some nice visual sugar for changing the background color of the option where the mouse is.</p>
+<p>As you can inspect, the list is drawn over the rest of the content. That's why the layout is not changed in the process. But this also means that we're now seeing the content below. We need to fill the background of all options.</p>
+<div class="highlight"><pre><span></span><code><span class="nv">white</span> <span class="nf">:</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Color</span>
+<span class="nv">white</span> <span class="nf">=</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">rgb</span> <span class="mi">1</span> <span class="mi">1</span> <span class="mi">1</span>
+
+<span class="nv">viewFood</span> <span class="nf">:</span> <span class="kt">Food</span> <span class="nf">-&gt;</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Element</span> <span class="kt">Msg</span>
+<span class="nv">viewFood</span> <span class="nv">food</span> <span class="nf">=</span>
+    <span class="kt">E</span><span class="nf">.</span><span class="nv">el</span>
+        <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">width</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">fill</span>
+        <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">mouseOver</span> <span class="p">[</span><span class="kt">Background</span><span class="nf">.</span><span class="nv">color</span> <span class="nv">overColor</span><span class="p">]</span>
+        <span class="p">,</span> <span class="kt">Background</span><span class="nf">.</span><span class="nv">color</span> <span class="nv">white</span>
+        <span class="p">]</span>
+        <span class="p">(</span><span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="nv">food</span><span class="nf">.</span><span class="nv">name</span><span class="p">)</span>
+</code></pre></div>
+
+<p><img alt="elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%204.png" src="elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%204.png"></p>
+<p>We could style it more, add a little padding, making sure the options have the same width, etc., but let's focus on the logic. There is only one thing missing: implementing the logic for when we actually select an option. When we click an option, a message has to be sent specifying which food was clicked on, save it in the model and revert status back to <code>Normal</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kr">type</span> <span class="kt">Msg</span>
+    <span class="nf">=</span> <span class="kt">NoAction</span>
+    <span class="nf">|</span> <span class="kt">ClickedSelectFood</span>
+    <span class="nf">|</span> <span class="kt">ClickedDropdownFood</span> <span class="kt">Food</span>
+
+
+<span class="nv">update</span> <span class="nf">:</span> <span class="kt">Msg</span> <span class="nf">-&gt;</span> <span class="kt">Model</span> <span class="nf">-&gt;</span> <span class="kt">Model</span>
+<span class="nv">update</span> <span class="nv">msg</span> <span class="nv">model</span> <span class="nf">=</span>
+    <span class="kr">case</span> <span class="nv">msg</span> <span class="kr">of</span>
+        <span class="kt">NoAction</span> <span class="nf">-&gt;</span>
+            <span class="nv">model</span>
+
+        <span class="kt">ClickedSelectFood</span> <span class="nf">-&gt;</span>
+            <span class="p">{</span> <span class="nv">model</span> <span class="nf">|</span> <span class="nv">status</span> <span class="nf">=</span> <span class="kt">SelectFood</span> <span class="p">}</span>
+
+        <span class="kt">ClickedDropdownFood</span> <span class="nv">food</span> <span class="nf">-&gt;</span>
+            <span class="p">{</span> <span class="nv">model</span> <span class="nf">|</span> <span class="nv">status</span> <span class="nf">=</span> <span class="kt">Normal</span><span class="p">,</span> <span class="nv">favoriteFood</span> <span class="nf">=</span> <span class="kt">Just</span> <span class="nv">food</span> <span class="p">}</span>
+
+<span class="nv">viewFood</span> <span class="nf">:</span> <span class="kt">Food</span> <span class="nf">-&gt;</span> <span class="kt">E</span><span class="nf">.</span><span class="kt">Element</span> <span class="kt">Msg</span>
+<span class="nv">viewFood</span> <span class="nv">food</span> <span class="nf">=</span>
+    <span class="kt">E</span><span class="nf">.</span><span class="nv">el</span>
+        <span class="p">[</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">width</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">fill</span>
+        <span class="p">,</span> <span class="kt">E</span><span class="nf">.</span><span class="nv">mouseOver</span> <span class="p">[</span><span class="kt">Background</span><span class="nf">.</span><span class="nv">color</span> <span class="nv">overColor</span><span class="p">]</span>
+        <span class="p">,</span> <span class="kt">Background</span><span class="nf">.</span><span class="nv">color</span> <span class="nv">white</span>
+        <span class="p">,</span> <span class="kt">Events</span><span class="nf">.</span><span class="nv">onClick</span> <span class="p">(</span><span class="kt">ClickedDropdownFood</span> <span class="nv">food</span><span class="p">)</span>
+        <span class="p">]</span>
+        <span class="p">(</span><span class="kt">E</span><span class="nf">.</span><span class="nv">text</span> <span class="nv">food</span><span class="nf">.</span><span class="nv">name</span><span class="p">)</span>
+</code></pre></div>
+
+<p>We added the <code>ClickedDropdownFood</code> message, which will be sent when we click one of the foods of the list (see the <code>onClick</code> event in <code>viewFood</code>). When <code>update</code> receives this message, status reverts to <code>Normal</code> and the new <code>favoriteFood</code> is the one we clicked on. <code>view</code> then renders everything as it should. </p>
+<p><img alt="elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Kazam_screencast_00005.gif" src="elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Kazam_screencast_00005.gif"></p>
+<p>Now you know how to create a simple dropdown. What if you need multiple dropdowns? What if they're selecting different things? That's what we'll cover in part 2, where we'll create a reusable component that will receive any type and display it like we did here.</p></div>
+	<hr>
+	<!---
+	<h2>Comments</h2>
+	--->
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="http://localhost:5555">Diogo Silva</a></li>
+							<li><a href="http://localhost:5555/blog/"><i class="fa fa-Blog "></i> Blog</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://github.com/diogo-aos">Github</a></li>
+							<li><a href="https://www.linkedin.com/in/diogoaos">LinkedIn</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<!---
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Diogo Silva 2016</p>
+		</div>
+	</div>
+</div>
+--->
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>

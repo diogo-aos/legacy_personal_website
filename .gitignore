@@ -1,9 +1,0 @@
-.idea
-
-credentials.json
-token.pickle
-
-__pycache__/
-*~
-output/
-venv/
