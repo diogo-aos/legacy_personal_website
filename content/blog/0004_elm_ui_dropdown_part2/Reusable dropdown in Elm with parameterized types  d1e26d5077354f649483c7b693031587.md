@@ -4,11 +4,11 @@ tags: Elm, elm-ui, algebraic-datatypes
 
 Ever needed to have a dropdown on a form? Or on a configuration page? Maybe multiple dropdowns for different ends with different types? elm-ui is great, but it doesn't offer a primitive for dropdowns. In this guide, you'll build a reusable dropdown and, along the way, you'll learn about parametrized types.
 
-We'll build on top of work done in the [TODO add link] part I, but if you're familiar with Elm, you should have no trouble jumping right in. The complete code from part I is available in this [Github](https://github.com/diogo-aos/elm-ui-dropdown/releases/tag/partI) repository.
+We'll build on top of work done in [part I]({filename}../0003_elm_ui_dropdown_part1/elm-ui dropdown blog post part I 73a7f519f8f74d99884b1d1b993ba7d8.md), but if you're familiar with Elm, you should have no trouble jumping right in. The complete code from part I is available in this [Github](https://github.com/diogo-aos/elm-ui-dropdown/releases/tag/partI) repository.
 
 In part I we built this:
 
-![Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Kazam_screencast_00005.gif](Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Kazam_screencast_00005.gif)
+![Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/{attach}Kazam_screencast_00005.gif]({attach}Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Kazam_screencast_00005.gif)
 
 The way we did it, we can't reuse it for other types. We'll build a simple reusable component with consistent styling that can be reused by calling a function in our views and little added logic.
 
@@ -357,7 +357,7 @@ Then, inside the Element that renders the default (closed) dropdown.
 
 And there you have it. After around 1500 words (counting code, that's cheating you say, yes I know, but I still had to write it), we're exactly where we were in the beginning. Ah... the circle of life.
 
-![Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Untitled.png](Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Untitled.png)
+![Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Untitled.png]({attach}Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Untitled.png)
 
 But now, we can add another dropdown with very little work. Let's add a favorite car dropdown. We create a `Car` type, add it to the `Model`, initialize it in `initialModel`, create a `CarDropdown` message, basically copy / paste the logic from the `FoodDropdown` and finally add two lines in `view`.
 
@@ -404,7 +404,7 @@ view model =
         )
 ```
 
-![Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Untitled%201.png](Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Untitled%201.png)
+![Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Untitled%201.png]({attach}Reusable%20dropdown%20in%20Elm%20with%20parameterized%20types%20%20d1e26d5077354f649483c7b693031587/Untitled%201.png)
 
 We're done here! A simple, reusable dropdown. If you've never used parameterized types, take a moment to ponder their potential and simplicity. We can actually simplify this further depending on the needs, e.g. having a function to update a dropdown based on its inputs. One of the advantages is the consistent style of every dropdown (or the lack of it in these examples). You can check the full code in this [Github](https://github.com/diogo-aos/elm-ui-dropdown/releases/tag/partII_done) repository.
 

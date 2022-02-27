@@ -1,9 +1,7 @@
 AUTHOR = 'Diogo Silva'
 SITENAME = 'Diogo Silva'
 
-SITEURL = 'http://localhost:5555'
-
-PATH = 'content'
+#SITEURL = 'http://localhost'
 
 TIMEZONE = 'Europe/Lisbon'
 
@@ -28,10 +26,12 @@ DEFAULT_PAGINATION = False
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
-
+PATH = 'content'
+ARTICLE_PATHS = ['blog']
+STATIC_PATHS = ['blog']
 
 THEME = 'aboutwilson'
-ARTICLE_PATHS = ['blog']
+
 INDEX_SAVE_AS = "index.html"
 ARCHIVES_SAVE_AS = 'blog/index.html'
 ARTICLE_URL = 'blog/{slug}/'
@@ -41,7 +41,7 @@ DISPLAY_CATEGORIES_ON_MENU = False
 DISPLAY_PAGES_ON_MENU = False
 
 
-SITESUBTITLE = 'Computer Engineer, Climber'
+#SITESUBTITLE = 'Computer Engineer, Climber'
 #SITESUBTITLE = 'Air Force Captain, Computer Engineer, Climber'
 
 MENUITEMS = (

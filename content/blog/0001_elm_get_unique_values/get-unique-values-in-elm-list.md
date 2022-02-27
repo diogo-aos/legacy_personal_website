@@ -9,7 +9,7 @@ unique : List a -> List a
 unique l =
     let
         incUnique : a -> List a -> List a
-        intUnique elem lst =
+        incUnique elem lst =
             case List.member elem lst of
                 True -> lst
                False -> elem :: lst
@@ -31,8 +31,7 @@ Say you have the list [2, 2, 3, 4]. If you fold the list, it means you’ll go o
 ( 2 + ( 2 + ( 3 + ( 4 ) ) ) )
 ```
 
-![images/fold_diagram.png]({static}/blog/0001_elm_get_unique_values/fold_diagram.png)
-![images/fold_diagram.png]({filename}/fold_diagram.png)
+![Fold diagram](fold_diagram.png)
 
 This is right associativity, by the way, so I did a foldr. We can see more 
 clearly what’s going on looking at the diagram. There, our function *f* is the *+* operation and our seed is *0*.
@@ -108,7 +107,7 @@ unique : List a -> List a
 unique l =
     let
         incUnique : a -> List a -> List a
-        intUnique elem lst =
+        incUnique elem lst =
 		case List.member elem lst of
 			True -> lst
 			False -> elem :: lst

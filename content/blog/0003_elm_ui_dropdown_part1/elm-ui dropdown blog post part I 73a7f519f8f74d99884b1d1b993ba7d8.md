@@ -3,11 +3,11 @@ Date: 2021-04-27
 tags: Elm, elm-ui
 
 
-![elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled.png](elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled.png)
+![elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled.png]({attach}elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled.png)
 
 If you're getting into Elm and still handling CSS files, just thrash them. Really. Go ahead and do it, because in Elm, we have the beautiful Elm-UI. You'll get to write design in a language that's actually understandable. However, Elm-UI probably still doesn't have everything you might need. One simple thing it doesn't have builtin is a dropdown, something you see everywhere.
 
-Follow along and learn how to build a barebones dropdown using Elm's powerful types. More specifically, you'll master parametrized types!
+Follow along and learn how to build a barebones dropdown. In part II, we’ll make a parameterized version using Elm’s powerful types. More specifically, you’ll master parameterized types! You can find it [here]({filename}../0004_elm_ui_dropdown_part2/Reusable dropdown in Elm with parameterized types  d1e26d5077354f649483c7b693031587.md).
 
 # Setup
 
@@ -72,7 +72,7 @@ main =
 
 `elm make src/main.elm` and go the `index.html` file created in the project folder. Right off the start, you get a nice centered layout like this:
 
-![elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%201.png](elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%201.png)
+![elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%201.png]({attach}elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%201.png)
 
 Uau, look at the code to center the column. Isn't life wonderful? I'll never get tired of this.
 
@@ -174,7 +174,7 @@ update msg model =
 
 When we click on the dropdown, a `ClickedSelectFood` is sent and our status changes to `SelectFood`. Makes sense, right? We'll need to do something with that status, but for now, you'll get something like this:
 
-![elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%202.png](elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%202.png)
+![elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%202.png]({attach}elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%202.png)
 
 What we want is for a list of food options to appear **below** the dropdown, and **over** the remaining content, without changing the existing layout. Thankfully, `elm-ui` has a nice attribute for this, it's called `below`. The content to be added will be inside this attribute. We'll create a function to view a list of foods and a function to view a single food and compose them inside our view.
 
@@ -239,7 +239,7 @@ viewFood food =
 
 That's a bit step. The important part is inside the let block in view. If `status` is `SelectFood`, then we will have a list of `Element.text` with the names of the foods attached to the `below` attribute. Otherwise, we'll not use that attribute. Also note that the `onClick` attribute only appears when status is `Normal`. This is because is we kept it on both cases, the event would be triggered when clicked one of the options, because this list lives inside the dropdown element. We don't want that. The `ClickedSelectFood` message should only be sent then the status is `Normal`. If we're already selecting an option from the food list, it doesn't make sense to send a message that triggers the logic to open the dropdown (it's already opened). Now, when we click the dropdown, we'll get the desired list.
 
-![elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%203.png](elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%203.png)
+![elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%203.png]({attach}elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%203.png)
 
 In `viewFood`, we already added some nice visual sugar for changing the background color of the option where the mouse is.
 
@@ -259,7 +259,7 @@ viewFood food =
         (E.text food.name)
 ```
 
-![elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%204.png](elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%204.png)
+![elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%204.png]({attach}elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Untitled%204.png)
 
 We could style it more, add a little padding, making sure the options have the same width, etc., but let's focus on the logic. There is only one thing missing: implementing the logic for when we actually select an option. When we click an option, a message has to be sent specifying which food was clicked on, save it in the model and revert status back to `Normal`.
 
@@ -295,6 +295,8 @@ viewFood food =
 
 We added the `ClickedDropdownFood` message, which will be sent when we click one of the foods of the list (see the `onClick` event in `viewFood`). When `update` receives this message, status reverts to `Normal` and the new `favoriteFood` is the one we clicked on. `view` then renders everything as it should. 
 
-![elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Kazam_screencast_00005.gif](elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Kazam_screencast_00005.gif)
+![elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Kazam_screencast_00005.gif]({attach}elm-ui%20dropdown%20blog%20post%20part%20I%2073a7f519f8f74d99884b1d1b993ba7d8/Kazam_screencast_00005.gif)
 
-Now you know how to create a simple dropdown. What if you need multiple dropdowns? What if they're selecting different things? That's what we'll cover in part 2, where we'll create a reusable component that will receive any type and display it like we did here.
+Now you know how to create a simple dropdown. What if you need multiple dropdowns? What if they're selecting different things? That's what we'll cover in [part II]({filename}../0004_elm_ui_dropdown_part2/Reusable dropdown in Elm with parameterized types  d1e26d5077354f649483c7b693031587.md), where we'll create a reusable component that will receive any type and display it like we did here.
+
+
