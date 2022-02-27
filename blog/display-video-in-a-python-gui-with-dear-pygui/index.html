@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Display video in a Python GUI with Dear PyGui — Diogo Silva</title>
+	<meta name="description" content="Title: Display video in a Python GUI with Dear PyGui; Date: 2022-02-25; Author: Diogo Silva">
+	<meta name="author" content="Diogo Silva">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+	<!--[if lt IE 9]>
+		<script src="https://www.diogoaos.com/theme/html5.js"></script>
+		<![endif]-->
+	<link href="https://www.diogoaos.com/theme/css/ipython.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
+	<link href="https://www.diogoaos.com/theme/css/local.css" rel="stylesheet">
+	<link href="https://www.diogoaos.com/theme/css/pygments.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+	<div class="page-header">
+		<h1><a href="https://www.diogoaos.com/">Diogo Silva</a>
+			<br>	</div>
+	<div class="row">
+		<div class="col-md-8 col-md-offset-2">
+<div class="article" itemscope itemtype="http://schema.org/BlogPosting">
+	<div class="text-center article-header">
+		<h1 itemprop="name headline" class="article-title">Display video in a Python GUI with Dear PyGui</h1>
+		<span itemprop="author" itemscope itemtype="http://schema.org/Person">
+			<h4 itemprop="name">Diogo Silva</h4>
+		</span>
+		<time datetime="2022-02-25T00:00:00+00:00" itemprop="datePublished">sex 25 fevereiro 2022</time>
+	</div>
+<!---	
+	<div>
+		Category:
+		<span itemprop="articleSection">
+			<a href="https://www.diogoaos.com/category/0005_python_gui_video_dearpygui.html" rel="category">0005_python_gui_video_dearpygui</a>
+		</span>
+	</div>
+--->
+ 
+	<div>
+		Tags:
+		<span itemprop="keywords">
+			<a href="https://www.diogoaos.com/tag/python.html" rel="tag">python</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="https://www.diogoaos.com/tag/gui.html" rel="tag">gui</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="https://www.diogoaos.com/tag/dearpygui.html" rel="tag">dearpygui</a>
+		</span>
+		<span itemprop="keywords">
+			<a href="https://www.diogoaos.com/tag/video.html" rel="tag">video</a>
+		</span>
+	</div>
+	<div itemprop="articleBody" class="article-body"><p>We’ll cover the ground on how to display frames (from a live UDP video stream) on a GUI using Python. We’ll use av for decoding the video. This will make this work with mostly any video that ffmpeg also supports (which is basically all), but we won’t add logic to ensure the play rate matches the encoded FPS, since this is meant for live video. We’ll use Dear PyGui for the GUI management. Dear PyGui is fast, light on its dependencies and cross-platform.</p>
+<p>Let’s start writing a simple generator for the outputing video frames.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">av</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="n">fn</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">load_video</span><span class="p">(</span><span class="n">fn</span><span class="p">):</span>
+    <span class="n">video</span> <span class="o">=</span> <span class="n">av</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+    <span class="n">fmt</span> <span class="o">=</span> <span class="s1">&#39;rgb24&#39;</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">video</span><span class="o">.</span><span class="n">decode</span><span class="p">():</span>
+        <span class="n">cf</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">to_ndarray</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="n">fmt</span><span class="p">)</span>  <span class="c1"># convert to rgb</span>
+        <span class="k">yield</span> <span class="n">cf</span>
+    <span class="n">video</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Simple stuff. We’re receiving the path of the video source from an argument. The <code>load_video</code> receives the path for the video source, opens it and starts decoding. Every decoded frame is converted to RGB and yielded from the generator.</p>
+<p>Next, let’s create the GUI.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">dearpygui.dearpygui</span> <span class="k">as</span> <span class="nn">dpg</span>
+
+<span class="n">w</span><span class="p">,</span><span class="n">h</span><span class="p">,</span><span class="n">d</span> <span class="o">=</span> <span class="mi">1280</span><span class="o">*</span><span class="mi">2</span> <span class="p">,</span><span class="mi">720</span><span class="o">*</span><span class="mi">2</span> <span class="p">,</span><span class="mi">3</span>  <span class="c1"># the width and height values are overdimensioned to fit a wider range of resolutions</span>
+<span class="n">raw_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">h</span><span class="p">,</span><span class="n">w</span><span class="p">,</span><span class="n">d</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+</code></pre></div>
+
+<p>We’ll use a <em>raw texture</em>, as they are high performance and the preferred method when updating large textures every frame. This is exactly our use case, since Dear PyGui does not have a default video widget (as of version 1.3.1) and we update each frame to the GUI as we receive it.</p>
+<p>In this use case we’ll create a overdimensioned texture to allow frame size to change during the stream. If you know the resolution of the video doesn’t change, you can read them from the first frame and configure the texture afterwards.</p>
+<p>This <code>raw_data</code> array will be the source of data for the GUI. Next, we’ll create the texture repository.</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">dpg</span><span class="o">.</span><span class="n">texture_registry</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">dpg</span><span class="o">.</span><span class="n">add_raw_texture</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">raw_data</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">dpg</span><span class="o">.</span><span class="n">mvFormat_Float_rgb</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;texture_tag&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>We’re predefining the texture format. This is compatible with the format chosen for the conversion happening inside the generator, with the av library. Let’s write the update function.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">update_dynamic_texture</span><span class="p">(</span><span class="n">new_frame</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">raw_data</span>
+    <span class="n">h2</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">d2</span> <span class="o">=</span> <span class="n">new_frame</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">raw_data</span><span class="p">[:</span><span class="n">h2</span><span class="p">,</span> <span class="p">:</span><span class="n">w2</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_frame</span><span class="p">[:,:]</span> <span class="o">/</span> <span class="mi">255</span>
+</code></pre></div>
+
+<p>The update function receives the new frame of the video. We’ll get the shape of the new frame, since we’re allowing for it to change over time and be drawn over the same texture. The caveat here is that it must be encoded with the same format (in our case, RGB). The frame received comes with pixels within the interval [0, 255] (8 bits per color channel), but Dear PyGui uses a float in the [0.0, 1.0] range, so we divide the new frame by 255. Let’s create the window.</p>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="n">dpg</span><span class="o">.</span><span class="n">window</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s2">&quot;Video player&quot;</span><span class="p">):</span>
+    <span class="n">dpg</span><span class="o">.</span><span class="n">add_image</span><span class="p">(</span><span class="s2">&quot;texture_tag&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<p>It’s that easy. This is one of the reasons Dear PyGui is so great. The <code>.window</code> method creates a window and a context in which we can add other items on that same window. In our case, we just added a image element that renders the previously defined texture. Let’s take care of the <em>viewport</em> and setup of the GUI.</p>
+<div class="highlight"><pre><span></span><code><span class="n">dpg</span><span class="o">.</span><span class="n">create_viewport</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Dashboard&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+<span class="n">dpg</span><span class="o">.</span><span class="n">setup_dearpygui</span><span class="p">()</span>
+<span class="n">dpg</span><span class="o">.</span><span class="n">show_viewport</span><span class="p">()</span>
+</code></pre></div>
+
+<p>Again, very simple stuff. We’re creating a <em>viewport</em> with a standard size. Afterwards, we just do the standard setup and display that <em>viewport</em>. Normally, we would now run <code>start_dearpygui</code> to start the automatic render loop, but we’ll define our own render loop to receive and feed the new frames to the GUI.</p>
+<div class="highlight"><pre><span></span><code><span class="n">video_gen</span> <span class="o">=</span> <span class="n">load_video</span><span class="p">(</span><span class="n">fn</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">video_gen</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">dpg</span><span class="o">.</span><span class="n">is_dearpygui_running</span><span class="p">():</span>
+        <span class="n">update_dynamic_texture</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">dpg</span><span class="o">.</span><span class="n">render_dearpygui_frame</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">break</span>  <span class="c1"># deal with this scenario appropriately</span>
+
+<span class="n">dpg</span><span class="o">.</span><span class="n">destroy_context</span><span class="p">()</span>
+</code></pre></div>
+
+<p>We start by creating the video generator with load_video. Afterwards, we iterate over the video frames from the generator. If the Dear PyGui backend is running, we render the obtained frame. At the end of the script, we destroy the GUI context. I ran the script giving the path to the video source as the first (and only) argument. On my system, the result is the following.</p>
+<p><img alt="Untitled" src="https://www.diogoaos.com/blog/display-video-in-a-python-gui-with-dear-pygui/Python dis 3bd0c/Untitled.png"></p>
+<p>I’m running this program on a Linux host, with the i3 window manager. Dear PyGui created the (resizable) video window inside the view port. This is basically a window inside the program window.</p>
+<p>My test stream has several resolution changes over its duration. The other resolution is smaller then the one displayed above.</p>
+<p>This is it. Very simple. This is not an ideal GUI, but it will get you started.</p>
+<p>With this approach, we need to make sure we have an oversized texture that is bigger than any video resolution we might receive. A possible solution could be to create a new window and texture anytime a new resolution comes along and render the new frame on the texture for its resolution. Or, anytime a bigger resolution comes along, simply replace the old one with a bigger one that fits the new resolution. </p>
+<p>We could also set the video window as primary, and it basically mean the viewport window and the video window are the same, i.e. no window inside window. All other windows would be rendered above the video.</p></div>
+	<hr>
+	<!---
+	<h2>Comments</h2>
+	--->
+</div>
+		</div>
+	</div> 	<!-- <hr> -->
+</div> <!-- /container -->
+
+<footer class="aw-footer bg-danger">
+	<div class="container"> <!-- footer -->
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="row">
+					<div class="col-md-3">
+						<h4>Navigation</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://www.diogoaos.com">Diogo Silva</a></li>
+							<li><a href="https://www.diogoaos.com/blog/"><i class="fa fa-Blog "></i> Blog</a></li>
+							<li><a href="https://www.diogoaos.com/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
+						</ul>
+					</div>
+					<div class="col-md-3">
+						<h4>Author</h4>
+						<ul class="list-unstyled my-list-style">
+							<li><a href="https://github.com/diogo-aos">Github</a></li>
+							<li><a href="https://www.linkedin.com/in/diogoaos">LinkedIn</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>
+
+<!---
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 text-center center-block aw-bottom">
+			<p>&copy; Diogo Silva 2016</p>
+		</div>
+	</div>
+</div>
+--->
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+jQuery(document).ready(function($) {
+	$("div.collapseheader").click(function () {
+		$header = $(this).children("span").first();
+		$codearea = $(this).children(".input_area");
+		$codearea.slideToggle(500, function () {
+			$header.text(function () {
+				return $codearea.is(":visible") ? "Collapse Code" : "Expand Code";
+			});
+		});
+	});
+});
+</script>
+</body>
+</html>

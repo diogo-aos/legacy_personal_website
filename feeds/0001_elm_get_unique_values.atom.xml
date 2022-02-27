@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Diogo Silva - 0001_elm_get_unique_values</title><link href="https://www.diogoaos.com/" rel="alternate"></link><link href="https://www.diogoaos.com/feeds/0001_elm_get_unique_values.atom.xml" rel="self"></link><id>https://www.diogoaos.com/</id><updated>2021-01-28T00:00:00+00:00</updated><subtitle>Computer Engineer, Climber</subtitle><entry><title>How to get unique values in an Elm list?</title><link href="https://www.diogoaos.com/blog/how-to-get-unique-values-in-an-elm-list/" rel="alternate"></link><published>2021-01-28T00:00:00+00:00</published><updated>2021-01-28T00:00:00+00:00</updated><author><name>Diogo Silva</name></author><id>tag:www.diogoaos.com,2021-01-28:/blog/how-to-get-unique-values-in-an-elm-list/</id><summary type="html">&lt;p&gt;You do it like this:&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Diogo Silva - 0001_elm_get_unique_values</title><link href="https://www.diogoaos.com/" rel="alternate"></link><link href="https://www.diogoaos.com/feeds/0001_elm_get_unique_values.atom.xml" rel="self"></link><id>https://www.diogoaos.com/</id><updated>2021-01-28T00:00:00+00:00</updated><entry><title>How to get unique values in an Elm list?</title><link href="https://www.diogoaos.com/blog/how-to-get-unique-values-in-an-elm-list/" rel="alternate"></link><published>2021-01-28T00:00:00+00:00</published><updated>2021-01-28T00:00:00+00:00</updated><author><name>Diogo Silva</name></author><id>tag:www.diogoaos.com,2021-01-28:/blog/how-to-get-unique-values-in-an-elm-list/</id><summary type="html">&lt;p&gt;You do it like this:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nv"&gt;unique&lt;/span&gt; &lt;span class="nf"&gt;:&lt;/span&gt; &lt;span class="kt"&gt;List&lt;/span&gt; &lt;span class="nv"&gt;a&lt;/span&gt; &lt;span class="nf"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;List&lt;/span&gt; &lt;span class="nv"&gt;a&lt;/span&gt;
 &lt;span class="nv"&gt;unique&lt;/span&gt; &lt;span class="nv"&gt;l&lt;/span&gt; &lt;span class="nf"&gt;=&lt;/span&gt;
     &lt;span class="kr"&gt;let&lt;/span&gt;
         &lt;span class="nv"&gt;incUnique&lt;/span&gt; &lt;span class="nf"&gt;:&lt;/span&gt; &lt;span class="nv"&gt;a&lt;/span&gt; &lt;span class="nf"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;List&lt;/span&gt; &lt;span class="nv"&gt;a&lt;/span&gt; &lt;span class="nf"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;List&lt;/span&gt; &lt;span class="nv"&gt;a&lt;/span&gt;
-        &lt;span class="nv"&gt;intUnique&lt;/span&gt; &lt;span class="nv"&gt;elem&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt; &lt;span class="nf"&gt;=&lt;/span&gt;
+        &lt;span class="nv"&gt;incUnique&lt;/span&gt; &lt;span class="nv"&gt;elem&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt; &lt;span class="nf"&gt;=&lt;/span&gt;
             &lt;span class="kr"&gt;case&lt;/span&gt; &lt;span class="kt"&gt;List&lt;/span&gt;&lt;span class="nf"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;member&lt;/span&gt; &lt;span class="nv"&gt;elem&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt; &lt;span class="kr"&gt;of&lt;/span&gt;
                 &lt;span class="kt"&gt;True&lt;/span&gt; &lt;span class="nf"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt;
                &lt;span class="kt"&gt;False&lt;/span&gt; &lt;span class="nf"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;elem&lt;/span&gt; &lt;span class="nf"&gt;::&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt;
@@ -19,7 +19,7 @@
 &lt;span class="nv"&gt;unique&lt;/span&gt; &lt;span class="nv"&gt;l&lt;/span&gt; &lt;span class="nf"&gt;=&lt;/span&gt;
     &lt;span class="kr"&gt;let&lt;/span&gt;
         &lt;span class="nv"&gt;incUnique&lt;/span&gt; &lt;span class="nf"&gt;:&lt;/span&gt; &lt;span class="nv"&gt;a&lt;/span&gt; &lt;span class="nf"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;List&lt;/span&gt; &lt;span class="nv"&gt;a&lt;/span&gt; &lt;span class="nf"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;List&lt;/span&gt; &lt;span class="nv"&gt;a&lt;/span&gt;
-        &lt;span class="nv"&gt;intUnique&lt;/span&gt; &lt;span class="nv"&gt;elem&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt; &lt;span class="nf"&gt;=&lt;/span&gt;
+        &lt;span class="nv"&gt;incUnique&lt;/span&gt; &lt;span class="nv"&gt;elem&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt; &lt;span class="nf"&gt;=&lt;/span&gt;
             &lt;span class="kr"&gt;case&lt;/span&gt; &lt;span class="kt"&gt;List&lt;/span&gt;&lt;span class="nf"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;member&lt;/span&gt; &lt;span class="nv"&gt;elem&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt; &lt;span class="kr"&gt;of&lt;/span&gt;
                 &lt;span class="kt"&gt;True&lt;/span&gt; &lt;span class="nf"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt;
                &lt;span class="kt"&gt;False&lt;/span&gt; &lt;span class="nf"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;elem&lt;/span&gt; &lt;span class="nf"&gt;::&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt;
@@ -35,8 +35,7 @@
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="nf"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="nf"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;3&lt;/span&gt; &lt;span class="nf"&gt;+&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt; &lt;span class="mi"&gt;4&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;p&gt;&lt;img alt="images/fold_diagram.png" src="https://www.diogoaos.com/blog/0001_elm_get_unique_values/fold_diagram.png"&gt;
-&lt;img alt="images/fold_diagram.png" src="{filename}/fold_diagram.png"&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Fold diagram" src="fold_diagram.png"&gt;&lt;/p&gt;
 &lt;p&gt;This is right associativity, by the way, so I did a foldr. We can see more 
 clearly what’s going on looking at the diagram. There, our function &lt;em&gt;f&lt;/em&gt; is the &lt;em&gt;+&lt;/em&gt; operation and our seed is &lt;em&gt;0&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;The foldl would look like this:&lt;/p&gt;
@@ -94,7 +93,7 @@ element. Then we use the fold with this function.&lt;/p&gt;
 &lt;span class="nv"&gt;unique&lt;/span&gt; &lt;span class="nv"&gt;l&lt;/span&gt; &lt;span class="nf"&gt;=&lt;/span&gt;
     &lt;span class="kr"&gt;let&lt;/span&gt;
         &lt;span class="nv"&gt;incUnique&lt;/span&gt; &lt;span class="nf"&gt;:&lt;/span&gt; &lt;span class="nv"&gt;a&lt;/span&gt; &lt;span class="nf"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;List&lt;/span&gt; &lt;span class="nv"&gt;a&lt;/span&gt; &lt;span class="nf"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="kt"&gt;List&lt;/span&gt; &lt;span class="nv"&gt;a&lt;/span&gt;
-        &lt;span class="nv"&gt;intUnique&lt;/span&gt; &lt;span class="nv"&gt;elem&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt; &lt;span class="nf"&gt;=&lt;/span&gt;
+        &lt;span class="nv"&gt;incUnique&lt;/span&gt; &lt;span class="nv"&gt;elem&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt; &lt;span class="nf"&gt;=&lt;/span&gt;
         &lt;span class="kr"&gt;case&lt;/span&gt; &lt;span class="kt"&gt;List&lt;/span&gt;&lt;span class="nf"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;member&lt;/span&gt; &lt;span class="nv"&gt;elem&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt; &lt;span class="kr"&gt;of&lt;/span&gt;
             &lt;span class="kt"&gt;True&lt;/span&gt; &lt;span class="nf"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt;
             &lt;span class="kt"&gt;False&lt;/span&gt; &lt;span class="nf"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;elem&lt;/span&gt; &lt;span class="nf"&gt;::&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt;

@@ -21,7 +21,7 @@
 <div class="container">
 	<div class="page-header">
 		<h1><a href="https://www.diogoaos.com/">Diogo Silva</a>
-			<br><small>Computer Engineer, Climber</small></h1>	</div>
+			<br>	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
 <div class="article" itemscope itemtype="http://schema.org/BlogPosting">
@@ -52,7 +52,7 @@
 <span class="nv">unique</span> <span class="nv">l</span> <span class="nf">=</span>
     <span class="kr">let</span>
         <span class="nv">incUnique</span> <span class="nf">:</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">List</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">List</span> <span class="nv">a</span>
-        <span class="nv">intUnique</span> <span class="nv">elem</span> <span class="nv">lst</span> <span class="nf">=</span>
+        <span class="nv">incUnique</span> <span class="nv">elem</span> <span class="nv">lst</span> <span class="nf">=</span>
             <span class="kr">case</span> <span class="kt">List</span><span class="nf">.</span><span class="nv">member</span> <span class="nv">elem</span> <span class="nv">lst</span> <span class="kr">of</span>
                 <span class="kt">True</span> <span class="nf">-&gt;</span> <span class="nv">lst</span>
                <span class="kt">False</span> <span class="nf">-&gt;</span> <span class="nv">elem</span> <span class="nf">::</span> <span class="nv">lst</span>
@@ -68,8 +68,7 @@
 <div class="highlight"><pre><span></span><code><span class="p">(</span> <span class="mi">2</span> <span class="nf">+</span> <span class="p">(</span> <span class="mi">2</span> <span class="nf">+</span> <span class="p">(</span> <span class="mi">3</span> <span class="nf">+</span> <span class="p">(</span> <span class="mi">4</span> <span class="p">)</span> <span class="p">)</span> <span class="p">)</span> <span class="p">)</span>
 </code></pre></div>
 
-<p><img alt="images/fold_diagram.png" src="https://www.diogoaos.com/blog/0001_elm_get_unique_values/fold_diagram.png">
-<img alt="images/fold_diagram.png" src="{filename}/fold_diagram.png"></p>
+<p><img alt="Fold diagram" src="fold_diagram.png"></p>
 <p>This is right associativity, by the way, so I did a foldr. We can see more 
 clearly what’s going on looking at the diagram. There, our function <em>f</em> is the <em>+</em> operation and our seed is <em>0</em>.</p>
 <p>The foldl would look like this:</p>
@@ -127,7 +126,7 @@ element. Then we use the fold with this function.</p>
 <span class="nv">unique</span> <span class="nv">l</span> <span class="nf">=</span>
     <span class="kr">let</span>
         <span class="nv">incUnique</span> <span class="nf">:</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">List</span> <span class="nv">a</span> <span class="nf">-&gt;</span> <span class="kt">List</span> <span class="nv">a</span>
-        <span class="nv">intUnique</span> <span class="nv">elem</span> <span class="nv">lst</span> <span class="nf">=</span>
+        <span class="nv">incUnique</span> <span class="nv">elem</span> <span class="nv">lst</span> <span class="nf">=</span>
         <span class="kr">case</span> <span class="kt">List</span><span class="nf">.</span><span class="nv">member</span> <span class="nv">elem</span> <span class="nv">lst</span> <span class="kr">of</span>
             <span class="kt">True</span> <span class="nf">-&gt;</span> <span class="nv">lst</span>
             <span class="kt">False</span> <span class="nf">-&gt;</span> <span class="nv">elem</span> <span class="nf">::</span> <span class="nv">lst</span>
