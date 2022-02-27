@@ -95,3 +95,6 @@ This is it. Very simple. This is not an ideal GUI, but it will get you started.
 With this approach, we need to make sure we have an oversized texture that is bigger than any video resolution we might receive. A possible solution could be to create a new window and texture anytime a new resolution comes along and render the new frame on the texture for its resolution. Or, anytime a bigger resolution comes along, simply replace the old one with a bigger one that fits the new resolution. 
 
 We could also set the video window as primary, and it basically mean the viewport window and the video window are the same, i.e. no window inside window. All other windows would be rendered above the video.
+
+
+What do you think? How would you improve on this? Drop me a message at [blog@diogoaos.com](mailto:blog@diogoaos.com).

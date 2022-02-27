@@ -299,4 +299,4 @@ We added the `ClickedDropdownFood` message, which will be sent when we click one
 
 Now you know how to create a simple dropdown. What if you need multiple dropdowns? What if they're selecting different things? That's what we'll cover in [part II]({filename}../0004_elm_ui_dropdown_part2/Reusable dropdown in Elm with parameterized types  d1e26d5077354f649483c7b693031587.md), where we'll create a reusable component that will receive any type and display it like we did here.
 
-
+What do you think? How would you improve on this? Drop me a message at [blog@diogoaos.com](mailto:blog@diogoaos.com).

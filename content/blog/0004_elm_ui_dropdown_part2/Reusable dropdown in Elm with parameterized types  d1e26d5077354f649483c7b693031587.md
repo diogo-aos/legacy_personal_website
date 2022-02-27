@@ -409,3 +409,6 @@ view model =
 We're done here! A simple, reusable dropdown. If you've never used parameterized types, take a moment to ponder their potential and simplicity. We can actually simplify this further depending on the needs, e.g. having a function to update a dropdown based on its inputs. One of the advantages is the consistent style of every dropdown (or the lack of it in these examples). You can check the full code in this [Github](https://github.com/diogo-aos/elm-ui-dropdown/releases/tag/partII_done) repository.
 
 In part III, we'll use the knowledge and practice of parameterized types to make something a little more complex. We'll build a component that will allow us to choose several options, or none depending on the parameters. It will all be configurable. It will basically be a dropdown on steroids.
+
+
+What do you think? How would you improve on this? Drop me a message at [blog@diogoaos.com](mailto:blog@diogoaos.com).

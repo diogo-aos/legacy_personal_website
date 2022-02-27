@@ -114,3 +114,5 @@ unique l =
      in
 	List.foldr incUnique [] l
 ```
+
+What do you think? How would you improve on this? Drop me a message at [blog@diogoaos.com](mailto:blog@diogoaos.com).

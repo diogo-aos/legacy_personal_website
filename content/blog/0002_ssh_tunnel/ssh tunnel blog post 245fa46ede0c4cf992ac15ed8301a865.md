@@ -117,3 +117,5 @@ When used together with -O forward the allocated port will be printed to the sta
              bind the connection to a specific address.  The bind_address of “localhost” indicates that the listening port be bound for local use
              only, while an empty address or ‘*’ indicates that the port should be available from all interfaces.
 ```
+
+What do you think? How would you improve on this? Drop me a message at [blog@diogoaos.com](mailto:blog@diogoaos.com).
