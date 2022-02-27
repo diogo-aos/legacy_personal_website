@@ -99,4 +99,6 @@ element. Then we use the fold with this function.&lt;/p&gt;
             &lt;span class="kt"&gt;False&lt;/span&gt; &lt;span class="nf"&gt;-&amp;gt;&lt;/span&gt; &lt;span class="nv"&gt;elem&lt;/span&gt; &lt;span class="nf"&gt;::&lt;/span&gt; &lt;span class="nv"&gt;lst&lt;/span&gt;
      &lt;span class="kr"&gt;in&lt;/span&gt;
     &lt;span class="kt"&gt;List&lt;/span&gt;&lt;span class="nf"&gt;.&lt;/span&gt;&lt;span class="nv"&gt;foldr&lt;/span&gt; &lt;span class="nv"&gt;incUnique&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt; &lt;span class="nv"&gt;l&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content><category term="0001_elm_get_unique_values"></category><category term="Elm"></category></entry></feed>
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;What do you think? How would you improve on this? Drop me a message at &lt;a href="mailto:blog@diogoaos.com"&gt;blog@diogoaos.com&lt;/a&gt;.&lt;/p&gt;</content><category term="0001_elm_get_unique_values"></category><category term="Elm"></category></entry></feed>
