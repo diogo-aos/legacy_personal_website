@@ -8,19 +8,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
-		<script src="https://www.diogoaos.com/theme/html5.js"></script>
+		<script src="/theme/html5.js"></script>
 		<![endif]-->
-	<link href="https://www.diogoaos.com/theme/css/ipython.css" rel="stylesheet">
+	<link href="/theme/css/ipython.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
-	<link href="https://www.diogoaos.com/theme/css/local.css" rel="stylesheet">
-	<link href="https://www.diogoaos.com/theme/css/pygments.css" rel="stylesheet">
+	<link href="/theme/css/local.css" rel="stylesheet">
+	<link href="/theme/css/pygments.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
 	<div class="page-header">
-		<h1><a href="https://www.diogoaos.com/">Diogo Silva</a>
+		<h1><a href="/">Diogo Silva</a>
 			<br>	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -36,7 +36,7 @@
 	<div>
 		Category:
 		<span itemprop="articleSection">
-			<a href="https://www.diogoaos.com/category/0002_ssh_tunnel.html" rel="category">0002_ssh_tunnel</a>
+			<a href="/category/0002_ssh_tunnel.html" rel="category">0002_ssh_tunnel</a>
 		</span>
 	</div>
 --->
@@ -44,30 +44,30 @@
 	<div>
 		Tags:
 		<span itemprop="keywords">
-			<a href="https://www.diogoaos.com/tag/ssh.html" rel="tag">ssh</a>
+			<a href="/tag/ssh.html" rel="tag">ssh</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="https://www.diogoaos.com/tag/tunnel.html" rel="tag">tunnel</a>
+			<a href="/tag/tunnel.html" rel="tag">tunnel</a>
 		</span>
 	</div>
 	<div itemprop="articleBody" class="article-body"><p>If you regularly work with remote, screenless machines, you probably regularly work with SSH too. SSH is great to access a machine, but what if it sits behind a router or firewall and you can't change the rules? That's what this is article is about: reverse tunnels!</p>
 <h1>The typical SSH connection</h1>
 <p>The simplest scenario is a direct connection between host A and B. Let's say A wants to SSH into B. You simply type <code>ssh username@B</code> in a terminal in host A.</p>
-<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled.png" src="https://www.diogoaos.com/blog/ssh_tunnel_blog_post/Untitled.png"></p>
+<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled.png" src="/blog/ssh_tunnel_blog_post/Untitled.png"></p>
 <p>Simple enough. This is just a normal SSH connection. Let's get into tunnels.</p>
 <h1>The forward tunnel</h1>
 <p>You use tunnels when you want to forward connections in specific ports. Let's say A wants to access a Jupyter Notebook server running on host B, on port 8888, and we want to be able to access it in host A as if it were running locally, on the same port. We can use a tunnel, that will forward all connections in port 8888 of host A to port 8888 of host B.</p>
 <p>If you go to a browser in host A and access <code>localhost:8888</code>, sure enough, you'd get the Jupyter Notebook page (that is served on host B).</p>
-<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled%201.png" src="https://www.diogoaos.com/blog/ssh_tunnel_blog_post/Untitled 1.png"></p>
+<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled%201.png" src="/blog/ssh_tunnel_blog_post/Untitled 1.png"></p>
 <p>But what if host B sits behind a router or firewall? Well, no problem, you just need to create a port forwarding rule that ensures that a connection to routerB will be forwarded to the SSH port of host B. Let's say port 22 (default SSH port) of routerB is being forwarded to port 22 of host B.</p>
-<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled%202.png" src="https://www.diogoaos.com/blog/ssh_tunnel_blog_post/Untitled 2.png"></p>
-<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled%203.png" src="https://www.diogoaos.com/blog/ssh_tunnel_blog_post/Untitled 3.png"></p>
+<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled%202.png" src="/blog/ssh_tunnel_blog_post/Untitled 2.png"></p>
+<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled%203.png" src="/blog/ssh_tunnel_blog_post/Untitled 3.png"></p>
 <p>If B sits behind a router, you just need to make sure there is a port forwarding rule from port 22 of routerB to port 22 of B. But what if you can't configure the router or firewall?</p>
-<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled%204.png" src="https://www.diogoaos.com/blog/ssh_tunnel_blog_post/Untitled 4.png"></p>
+<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled%204.png" src="/blog/ssh_tunnel_blog_post/Untitled 4.png"></p>
 <h1>The reverse tunnel</h1>
 <p>That's where reverse tunnels enter the picture. You can't access host B with a SSH connection, because B is fenced. There is no way in. But, if you have direct access to it, if you can directly configure it (e.g. manually), then you can still make the connection work by using a <strong>reverse tunnel</strong>. We still have the same scenario, that is, we want A to be able to access, locally, the Jupyter Notebook running in host B (this could be any service, really).</p>
 <p>Before, we used the <code>-L</code> option, which forwarded local connection on port 8888 of A to port 8888 of B. We still want to do that, but now the SSH connection will start from host B. If we used <code>-L</code> again, we'd be forwarding connections on port 8888 of B to port 8888 of A, exactly the opposite of what we want. We need to reverse this, by using <code>-R</code> option instead. It works exactly as <code>-L</code>, but in a different direction. </p>
-<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled%205.png" src="https://www.diogoaos.com/blog/ssh_tunnel_blog_post/Untitled 5.png"></p>
+<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled%205.png" src="/blog/ssh_tunnel_blog_post/Untitled 5.png"></p>
 <p>Note that the SSH connection is initiated from B to A, but the forwarded connections inside the tunnel are from A to B. Notice how the purple arrow (initial SSH connection) is now going leftwards, but the blue arrow (the forwarding tunnel) is still going towards the right.</p>
 <p>With this, you're done. You can, once again, access the Jupyter Notebook in port 8888 of localhost in host A and it will be served pages from host B (port 8888).</p>
 <h1>SSH into a firewalled host with a reverse tunnel</h1>
@@ -78,7 +78,7 @@
 <li>Then you can just type <code>ssh -p 12345 username@localhost</code> to have an interactive SSH session in a terminal in host A. This will initiate a SSH connection in port 12345 of localhost, which is forwarded, by the reverse tunnel, to port 22 of host B, creating the desired connection.</li>
 </ul>
 <p>With this inceptionesque scenario, we have a SSH connection (blue arrow, initiated by A) inside another SSH connection (big pink arrow, initiated by B).</p>
-<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled%206.png" src="https://www.diogoaos.com/blog/ssh_tunnel_blog_post/Untitled 6.png"></p>
+<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled%206.png" src="/blog/ssh_tunnel_blog_post/Untitled 6.png"></p>
 <p>We've now covered the typical ways both normal and reverse tunnels are used. You can use this knowledge to have communication rolling even when you have to deal with pesky firewalls and inaccessible routers.</p>
 <p>A convoluted, but common setup, is having a router sitting between A and the internet (check the diagram below). Let's say we have a routerA that forwards port 6789 to port 22 (SSH's default port) of host A. The goal is still the same: have host A access the firewalled host B. This is not really that much more complex, but we have to "divide and conquer" the problem, or layer it:</p>
 <ul>
@@ -87,7 +87,7 @@
 <li>B must create a reverse tunnel. This part we already covered: <code>ssh -R 12345:localhost:22 anotherUser@routerA -p 6789</code>.</li>
 <li>Finally, host A connects to host B as before, <code>ssh -p 12345 username@localhost</code></li>
 </ul>
-<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled%207.png" src="https://www.diogoaos.com/blog/ssh_tunnel_blog_post/Untitled 7.png"></p>
+<p><img alt="ssh%20tunnel%20blog%20post%20245fa46ede0c4cf992ac15ed8301a865/Untitled%207.png" src="/blog/ssh_tunnel_blog_post/Untitled 7.png"></p>
 <p>What if we also can't configure routerA? That means no port forwarding is in place and neither A nor B can receive connections! The only way out of that one is to make a blood sacrifice. Chickens 🐔 usually do it. Goats 🐐 if you want to get fancy. Or, perhaps, with a third host, with tunnels initiated in A and B... That's homework material!</p>
 <p><strong>Sources</strong></p>
 <p><a href="https://unix.stackexchange.com/questions/46235/how-does-reverse-ssh-tunneling-work">https://unix.stackexchange.com/questions/46235/how-does-reverse-ssh-tunneling-work</a></p>
@@ -150,9 +150,8 @@ When used together with -O forward the allocated port will be printed to the sta
 					<div class="col-md-3">
 						<h4>Navigation</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="https://www.diogoaos.com">Diogo Silva</a></li>
-							<li><a href="https://www.diogoaos.com/blog/"><i class="fa fa-Blog "></i> Blog</a></li>
-							<li><a href="https://www.diogoaos.com/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
+							<li><a href="">Diogo Silva</a></li>
+							<li><a href="/blog/"><i class="fa fa-Blog "></i> Blog</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
@@ -193,16 +192,6 @@ jQuery(document).ready(function($) {
 		});
 	});
 });
-</script>
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-221716396-2', 'auto');
-  ga('send', 'pageview');
-
 </script>
 </body>
 </html>
