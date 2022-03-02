@@ -37,6 +37,6 @@ Install requiremens `pip install pelican markdown ghp-import`.
 
 ```
 pelican content -o output -s publishconf.py
-ghp-import output/ -b master -p -c www.diogoaos.com
+ghp-import output/ -b gh-pages -p -c www.diogoaos.com
 
 ```
