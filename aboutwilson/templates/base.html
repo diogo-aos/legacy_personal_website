@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
-<head>
+  <head>
+    	{% include "analytics.html" %}
 	<meta charset="utf-8">
 	<title>{% block title %}{{ SITENAME }}{% endblock %}</title>
 	<meta name="description" content="{% block description %}Coding, scientific development, finance, data analysis, visualization, statistics, and machine learning{% endblock %}">
@@ -17,6 +18,7 @@
 	<link href="{{ SITEURL }}/theme/css/local.css" rel="stylesheet">
 	<link href="{{ SITEURL }}/theme/css/pygments.css" rel="stylesheet">
 	{% block head %}{% endblock %}
+
 </head>
 <body>
 <div class="container">
@@ -107,7 +109,7 @@ jQuery(document).ready(function($) {
 	});
 });
 </script>
-{% include "analytics.html" %}
+
 {% include "github.html" %}
 </body>
 </html>
