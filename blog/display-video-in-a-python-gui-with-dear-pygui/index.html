@@ -8,19 +8,19 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
-		<script src="/theme/html5.js"></script>
+		<script src="https://www.diogoaos.com/theme/html5.js"></script>
 		<![endif]-->
-	<link href="/theme/css/ipython.css" rel="stylesheet">
+	<link href="https://www.diogoaos.com/theme/css/ipython.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/simplex/bootstrap.min.css" rel="stylesheet">
-	<link href="/theme/css/local.css" rel="stylesheet">
-	<link href="/theme/css/pygments.css" rel="stylesheet">
+	<link href="https://www.diogoaos.com/theme/css/local.css" rel="stylesheet">
+	<link href="https://www.diogoaos.com/theme/css/pygments.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
 	<div class="page-header">
-		<h1><a href="/">Diogo Silva</a>
+		<h1><a href="https://www.diogoaos.com/">Diogo Silva</a>
 			<br>	</div>
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -36,7 +36,7 @@
 	<div>
 		Category:
 		<span itemprop="articleSection">
-			<a href="/category/0005_python_gui_video_dearpygui.html" rel="category">0005_python_gui_video_dearpygui</a>
+			<a href="https://www.diogoaos.com/category/0005_python_gui_video_dearpygui.html" rel="category">0005_python_gui_video_dearpygui</a>
 		</span>
 	</div>
 --->
@@ -44,16 +44,16 @@
 	<div>
 		Tags:
 		<span itemprop="keywords">
-			<a href="/tag/python.html" rel="tag">python</a>
+			<a href="https://www.diogoaos.com/tag/python.html" rel="tag">python</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/gui.html" rel="tag">gui</a>
+			<a href="https://www.diogoaos.com/tag/gui.html" rel="tag">gui</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/dearpygui.html" rel="tag">dearpygui</a>
+			<a href="https://www.diogoaos.com/tag/dearpygui.html" rel="tag">dearpygui</a>
 		</span>
 		<span itemprop="keywords">
-			<a href="/tag/video.html" rel="tag">video</a>
+			<a href="https://www.diogoaos.com/tag/video.html" rel="tag">video</a>
 		</span>
 	</div>
 	<div itemprop="articleBody" class="article-body"><p>We’ll cover the ground on how to display frames (from a live UDP video stream) on a GUI using Python. We’ll use av for decoding the video. This will make this work with mostly any video that ffmpeg also supports (which is basically all), but we won’t add logic to ensure the play rate matches the encoded FPS, since this is meant for live video. We’ll use Dear PyGui for the GUI management. Dear PyGui is fast, light on its dependencies and cross-platform.</p>
@@ -118,7 +118,7 @@
 </code></pre></div>
 
 <p>We start by creating the video generator with load_video. Afterwards, we iterate over the video frames from the generator. If the Dear PyGui backend is running, we render the obtained frame. At the end of the script, we destroy the GUI context. I ran the script giving the path to the video source as the first (and only) argument. On my system, the result is the following.</p>
-<p><img alt="Untitled" src="/blog/display-video-in-a-python-gui-with-dear-pygui/Python dis 3bd0c/Untitled.png"></p>
+<p><img alt="Untitled" src="https://www.diogoaos.com/blog/display-video-in-a-python-gui-with-dear-pygui/Python dis 3bd0c/Untitled.png"></p>
 <p>I’m running this program on a Linux host, with the i3 window manager. Dear PyGui created the (resizable) video window inside the view port. This is basically a window inside the program window.</p>
 <p>My test stream has several resolution changes over its duration. The other resolution is smaller then the one displayed above.</p>
 <p>This is it. Very simple. This is not an ideal GUI, but it will get you started.</p>
@@ -142,8 +142,9 @@
 					<div class="col-md-3">
 						<h4>Navigation</h4>
 						<ul class="list-unstyled my-list-style">
-							<li><a href="">Diogo Silva</a></li>
-							<li><a href="/blog/"><i class="fa fa-Blog "></i> Blog</a></li>
+							<li><a href="https://www.diogoaos.com">Diogo Silva</a></li>
+							<li><a href="https://www.diogoaos.com/blog/"><i class="fa fa-Blog "></i> Blog</a></li>
+							<li><a href="https://www.diogoaos.com/feeds/all.atom.xml" type="application/atom+xml"><i class="fa fa-rss "></i> atom</a></li>
 						</ul>
 					</div>
 					<div class="col-md-3">
@@ -185,5 +186,27 @@ jQuery(document).ready(function($) {
 	});
 });
 </script>
+<!--
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-221716396-2', 'auto');
+  ga('send', 'pageview');
+</script>
+-->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-221716396-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-221716396-2');
+</script>
+
 </body>
 </html>
