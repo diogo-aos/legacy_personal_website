@@ -28,7 +28,7 @@ DEFAULT_PAGINATION = False
 
 PATH = 'content'
 ARTICLE_PATHS = ['blog']
-STATIC_PATHS = ['blog']
+STATIC_PATHS = ['blog','docs']
 
 THEME = 'aboutwilson'
 
