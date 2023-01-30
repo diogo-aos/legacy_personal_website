@@ -181,16 +181,16 @@
 		<span itemprop="name">Diogo Silva</span>
 	</span>
 	<div class="summary"><p>You do it like this:</p>
-<div class="highlight"><pre><span></span><code><span class="nv">unique</span><span class="w"> </span><span class="nf">:</span><span class="w"> </span><span class="kt">List</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nf">-&gt;</span><span class="w"> </span><span class="kt">List</span><span class="w"> </span><span class="nv">a</span><span class="w"></span>
-<span class="nv">unique</span><span class="w"> </span><span class="nv">l</span><span class="w"> </span><span class="nf">=</span><span class="w"></span>
-<span class="w">    </span><span class="kr">let</span><span class="w"></span>
-<span class="w">        </span><span class="nv">incUnique</span><span class="w"> </span><span class="nf">:</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nf">-&gt;</span><span class="w"> </span><span class="kt">List</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nf">-&gt;</span><span class="w"> </span><span class="kt">List</span><span class="w"> </span><span class="nv">a</span><span class="w"></span>
-<span class="w">        </span><span class="nv">incUnique</span><span class="w"> </span><span class="nv">elem</span><span class="w"> </span><span class="nv">lst</span><span class="w"> </span><span class="nf">=</span><span class="w"></span>
-<span class="w">            </span><span class="kr">case</span><span class="w"> </span><span class="kt">List</span><span class="nf">.</span><span class="nv">member</span><span class="w"> </span><span class="nv">elem</span><span class="w"> </span><span class="nv">lst</span><span class="w"> </span><span class="kr">of</span><span class="w"></span>
-<span class="w">                </span><span class="kt">True</span><span class="w"> </span><span class="nf">-&gt;</span><span class="w"> </span><span class="nv">lst</span><span class="w"></span>
-<span class="w">               </span><span class="kt">False</span><span class="w"> </span><span class="nf">-&gt;</span><span class="w"> </span><span class="nv">elem</span><span class="w"> </span><span class="nf">::</span><span class="w"> </span><span class="nv">lst</span><span class="w"></span>
-<span class="w">    </span><span class="kr">in</span><span class="w"></span>
-<span class="w">        </span><span class="kt">List</span><span class="nf">.</span><span class="nv">foldr</span><span class="w"> </span><span class="nv">incUnique</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="nv">l</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nv">unique</span><span class="w"> </span><span class="nf">:</span><span class="w"> </span><span class="kt">List</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nf">-&gt;</span><span class="w"> </span><span class="kt">List</span><span class="w"> </span><span class="nv">a</span>
+<span class="nv">unique</span><span class="w"> </span><span class="nv">l</span><span class="w"> </span><span class="nf">=</span>
+<span class="w">    </span><span class="kr">let</span>
+<span class="w">        </span><span class="nv">incUnique</span><span class="w"> </span><span class="nf">:</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nf">-&gt;</span><span class="w"> </span><span class="kt">List</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nf">-&gt;</span><span class="w"> </span><span class="kt">List</span><span class="w"> </span><span class="nv">a</span>
+<span class="w">        </span><span class="nv">incUnique</span><span class="w"> </span><span class="nv">elem</span><span class="w"> </span><span class="nv">lst</span><span class="w"> </span><span class="nf">=</span>
+<span class="w">            </span><span class="kr">case</span><span class="w"> </span><span class="kt">List</span><span class="nf">.</span><span class="nv">member</span><span class="w"> </span><span class="nv">elem</span><span class="w"> </span><span class="nv">lst</span><span class="w"> </span><span class="kr">of</span>
+<span class="w">                </span><span class="kt">True</span><span class="w"> </span><span class="nf">-&gt;</span><span class="w"> </span><span class="nv">lst</span>
+<span class="w">               </span><span class="kt">False</span><span class="w"> </span><span class="nf">-&gt;</span><span class="w"> </span><span class="nv">elem</span><span class="w"> </span><span class="nf">::</span><span class="w"> </span><span class="nv">lst</span>
+<span class="w">    </span><span class="kr">in</span>
+<span class="w">        </span><span class="kt">List</span><span class="nf">.</span><span class="nv">foldr</span><span class="w"> </span><span class="nv">incUnique</span><span class="w"> </span><span class="p">[]</span><span class="w"> </span><span class="nv">l</span>
 </code></pre></div>
 
 <p>There you go. Have fun!</p>
@@ -241,6 +241,7 @@
 						<ul class="list-unstyled my-list-style">
 							<li><a href="https://github.com/diogo-aos">Github</a></li>
 							<li><a href="https://www.linkedin.com/in/diogoaos">LinkedIn</a></li>
+							<li><a rel="me" href="https://sigmoid.social/@diogo">Mastodon</a></li>
 						</ul>
 					</div>
 				</div>
