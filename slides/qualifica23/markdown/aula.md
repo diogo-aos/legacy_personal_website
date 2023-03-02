@@ -78,24 +78,28 @@
 
 --
 
-<!-- .slide: data-background-video="vid/f16_wash_robot.mp4" -->
+<!-- .slide: data-background-video="vid/qualifica_f16_2.webm" data-background-video-loop data-background-video-muted -->
 
-Robótica
+
+<h2 style="color:DeepSkyBlue;  text-shadow: 2px 2px #000000" class="fragment fade-out">Robótica</h2>
 
 --
 
-<!-- .slide: data-background-video="vid/agro.mp4" -->
+<!-- .slide: data-background-video="vid/agro.webm" data-background-video-loop data-background-video-muted -->
 
-Robótica > Agricultura
+<h2 style="color:LimeGreen;  text-shadow: 2px 2px #000000" class="fragment fade-out">Robótica > Agricultura</h2>
+
+
+
 
 ---
 
 <div class="container">
-    <div class="col">
-        <h2>Dados</h2>
+<div class="col">
+        <img style="float: right" src="img/robots.jpg" alt="...">
     </div>
     <div class="col">
-        <img style="float: right" src="img/robots.jpg" alt="...">
+        <h2><br /><br />Dados</h2>
     </div>
 </div>
 
@@ -133,17 +137,18 @@ Robótica > Agricultura
 
 <div class="container">
     <div class="col">
-        <h2>Grande poder --> grandes ameaças</h2>
-        <h3 class="fragment">Cibersegurança</h3>
+        <img style="float: right" src="img/cybersec.png" alt="...">
     </div>
     <div class="col">
-        <img style="float: right" src="img/robot_ai.png" alt="...">
+        <h2 style="color:MediumSpringGreen"> <br />Grande poder</h2>
+        <h2 style="color:Crimson" class="fragment">Grandes ameaças</h2>
+        <h3 class="fragment">Cibersegurança</h3>
     </div>
 </div>
 
 ---
 
-<!-- .slide: data-background-image="img/2paths.jpeg" data-background-opacity="0.4" -->
+<!-- .slide: data-background-image="img/2paths.jpeg" data-background-opacity="0.4" data-visibility="hidden"-->
 
 
 ## 2 Caminhos
@@ -151,3 +156,17 @@ Robótica > Agricultura
 ### Quem cria estas tecnologias
 
 ### Quem as utiliza
+
+---
+
+
+<div class="container">
+    <div class="col">
+        <h3 class="fragment" style="color:DarkSeaGreen">Quem cria as tecnologias</h3>
+        <img style="float: right" src="img/man_road1.png" alt="...">
+    </div>
+    <div class="col">
+    <h3 class="fragment" style="color:LightSeaGreen">Quem usa as tecnologias</h3>
+        <img style="float: right" src="img/man_road2.png" alt="...">
+    </div>
+</div>
