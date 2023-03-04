@@ -265,6 +265,20 @@ Regras de correspondência para reais ``%f %e``:
 
 Quando o scanf lê um caracter que não encaixa na especificação de conversão que está a ser processada, é novamente colocado no input para ser processado 
 
+--
+
+Ler apenas N digitos
+
+```c
+int d1, d2;
+printf("Numero inteiro:");
+scanf("%1d%2d", &d1, &d2);  // utilizador escreve 242
+printf("d1=%d\n", d1); // d1=2
+printf("d2=%d\n", d2); // d2=42
+```
+
+`%Nd` permite ler `N` digitos inteiros. 
+
 ---
 
 ## Exercício
