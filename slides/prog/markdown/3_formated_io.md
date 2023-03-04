@@ -1,3 +1,4 @@
+<img src="img/afa.png" height="100">
 
 ## Leitura e escrita formatada
 

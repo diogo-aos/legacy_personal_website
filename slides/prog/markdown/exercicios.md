@@ -1,12 +1,53 @@
+<img src="img/afa.png" height="100">
+
 # Exercícios
+<!-- .slide: data-background="white" -->
+
+- [Fundamentos](#/2_exercicios)
+- [I/O Formatado](#/3_exercicios)
+- [Expressões](#/4_exercicios)
+- [Seleção](#/5_exercicios)
 
 ---
 
-# 5 Seleção
+# Exercícios
+## 2 Fundamentos
+<!-- .slide: data-background="Coral" id="2_exercicios" -->
+
+[Slides da matéria](#/2_fundamentals)
 
 ---
 
-## Livro King
+# Exercícios
+## 3 I/O Formatado
+<!-- .slide: data-background="Coral" id="3_exercicios"-->
+
+[Slides da matéria](#/3_formated_io)
+
+
+---
+
+# Exercícios
+## 4 Expressões
+<!-- .slide: data-background="Coral" id="4_exercicios" -->
+
+[Slides da matéria](#/4_expressions)
+
+
+---
+
+# Exercícios
+## 5 Seleção
+<!-- .slide: data-background="Coral" id="5_exercicios" -->
+
+[Slides da matéria](pdf/03_testes_condicoes.pptx.pdf)
+
+
+---
+
+# Exercícios
+## 5 Seleção
+### Livro King
 
 --
 

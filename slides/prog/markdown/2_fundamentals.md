@@ -1,4 +1,7 @@
 
+<img src="img/afa.png" height="100">
+
+
 ## Fundamentos do C
 
 ### Diogo Silva
