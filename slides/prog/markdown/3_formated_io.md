@@ -57,7 +57,6 @@ printf("%d\n", i, j, x, y, k); /*** ERRADO ***/
 
 --
 
-
 Os compiladores de C não são obrigados a verificar que o descritor `%` usado é o apropriado para o tipo da expressão/variável.
 
 ```c
