@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Programação 22/23 Semestre 2</title>
+
+		<link rel="stylesheet" href="../revealjs/dist/reset.css">
+		<link rel="stylesheet" href="../revealjs/dist/reveal.css">
+		<link rel="stylesheet" href="../revealjs/dist/theme/moon.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../revealjs/plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown="markdown/0_home.md"
+						data-separator="^\r?\n---\r?\n$"
+						data-separator-vertical="^\r?\n--\r?\n$"
+						id="home"
+						>
+				</section>
+				<section data-markdown="markdown/2_fundamentals.md"
+						data-separator="^\r?\n---\r?\n$"
+						data-separator-vertical="^\r?\n--\r?\n$"
+						id="2_fundamentals"
+						>
+				</section>
+				<section data-markdown="markdown/3_formated_io.md"
+						data-separator="^\r?\n---\r?\n$"
+						data-separator-vertical="^\r?\n--\r?\n$"
+						id="3_formated_io"
+						>
+				</section>
+				<section data-markdown="markdown/4_expressions.md"
+						data-separator="^\r?\n---\r?\n$"
+						data-separator-vertical="^\r?\n--\r?\n$"
+						id="4_expressions"
+						>
+				</section>
+				<section data-markdown="markdown/13.md"
+						data-separator="^\r?\n---\r?\n$"
+						data-separator-vertical="^\r?\n--\r?\n$"
+						id="13_dynamic_data_structures"
+						>
+				</section>
+				<section data-markdown="markdown/exercicios.md"
+						data-separator="^\r?\n---\r?\n$"
+						data-separator-vertical="^\r?\n--\r?\n$"
+						id="exercicios"
+						>
+				</section>
+
+			</div>
+		</div>
+
+		<script src="../revealjs/dist/reveal.js"></script>
+		<script src="../revealjs/plugin/notes/notes.js"></script>
+		<script src="../revealjs/plugin/markdown/markdown.js"></script>
+		<script src="../revealjs/plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				
+				slideNumber: true,
+				hash: true,
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+
+			Reveal.configure({
+				keyboard: {
+					39: 'next', // go to the next slide when the ENTER key is pressed
+					37: 'prev', //
+					},
+			})
+		</script>
+	</body>
+</html>
