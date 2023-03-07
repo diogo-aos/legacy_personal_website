@@ -24,6 +24,66 @@
 
 [Slides da matéria](#/3_formated_io)
 
+---
+
+# Exercícios
+## 3 I/O Formatado
+### Livro King
+
+--
+
+### King 3.1.
+
+Escreve um programa que aceita uma data do utilizador no formato "dd/mm/aaaa" e escreve na consola a mesma data no formato "aaaa-mm-dd".
+
+```text
+Insira data: 01/02/2023
+Escreveu:    2023/02/01
+```
+
+--
+
+### King 3.2.
+
+Escreve um programa que formata os dados de um produto inseridos pelo utilizador.
+
+```text
+Insira o ID do produto: 583
+Insira o preço: 13.5
+Insira a data de aquisição (dd/mm/aaaa): 24/10/2010
+
+Item        Preço       Data da
+            Unitário    Compra
+583         €    13.5   2010/10/24
+```
+
+Nota: o ID do item e a data deve estar alinhados à esquerda; o preço unitário deve estar alinhado à direita.
+Dica: usa "\t" para alinhas as colunas.
+
+--
+
+### King 3.3. TODO
+
+--
+
+### King 3.4. TODO
+
+--
+
+### King 3.5. TODO
+
+--
+
+### King 3.6. frações
+
+Escreve um programa que recebe 2 frações do utilizador e escreve a sua soma.
+O programa recebe as duas frações de uma só vez, separadas por +.
+
+```text
+Insira as fracoes: 5/6+3/4
+Soma: 38/24
+```
+
 
 ---
 
@@ -32,6 +92,40 @@
 <!-- .slide: data-background="Coral" id="4_exercicios" -->
 
 [Slides da matéria](#/4_expressions)
+
+---
+
+# Exercícios
+## 4 Expressões
+### Livro King
+
+--
+
+### King 4.1.
+
+Escreve um programa que pede ao utilizar um número inteiro de 2 digitos e devolve esse número com os digitos invertidos.
+Exemplo de execução:
+
+```bash
+Insira número inteiro: 42
+Invertido:             24
+```
+
+Os 2 números devem estar alinhados.
+
+Dica: %10 devolve o último digito de um número e /10 remove o último digito.
+
+--
+
+### King 4.2
+
+Extende o programa anterior para números de 3 digitos.
+
+--
+
+### King 4.3
+
+Reimplementa o programa do 4.2 sem usar aritmética. O enunciado dos 4.1 e 4.2 estão abaixo.
 
 
 ---
