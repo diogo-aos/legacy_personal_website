@@ -1,3 +1,6 @@
 [submodule "content/slides/prog"]
 	path = content/slides/prog
 	url = https://github.com/diogo-aos/afa_prog_2223
+[submodule "content/slides/qualifica23"]
+	path = content/slides/qualifica23
+	url = https://github.com/diogo-aos/qualifica23
