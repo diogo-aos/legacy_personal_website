@@ -17,7 +17,7 @@ jobs:
       with:
         ssh-key: ${{ secrets.DEPLOY_KEY }}
         fetch-depth: '0'
-        submodule: true
+        submodules: true
         
     - name: make sure gh-pages branch is there
       run: |
@@ -34,7 +34,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Compile Pelican blog
+    - name: delete .git dirs in submodules
       run: |
         python clear_git.py
 
