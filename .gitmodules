@@ -4,3 +4,6 @@
 [submodule "content/slides/qualifica23"]
 	path = content/slides/qualifica23
 	url = https://github.com/diogo-aos/qualifica23
+[submodule "content/slides/iseg_python"]
+	path = content/slides/iseg_python
+	url = https://github.com/diogo-aos/iseg_pg_aaiml_intro_python
