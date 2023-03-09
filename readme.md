@@ -38,5 +38,10 @@ Install requiremens `pip install pelican markdown ghp-import`.
 ```
 pelican content -o output -s publishconf.py
 ghp-import output/ -b gh-pages -p -c www.diogoaos.com
+```
 
+## start local server static hhtp
+
+```
+python -m http.server 8000 --dir content\slides\
 ```
