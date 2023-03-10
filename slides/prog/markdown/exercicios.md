@@ -1,7 +1,7 @@
 <img src="img/afa.png" height="100">
 
 # Exercícios
-<!-- .slide: data-background="white" -->
+<!-- .slide: data-background="Cornsilk" -->
 
 - [Fundamentos](#/2_exercicios)
 - [I/O Formatado](#/3_exercicios)
@@ -327,3 +327,39 @@ Escolha: 3
 
 500 g = 0.5000 kg
 ```
+
+---
+
+# Exercícios
+## 6 Ciclos
+<!-- .slide: data-background="Coral" id="5_exercicios" -->
+
+[Slides da matéria](pdf/03_testes_condicoes.pptx.pdf)
+
+
+---
+
+# Exercícios
+## 6 Ciclos
+### Livro King
+
+---
+
+#### King 6.1.
+
+Escreve um programa que encontra o maior número numa série de números introduzidos pelo utilizador.
+O programa pede os números um a um.
+
+```text
+Número:
+```
+
+---
+
+# Exercícios
+## 6 Ciclos
+### AFA
+
+--
+
+#### AFA 6.1

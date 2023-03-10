@@ -8,7 +8,7 @@
 ####  CAP / ENGEL
 dasilva@academiafa.edu.pt
 
-<!-- .slide: data-background="white" id="home"-->
+<!-- .slide: data-background="Cornsilk" id="home"-->
 
 ---
 
@@ -22,6 +22,7 @@ dasilva@academiafa.edu.pt
     <li><a href="#/4_expressions">Expressões</a></li>
     <li><a href="pdf/03_testes_condicoes.pptx.pdf">Testes e Condições</a></li>
     <li><a href="pdf/04_ciclos.pptx.pdf">Ciclos</a></li>
+    <li><a href="#/7_basic_types">Tipos básicos do C</a></li>
     <li><a href="pdf/05_funcoes.pptx.pdf">Funções</a></li>
     <li><a href="pdf/06_arrays.pptx.pdf">Arrays</a></li>
     <li><a href="pdf/07_strings.pptx.pdf">Strings</a></li>
