@@ -348,10 +348,109 @@ Escolha: 3
 #### King 6.1.
 
 Escreve um programa que encontra o maior número numa série de números introduzidos pelo utilizador.
-O programa pede os números um a um.
+O programa pede os números um a um, até encontrar um número seguido da letra f.
 
 ```text
-Número:
+Número: 60
+Número: 38.3
+Número: 4.89
+Número: 100.62
+Número: 75.2295f
+
+Número maior: 100.62
+```
+
+--
+
+#### King 6.2.
+
+Escreve um programa para calcular o máximo divisor comum (MCD) entre 2 inteiros.
+O programa pede 2 inteiros ao utilizador e indica o MCD.
+
+```text
+Numeros: 12 28
+MCD: 4
+```
+
+A estratégia mais simples (embora menos eficiente) é verificar o resto da divisão dos 2 números recebidos por todos os números a partir do menos dos 2 recebidos até 1. Assim que encontrar um número cujo resto das duas divisões seja 0, é esse o MCD, e.g.
+
+```text
+28 % 12 != 0
+12 % 12 == 0
+--
+28 % 11 != 0
+12 % 11 != 0
+--
+28 % 10 != 0
+12 % 10 != 0
+--
+    .
+    .
+    .
+28 % 4 == 0
+12 % 4 == 0
+MCD = 4 -> parar ciclo
+```
+
+--
+
+#### King 6.3.
+
+Escreve um programa que recebe 1 fração e simplifica-a.
+
+```text
+Introduza fracao: 6/12
+Simplificada: 1/2
+```
+
+Dica: usar a implementação do 6.2. para dividir o numerador e denominador pelo máximo divisor comum.
+
+--
+
+#### king 6.4. TODO
+
+--
+
+#### king 6.5.
+
+Escreve um programa que recebe um inteiro (de qualquer tamanho) e inverte os digitos.
+Usar apenas aritmética.
+
+--
+
+#### king 6.6.
+
+Escreve um programa que recebe um número n e escreve na consola todos os quadrados pares inferiores a n.
+Por exemplo, se o utilizador introduzir 100:
+
+```text
+4
+16
+36
+64
+100
+```
+
+--
+
+#### king 6.7. TODO
+
+--
+
+#### king 6.8
+
+Escreve um programa que escreve o calendário de um mês.
+O utilizador especifica o número de dias e o dia da semana onde começa o mês.
+
+```text
+Num dias no mes: 31
+Dia da semana (1=Domingo, 7=Sabado): 3
+ D  2  3  4  5  6  S
+       1  2  3  4  5
+ 6  7  8  9 10 11 12
+13 14 15 16 17 18 19
+20 21 22 23 24 25 26
+27 28 29 30 31
 ```
 
 ---

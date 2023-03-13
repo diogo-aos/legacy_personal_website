@@ -593,7 +593,7 @@ Altura a = 180;
 Massa m = 75;
 ```
 
-- Essencialmente, o que fizémos foi criar um int com um novo nome.
+- Essencialmente, o que fizemos foi criar um int com um novo nome.
 - Útil para tornar o código mais legível
 
 --
