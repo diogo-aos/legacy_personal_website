@@ -46,6 +46,16 @@
 						id="7_basic_types"
 						>
 				</section>
+				<section data-markdown="markdown/08_funcoes.md"
+						data-separator="^\r?\n---\r?\n$"
+						data-separator-vertical="^\r?\n--\r?\n$"
+						>
+				</section>
+				<section data-markdown="markdown/09_arrays.md"
+						data-separator="^\r?\n---\r?\n$"
+						data-separator-vertical="^\r?\n--\r?\n$"
+						>
+				</section>
 				<section data-markdown="markdown/13.md"
 						data-separator="^\r?\n---\r?\n$"
 						data-separator-vertical="^\r?\n--\r?\n$"
@@ -80,8 +90,20 @@
 
 			Reveal.configure({
 				keyboard: {
-					39: 'next', // go to the next slide when the ENTER key is pressed
-					37: 'prev', //
+					39: 'next', // right arraw, go to the next slide, not slide on right
+					37: 'prev', // left arrow, go to previous slide, not slide on left
+
+					68: 'right', // D, go right
+					65: 'left',  // A, left
+					87: 'up',    // W, up
+					//87: function() {Reveal.up();},    // W, up
+					83: 'down',  // S, down
+
+					//67: 'speaker', // C, spaker
+					67: function() {Reveal.getSlideNotes();},
+					
+					
+
 					},
 			})
 		</script>

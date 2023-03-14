@@ -12,6 +12,17 @@ dasilva@academiafa.edu.pt
 
 ---
 
+#### atalhos da apresentação
+
+```text
+Esc    | mostra panaroma de todos os slides
+WASD   | navegar nos slides
+Espaço | slide seguinte
+← →    | slide anterior/seguinte
+```
+
+---
+
 ## Índice
 
 <small>
@@ -23,8 +34,8 @@ dasilva@academiafa.edu.pt
     <li><a href="pdf/03_testes_condicoes.pptx.pdf">Testes e Condições</a></li>
     <li><a href="pdf/04_ciclos.pptx.pdf">Ciclos</a></li>
     <li><a href="#/7_basic_types">Tipos básicos do C</a></li>
-    <li><a href="pdf/05_funcoes.pptx.pdf">Funções</a></li>
-    <li><a href="pdf/06_arrays.pptx.pdf">Arrays</a></li>
+    <li><a href="#/funcoes">Funções</a></li>
+    <li><a href="#/array">Arrays</a></li>
     <li><a href="pdf/07_strings.pptx.pdf">Strings</a></li>
     <li><a href="pdf/08_pointers.pptx.pdf">Apontadores</a></li>
     <li><a href="pdf/10_struct.pptx.pdf">Struct</a></li>

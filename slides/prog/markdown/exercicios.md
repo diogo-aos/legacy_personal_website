@@ -459,6 +459,200 @@ Dia da semana (1=Domingo, 7=Sabado): 3
 ## 6 Ciclos
 ### AFA
 
+---
+
+# Exercícios
+## 7 Tipos
+### King
+
 --
 
-#### AFA 6.1
+#### King 7.1. modificado
+
+Escreve um programa que determina o menor número cujo quadrado causa overflow para int.
+Modifica o programa para usar short int, unsigned int, long, unsigned long.
+
+Para valores inteiros, o valor máximo é dado por 2^n, onde n é o número de bits.
+Com base nos resultados, consegues perceber qual é o número de bits usado para cada tipo?
+
+```text
+A executar para int
+Lado do primeiro quadrado que causa overflow: 46341
+Quadro que causa overflow: -2147479015
+Ultimo quadrado antes de overflow: 2147395600
+```
+
+
+Dica: para verificar quando houve overflow, verifica quando um determinado quadrado passa a ser menor que o quadrado anterior.
+
+--
+
+#### King 7.2 TODO
+
+--
+
+#### King 7.3 TODO
+
+--
+
+#### King 7.4 Número teclas telemóvel -> número
+
+Escreve um programa que recebe um conjunto de letras e converte para um número, com a conversão usada nos teclado alfanuméricos antigos.
+
+```text
+Numero em letras: CALLAT
+Numero: 225
+```
+
+Correspondência: 2=ABC, 3=DEF, 4=GHI, 5=JKL, 6=MNO, 7=PRS, 8=TUV, 9=WXY
+
+Se o número original contém carateres não numéricos, devem permanecer inalterados:
+
+```text
+Numero em letras: 1-800-COL-LECT
+Numero: 1-800-265-5328
+```
+
+Assunção: todos os carateres são em letras maiúsculas.
+
+Ajuda:
+- mesmo que um scanf peça apenas 1 char, o utilizador pode inserir um input do tamanho que quiser (até \n)
+- podemos ler os restantes carateres com sucessivas chamadas a scanf ou getchar.
+
+--
+
+#### King 7.5. scrabble TODO
+
+--
+
+#### King 7.7. frações
+
+Refaz o problema King 3.6, mas agora o utilizador pode também escolher a operação entre frações (+, -, *, /).
+
+--
+
+#### King 7.8. TODO
+
+--
+
+
+#### King 7.9. Horas AM/PM
+
+Com base na lógica do programa King 5.2, faz um programa que agora recebe uma hora no formato 12h e converte para 24h.
+A hora pode ser recebida das seguintes formas:
+```text
+1:15P
+1:15PM
+1:15Pm
+1:15 PM
+1:15 P
+1:15p
+1:15pm
+1:15 pm
+1:15 p
+```
+
+Exemplo de utilização:
+```text
+Hora 12: 9:11PM
+Hora 24: 21:11
+```
+
+--
+
+#### King 7.10 Contar vogais
+
+Escreve um programa que recebe uma frase do utilizador e conta o número de vogais.
+
+--
+
+#### King 7.11 Trocar nome
+
+Escreve um programa que recebe o primeiro e último nome do utilizador, e depois apresenta o nome no formato
+``Ultimo, Primeira letra do primeiro``.
+
+```text
+Nome: Diogo Silva
+Silva, D.
+```
+
+--
+
+#### King 7.12 Avaliar expressão
+
+Escreve um programa que avalia uma expressão matemática.
+
+```text
+Expressao: 1+2.5*3
+Resultado: 10.2
+```
+
+Notas:
+- As operações válidas são +, -, *, /.
+- Os operandos são todos intepretados como valores reais.
+- Não introduzir parêntises.
+- Calcular as operações da esquerda para a direita sem atenção à precedência de operações.
+
+--
+
+#### King 7.13. Tamanho médio das palavras
+
+Escreve um programa que recebe uma frase do utilizador e indica o tamanho médio das palavras.
+
+```text
+Frase: Este programa parece mais dificil do que e.
+Tamanho medio das palavras: 4.5
+```
+
+Nota: para simplificar, assume que a pontuação faz parte da palavra.
+
+--
+
+#### King 7.14 TODO
+
+---
+
+# Exercícios
+## 7 Tipos
+### AFA
+
+--
+
+#### AFA 7.1. minúscula -> maiúscula
+
+Escreve um programa que recebe uma letra minúscula e converte para maiúscula.
+
+--
+
+#### AFA 7.2. frase -> minúsculas
+
+Escreve um programa que recebe uma frase e converte todas as letras para minúsculas.
+Todos os carateres que não são letras maiúsculas não são modificados.
+
+--
+
+#### AFA 7.3. César letra
+
+- Escreve um programa que recebe uma letra e um inteiro (chave), e implementa a cifra de César.
+- A cifra de César é um método simples para codificar uma mensagem, com a simples translação do abecedário.
+- Por exemplo, se a chave tem o valor 1, então o 'A' é convertido para 'B', 'B' para 'C', 'Z' para 'A'.
+- Se a chave for negativa, a conversão é no sentido oposto.
+- Converte apenas letras.
+
+```text
+Chave: 2
+Letra: L
+Letra codificada: N
+```
+
+--
+
+#### AFA 7.4. César frase
+
+Escreve um programa que recebe uma frase e uma chave, e codifica a frase com a cifra de César.
+
+--
+
+
+
+
