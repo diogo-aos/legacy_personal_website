@@ -44,6 +44,7 @@ dasilva@academiafa.edu.pt
 5. [Demo _Arrays_ multi-dimensionais - 10min](https://www.loom.com/share/2c9dfef1a9f64ae7b84092c4111933cc)
    1. 0:00 explicação do enunciado
    2. 0:56 inicio do resolução
+6. [Erros comuns, VLAs - 5min](https://www.loom.com/share/a5ef7a580a604309b9b3938e3b47552e)
 
 
 ---
