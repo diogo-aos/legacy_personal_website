@@ -651,8 +651,252 @@ Letra codificada: N
 
 Escreve um programa que recebe uma frase e uma chave, e codifica a frase com a cifra de César.
 
+---
+
+# Exercícios
+## 8 Funções
+### King
+
 --
 
+#### King 9.2. IRS
+
+Reimplementa o exercício King 5.5. na forma de função. A função tem o nome calcular_irs, recebe um rendimento sobre a forma de um valor real e devolve outro valor real correspondente ao imposto devido.
+
+O programa pede um rendimento ao utilizador e indica no final o imposto devido e o rendimento total líquido (o valor recebido menos o imposto).
+
+Notas:
+- a função criada não lê valores da consola nem os escreve
+- leitura e escrita na consola é feita na função main
 
 
+--
 
+#### King 9.6. polinómio
+
+Escreve uma função que recebe um valor real x e devolve o resultado da avaliação desse valor no seguinte polinómio:
+
+`3x^5 + 2x^4 - 5x^3 - x^2 + 7x - 6`
+
+Notas:
+- x^5 significa x*x*x*x*x, x^4=...
+- resolva primeiro o exercício AFA 8.1. e use essa função para calcular as potências
+
+---
+
+# Exercícios
+## 8 Funções
+### AFA
+
+--
+
+#### AFA 8.1. potência
+
+Escreve uma função chamada _potencia_ que recebe uma base _b_ (valor real) e um expoente _e_ (inteiro).
+A função devolve o revolve o resultado da potência.
+
+Nota:
+- quando um expoente é negativo, o resultado final é 1/(b^e).
+- não ler nem escrever da consola
+- usar a função main para testar se a função está a funcionar correctamente.
+
+--
+
+#### AFA 8.2. máximo divisor comum
+
+- Reimplementa o exercício do máximo divisor comum (King 6.2.) na forma de função.
+- A função 
+  - chama-se _calcular_mdc_
+  - recebe 2 valores inteiros
+  - devolve o MDC entre esses 2 valores
+
+--
+
+#### AFA 8.3. tabela de polinómio
+
+- Implementa uma função que avalia um polinómio de 2º grau num determinado intervalo.
+- A função
+  - chama-se _poli2_intervalo_
+  - recebe o limite inferior e limite superior do intervalo a avaliar (reais)
+  - recebe o número de pontos a avaliar (inteiro positivo)
+  - recebe os 3 coeficientes (reais)
+  - escreve na consola o valor do polinómio nos pontos
+  - devolve o valor do polinómio no ponto limite superior
+
+A tabela produzida deve ter o seguinte aspeto (se a=0.0, b=1.0, c=0.0, limInf=0.0, limSup=1.0, numPontos=5):
+
+```text
+0.000000 0.000000 
+0.250000 0.250000 
+0.500000 0.500000 
+0.750000 0.750000 
+1.000000 1.000000 
+```
+
+Notas:
+- Além da função _poli2_intervalo_, implementa a função _poli2_ponto_ que recebe os coeficientes do polinómio, o ponto _x_ a avaliar e devolve o resultado desse polinómio no ponto recebido (ver exercício King 9.6)
+- Valores introduzidos pelo utilziador (coeficiente, limite inferior, superior, e nº de pontos) são pedidos na função main.
+- Um dos primeiros cálculos será a distância entre 2 pontos, e.g. no exemplo acima a distância entre pontos é de 0.25.
+
+--
+
+#### AFA 8.4. polinómio grau n
+
+- Escreve uma função que avalia um polinómio de grau N num determinado ponto.
+- A função 
+  - chama-se _poliN_ponto_
+  - recebe apenas o ponto onde o polinómio será avaliado
+  - pede ao utilizador o valor dos coeficientes, começando no grau menos elevado (0)
+  - pára de pedir coeficientes quando um dos coeficientes é seguido da letra f (ver King 6.1.)
+  - devolve o valor do polinómio no ponto recebido
+
+Notas:
+- o ponto a ser avaliado é recebido na main
+- o resultado do polinómio deve ser escrito para a consola na main, com 4 casas decimais
+
+
+Exemplo:
+```text
+Ponto: 1.0
+Coeficiente do grau 0: 1.0
+Coeficiente do grau 1: 0
+Coeficiente do grau 2: 0
+Coeficiente do grau 3: 2f
+Resultado: 1.00
+```
+
+---
+
+# Exercícios
+## 9 Array
+### King
+
+--
+
+#### King 8.1. digitos repetidos
+
+- Implementa um programa que recebe um inteiro do utilizador e indica quais são os digitos repetidos.
+- No final o programa indica quais são os digitos repetidos, por ordem crescente.
+
+Exemplo:
+
+```text
+Numero inteiro: 939577
+Repetidos: 7 9
+
+--
+
+Numero inteiro: 9339577
+Repetidos: 3 7 9
+```
+
+--
+
+#### King 8.2. histograma digitos
+
+Modifica o programa King 8.1. para devolver quantas vezes cada digito aparece num dado número.
+
+```text
+Numero inteiro: 41271092
+Digitos:    0   1   2   3   4   5   6   7   8   9
+Contagem:   1   2   2   0   1   0   0   1   0   1
+```
+
+--
+
+#### King 8.7. matriz 5x5 
+
+- Escreve um programa que recebe uma matriz de 5x5, linha a linha, e escreve no final o total de cada linha e de cada coluna.
+- Guarda a matriz num array bidimensional.
+
+Exemplo:
+```text
+Linha 1: 8 3 9 0 10
+Linha 2: 3 5 17 1 1
+Linha 3: 2 8 6 23 1
+Linha 4: 15 7 3 2 9
+Linha 5: 6 14 2 6 0
+
+Totais linhas: 30 27 40 36 28
+Totais colunas: 34 37 37 32 21
+```
+
+--
+
+#### King 8.8. notas testes alunos
+
+- Modifica o programa King 8.7. para que cada linha corresponda para as 5 notas de testes de um aluno
+- O programa indica a nota final (soma) do aluno, assim como a média de cada teste.
+- O programa indica ainda, para cada teste, qual foi a nota mínima, máxima e média.
+
+--
+
+#### King 8.9. _random walk_
+
+- Escreve um programa que gera um passeio aleatório num array 10x10.
+- Inicialmente todas as posições do array têm o carater '.'
+- O programa não pode voltar para uma posição já visitada anteriormente.
+- Cada vez que o programa visita uma posição, essa posição fica com o valor A,B,C... pela ordem de visita.
+- É necessário verificar se a posição de destino selecionada está dentro da matriz.
+- Se por acaso todas as direções possíveis estiverem bloqueadas (ocupadas ou fora da matriz), o programa acaba.
+- O passeio acaba na letra Z.
+- O programa mostra a matriz apenas no final do passeio.
+
+Exemplo normal:
+```text
+A . . . . . . . . .
+B C D . . . . . . .
+. F E . . . . . . .
+H G . . . . . . . .
+I . . . . . . . . .
+J . . . . . . . Z .
+K . . R S T U V Y .
+L M P Q . . . W X .
+. N O . . . . . . .
+. . . . . . . . . .
+```
+
+Exemplo de terminação prematura (acabou no Y):
+```text
+A B G H I . . . . .
+. C F . J K . . . .
+. D E . M L . . . .
+. . . . N O . . . .
+. . W X Y P Q . . .
+. . V U T S R . . .
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+. . . . . . . . . .
+```
+
+Notas:
+- para gerar números aleatórios, usar a função rand (ver exemplo abaixo)
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+int main () {
+   int i, n;
+   time_t t;
+   
+   n = 5;
+   
+   /* Intializes random number generator */
+   srand((unsigned) time(&t));
+
+   /* Print 5 random numbers from 0 to 49 */
+   for( i = 0 ; i < n ; i++ ) {
+      printf("%d\n", rand() % 50);
+   }
+   
+   return(0);
+}
+```
+
+---
+
+# Exercícios
+## 9 Array
+### AFA
