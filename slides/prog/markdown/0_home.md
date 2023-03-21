@@ -50,6 +50,7 @@ Espaço | slide seguinte
     <li><a href="#/files">Ficheiros</a></li>
     <li><a href="#/memory">Memória</a></li>
     <li><a href="#/data_structs">Dynamic Data Structures</a></li>
+    <li><a href="#/extra">Extra</a></li>
     <li><a href="#/exercicios">Exercícios</a></li>
 </ol>
 

@@ -3,10 +3,18 @@
 # Exercícios
 <!-- .slide: data-background="Cornsilk" -->
 
-- [Fundamentos](#/2_exercicios)
-- [I/O Formatado](#/3_exercicios)
-- [Expressões](#/4_exercicios)
-- [Seleção](#/5_exercicios)
+2. [Fundamentos](#/2_exercicios)
+3. [I/O Formatado](#/3_exercicios)
+4. [Expressões](#/4_exercicios)
+5. [Seleção](#/5_exercicios)
+6. [Ciclos](#/6_ciclos_exercicios)
+7. [Tipos](#/7_tipos_exercicios)
+8. [Funções](#/8_funcoes_exercicios)
+9. [_Arrays_](#/9_arrays_exercicios)
+10. [_Strings_](#/10_strings_exercicios)
+11. [Apontadores](#/11_pointers_exercicios)
+
+
 
 ---
 
@@ -26,9 +34,9 @@
 
 ---
 
-# Exercícios
+
 ## 3 I/O Formatado
-### Livro King
+### Exercícios do Livro King
 
 --
 
@@ -95,9 +103,9 @@ Soma: 38/24
 
 ---
 
-# Exercícios
+
 ## 4 Expressões
-### Livro King
+### Exercícios do Livro King
 
 --
 
@@ -139,9 +147,9 @@ Reimplementa o programa do 4.2 sem usar aritmética. O enunciado dos 4.1 e 4.2 e
 
 ---
 
-# Exercícios
+
 ## 5 Seleção
-### Livro King
+### Exercícios do Livro King
 
 --
 
@@ -283,8 +291,8 @@ Letra: quarenta e dois
 ---
 
 
-
-## AFA
+## 5 Seleção
+### Exercícios AFA
 
 --
 
@@ -332,18 +340,18 @@ Escolha: 3
 
 # Exercícios
 ## 6 Ciclos
-<!-- .slide: data-background="Coral" id="5_exercicios" -->
+<!-- .slide: data-background="Coral" id="6_ciclos_exercicios" -->
 
 [Slides da matéria](pdf/03_testes_condicoes.pptx.pdf)
 
 
 ---
 
-# Exercícios
-## 6 Ciclos
-### Livro King
 
----
+## 6 Ciclos
+### Exercícios Livro King
+
+--
 
 #### King 6.1.
 
@@ -455,15 +463,24 @@ Dia da semana (1=Domingo, 7=Sabado): 3
 
 ---
 
-# Exercícios
+
 ## 6 Ciclos
-### AFA
+### Exercícios AFA
 
 ---
 
 # Exercícios
 ## 7 Tipos
 ### King
+<!-- .slide: data-background="Coral" id="7_tipos_exercicios" -->
+
+[Slides da matéria]()
+
+---
+
+
+## 7 Tipos
+### Exercícios Livro King
 
 --
 
@@ -610,11 +627,12 @@ Nota: para simplificar, assume que a pontuação faz parte da palavra.
 
 #### King 7.14 TODO
 
+
 ---
 
-# Exercícios
+
 ## 7 Tipos
-### AFA
+### Exercícios AFA
 
 --
 
@@ -655,7 +673,15 @@ Escreve um programa que recebe uma frase e uma chave, e codifica a frase com a c
 
 # Exercícios
 ## 8 Funções
-### King
+<!-- .slide: data-background="Coral" id="8_funcoes_exercicios" -->
+
+[Slides da matéria]()
+
+---
+
+
+## 8 Funções
+### Exercícios King
 
 --
 
@@ -684,9 +710,8 @@ Notas:
 
 ---
 
-# Exercícios
 ## 8 Funções
-### AFA
+### Exercícios AFA
 
 --
 
@@ -767,9 +792,19 @@ Resultado: 1.00
 
 ---
 
+
 # Exercícios
 ## 9 Array
-### King
+<!-- .slide: data-background="Coral" id="9_arrays_exercicios" -->
+
+[Slides da matéria]()
+
+
+---
+
+
+## 9 Array
+### Exercícios King
 
 --
 
@@ -895,8 +930,106 @@ int main () {
 }
 ```
 
+--
+
+#### King 9.1. _selection sort_
+
+- Escreve um programa que recebe um conjunto de inteiros do utilizador e, no final, mostra esses números ordenados.
+- O programa recebe os números um a um até que um dos números tenha um 'f' após o último digito, e.g. `42f`.
+- O programa guarda os números num _array_.
+- Assuma que o número máximo de inteiros a receber é 200.
+- O programa ordena os números do _array_ com a função *selection_sort*.
+- A função *selection_sort* recebe um vector e ordena-o. Para isso, faz o seguinte:
+  - Procura no array o maior elemento e passa-o a última posição.
+  - Procura no array o segundo maior elemento e passa-o para a penúltima posição.
+  - ...
+  - Repetir n-1 vezes, em que n é o tamanho do vetor.
+  - O uso de recursão é especialmente adequado.
+- Os inteiros são pedidos na main.
+
+--
+
+#### King 9.3. modificado, _random walk_ 
+
+- Modifica o problema King 8.9 para que seja implementado com 3 funções:
+  - *void fill_array(char walk[10][10], char f)* recebe a matriz e preenche em todas as posições da matriz o carater f.
+  - *random_walk_generator(char walk[10][10])* recebe a matriz e gera uma nova _random walk_ com a lógica do King 8.9.
+  - *print_array(char walk[10][10])* recebe a matriz e escreve-a na consola.
+- Na função main, apenas deve ser criada a matriz e o programa implementa as funcionalidades pretendidas chamando estas funções.
+
+--
+
+#### King 9.5. _magic square_
+
+- Escreve um programa que escreve uma matriz n x n:
+  - com todos os números de 1 até n^2
+  - em que a soma de todas as linhas, colunas e diagonais são iguais
+  - n tem de ser um inteiro ímpar entre 1 e 99
+- O utilizador especifica a dimensão da matriz, indicando o valor _n_.
+- Implementa a lógica na função _generate_magic_square_, que recebe um vetor de tamanho variável.
+- Para construir a matriz:
+  - começar por escrever 1 no meio da primeira linha
+  - escrever os valores seguintes na linha acima e na coluna seguinte
+  - se a linha acima estiver fora da matriz, deve-se dar a volta, e.g. -1 -> n-1
+  - se a coluna à direita estiver fora da matriz, deve-se dar a volta, e.g. n -> 0
+  - se a posição já estiver ocupada, deve-se colocar o número na posição abaixo da última posição preenchida.
+- Escreve uma função print_magic_square que recebe a matriz e apresenta o resultado na consola.
+- Deve também indicar qual é o valor da soma das linhas, colunas e diagonais, que é o mesmo valor.
+
+Exemplo:
+
+```text
+Introduza um inteiro ímpar entre 1 e 99: 5
+17 24  1  8 15
+23  5  7 14 16
+ 4  6 13 20 22
+10 12 19 21  3
+11 18 25  2  9
+```
+
+---
+
+
+## 9 Array
+### Exercícios AFA
+
+--
+
+#### AFA 9.1. polinómio
+
+- Escreve uma função poliN que recebe um vetor _coef_ de reais que pode ter qualquer tamanho (deve também receber outro parâmetro _n_ com o tamanho real do vector) e um real _x_.
+- A função avalia um polinómio de grau n-1 no ponto _x_.
+- Os coeficientes do polinómio estão no vetor recebido.
+- Pode usar a função [_pow_](https://man7.org/linux/man-pages/man3/pow.3p.html) (da biblioteca math.h) para calcular as potências (ou usar a solução do exercício AFA 8.1.).
+- coef[0] corresponde ao coeficiente de menor grau, coef[1] corresponde ao coeficiente do 2º menor grau, ...
+- Para um polinómio de grau 3:
+
+```text
+coef[0] + coef[1] * x + coef[2] * x^2
+```
+
+Exemplo de utilização da função _pow_:
+
+```c
+#include <math.h>
+
+int main(){
+  printf("2^2 = %lf", pow(2.0, 2.0));
+}
+```
+
 ---
 
 # Exercícios
-## 9 Array
-### AFA
+## 10 Strings
+<!-- .slide: data-background="Coral" id="10_strings_exercicios" -->
+
+[Slides da matéria]()
+
+---
+
+# Exercícios
+## 11 Apontadores
+<!-- .slide: data-background="Coral" id="11_pointers_exercicios" -->
+
+[Slides da matéria]()
