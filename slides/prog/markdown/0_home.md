@@ -57,3 +57,7 @@ Espaço | slide seguinte
 <p>Pressionar a tecla Esc (Escape) para ver todos os slides.</p>
 </small>
 
+
+---
+
+[Setup VSCode locally](https://www.youtube.com/watch?v=HiyfEbbCWT4)
