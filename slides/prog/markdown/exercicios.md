@@ -1077,6 +1077,29 @@ indeces:    1  2  0   3
 
 #### AFA 10.1. Cifras de césar
 
+- Refaz o exercício AFA 7.4. mas usando strings.
+  - Escreve uma função que recebe um char e uma cifra (int) e devolve esse char cifrado.
+  - Escreve uma função que recebe uma string com uma mensagem.
+    - A função converte essa mensagem numa mensagem cifrada, usando a função acima.
+    - A função reescreve a mensagem cifrada sobre a mensagem original (mesma string)
+  - A função main é a única que interage com o utilizador.
+    - Pede uma frase ao utilizador, guardando-a numa string.
+    - Essa string é passada para a função que a vai cifrar.
+    - No final, escrever na consola a mensagem cifrada.
+- Enunciado AFA 7.4. César frase
+  - Escreve um programa que recebe uma frase e uma chave, e codifica a frase com a cifra de César.
+- Enunciado AFA 7.3. César letra
+  - Escreve um programa que recebe uma letra e um inteiro (chave), e implementa a cifra de César.
+  - A cifra de César é um método simples para codificar uma mensagem, com a simples translação do abecedário.
+  - Por exemplo, se a chave tem o valor 1, então o 'A' é convertido para 'B', 'B' para 'C', 'Z' para 'A'.
+  - Se a chave for negativa, a conversão é no sentido oposto.
+  - Converte apenas letras.
+    ```text
+    Chave: 2
+    Letra: L
+    Letra codificada: N
+    ```
+
 ---
 
 ## 11 Exercícios Apontadores
