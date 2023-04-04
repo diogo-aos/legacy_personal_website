@@ -38,10 +38,11 @@ dasilva@academiafa.edu.pt
 6. [Demo 1 | 10min](https://www.loom.com/share/80c0eace852b42c897bb420b4bd8dcfd)
 7. [Demo 1 | correção de criar_aluno | 3min](https://www.loom.com/share/f6c2db7eb645495dbd207f37fdb7366d)
 8. [Demo 1a | vector de Aluno | 4min](https://www.loom.com/share/e9dc20b505b04c1891e4efd0cea2e548)
-9. [Demo 1b]()
-10. [Demo 1c]()
-11. [Demo 1d]()
-12. [Demo 2]()
+9. [Demo 1b](https://www.loom.com/share/f067103801864b5cb8bc2bcbaa7f4eea)
+10. [Demo 1c](https://www.loom.com/share/6440a24081944296bc94c7e0e768a98b)
+11. [Demo 1d](https://www.loom.com/share/6440a24081944296bc94c7e0e768a98b)
+12. [Demo 1f](https://www.loom.com/share/93b3b54c1b694e91b50bd27513855725)
+13. [Demo 1g](https://www.loom.com/share/ab6294191a52423ca921aacd6c550be6)
 
 
 --
@@ -80,25 +81,29 @@ dasilva@academiafa.edu.pt
 - Agora a lista de ``Aluno`` é a lista de todos os alunos.
 - Crie um vector para a lista de UCs (tamanho de ``MAX_UC``) na ``main``.
 - Crie a função ``criarUC``:
-  - pede os dados de uma ``UC`` (nome, abreviatura) ao utilizador
-  - mostra lista de todos os alunos
-  - utilizador escolhe quais os alunos da lista inscritos nesta UC (adicionar ao vetor ``alunos``)
+  - não recebe argumentos
+  - pede os dados de uma ``UC`` (nome, abreviatura, número de créditos) ao utilizador
   - devolver a ``UC`` criada
 - Cria a função ``mostrarUC``
   - recebe um apontador de ``UC``
   - mostra os dados da ``UC``, incluindo a lista dos alunos inscritos
 - Dicas:
-  - para facilitar o teste das novas funcionalidades, inicialize o vector de todos os alunos com dados no código.
+  - para facilitar o teste das funcionalidades, inicialize o vector de todos os alunos com dados no código
+  - para facilitar o teste das funcionalidades, inicialize o vetor de todas as UCs com algumas UCs já com alunos inscritos
 
 --
 
 #### Exercício 1c
 
-- Implementa a função ``mediaUC`` que recebe um apontador de UC e calcula a média das notas dos alunos.
+- Implementa a função ``media_UC`` que recebe um apontador de UC e calcula a média das notas dos alunos.
+- Altera a função ``mostrarUC`` para mostrar a média da UC que recebe.
+
+--
+
 
 #### Exercício 1d
 
-- Implementa a função ``mediaAluno``
+- Implementa a função ``media_aluno``
   - recebe
     - apontador de Aluno
     - lista de todas as UCs
@@ -106,18 +111,43 @@ dasilva@academiafa.edu.pt
     - valor real com a média ponderada (ter em conta os ECTS de cada UC) de todas as UCs em que o aluno está inscrito
   - esta função tem de percorrer todas as UCs e verificar se o aluno está inscrito nessa UC
 
+--
+
+
 #### Exercício 1e
 
-- Implementa a função ``mediaTotal``
+- Implementa a função ``media_total``
   - recebe
     - lista de todos os alunos
     - lista de todas as UCs
   - devolve
-    - real com a média aritmética da média ponderada de todos os alunos
+    - real correspondente à média aritmética da média ponderada de todos os alunos
 
 --
 
 #### Exercício 1f
+
+- Implementa a função ``inscrever_UC``
+  - recebe apontador de ``UC``
+  - lista de todos os alunos
+- mostra lista de todos os alunos
+- utilizador escolhe quais os alunos da lista a inscrever nesta UC
+  - escrever os índices e terminar lista com algum carater não numérico
+  - exemplo:
+    ```text
+    Lista de todos os alunos:
+            0 - 136787 - Asimov
+            1 - 136867 - Turing
+            2 - 122444 - Oppenheimer
+            3 - 133555 - Newton
+    Índices dos alunos que quer inscrever (separados por espaço):
+    1 5 3 f
+    ```
+- adicionar os alunos escolhidos ao vetor ``alunos`` da UC
+
+--
+
+#### Exercício 1g
 
 - Implementa a função ``inscrever_aluno``
   - recebe
