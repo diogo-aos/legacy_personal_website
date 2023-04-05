@@ -1,29 +1,23 @@
-<img src="img/afa.png" height="100">
-
-# Exercícios
-<!-- .slide: data-background="Cornsilk" -->
-
+---
+title: "Programação"
+subtitle: "Exercícios"
+institute: "Academia da Força Aérea"
+author: CAP Diogo Silva
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    html-math-method: katex
 ---
 
+# Notas
 
-2. [Fundamentos](#/2_exercicios)
-3. [I/O Formatado](#/3_exercicios)
-4. [Expressões](#/4_exercicios)
-5. [Seleção](#/5_exercicios)
-6. [Ciclos](#/6_ciclos_exercicios)
-7. [Tipos](#/7_tipos_exercicios)
-8. [Funções](#/8_funcoes_exercicios)
-9. [_Arrays_](#/9_arrays_exercicios)
-10. [_Strings_](#/10_strings_exercicios)
-11. [Apontadores](#/11_pointers_exercicios)
-12. Struct
-13. Ficheiros
-14. Memória
-15. Estruturas de Dados Dinâmicas
+Os exercícios denominados "King ..." são retirados do livro 
 
----
+["C Programming: A Modern Approach, 2nd Edition" do K. N. King](http://knking.com/books/c2/index.html)
 
-## 2 Exercícios Fundamentos
+# 2 Fundamentos
 <!-- .slide: data-background="Coral" id="2_exercicios" -->
 
 [Slides da matéria](#/2_fundamentals)
@@ -31,18 +25,18 @@
 ---
 
 
-## Exercícios 3 I/O Formatado
+# 3 I/O Formatado
 <!-- .slide: data-background="Coral" id="3_exercicios"-->
 
 [Slides da matéria](#/3_formated_io)
 
 ---
 
-### Exercícios I/O Formatado King
+## Exercícios I/O Formatado King
 
 --
 
-#### King 3.1.
+### King 3.1. mudar formato de data
 
 Escreve um programa que aceita uma data do utilizador no formato "dd/mm/aaaa" e escreve na consola a mesma data no formato "aaaa-mm-dd".
 
@@ -53,7 +47,7 @@ Escreveu:    2023/02/01
 
 --
 
-#### King 3.2.
+### King 3.2. formatar input produtos
 
 Escreve um programa que formata os dados de um produto inseridos pelo utilizador.
 
@@ -72,19 +66,19 @@ Dica: usa "\t" para alinhas as colunas.
 
 --
 
-#### King 3.3. TODO
+### King 3.3. TODO
 
 --
 
-#### King 3.4. TODO
+### King 3.4. TODO
 
 --
 
-#### King 3.5. TODO
+### King 3.5. TODO
 
 --
 
-#### King 3.6. frações
+### King 3.6. frações
 
 Escreve um programa que recebe 2 frações do utilizador e escreve a sua soma.
 O programa recebe as duas frações de uma só vez, separadas por +.
@@ -97,7 +91,7 @@ Soma: 38/24
 
 ---
 
-## 4 Exercícios Expressões
+# 4 Expressões
 <!-- .slide: data-background="Coral" id="4_exercicios" -->
 
 [Slides da matéria](#/4_expressions)
@@ -105,11 +99,11 @@ Soma: 38/24
 ---
 
 
-### Exercícios Expressões King
+## King
 
 --
 
-#### King 4.1.
+### King 4.1. inverter 2 digitos
 
 Escreve um programa que pede ao utilizar um número inteiro de 2 digitos e devolve esse número com os digitos invertidos.
 Exemplo de execução:
@@ -125,32 +119,28 @@ Dica: %10 devolve o último digito de um número e /10 remove o último digito.
 
 --
 
-#### King 4.2
+### King 4.2 inverter 3 digitos
 
-Extende o programa anterior para números de 3 digitos.
+Extende o programa anterior ([King 4.1.](#king-4.1.)) para números de 3 digitos.
 
 --
 
-#### King 4.3
+### King 4.3 inverter 3 digitos, variante
 
-Reimplementa o programa do 4.2 sem usar aritmética. O enunciado dos 4.1 e 4.2 estão abaixo.
+Reimplementa o programa do [King 4.2](#king-4.2) sem usar aritmética.
 
 
 ---
 
-## 5 Exercícios Seleção
+# 5 Exercícios Seleção
 <!-- .slide: data-background="Coral" id="5_exercicios" -->
 
 [Slides da matéria](pdf/03_testes_condicoes.pptx.pdf)
 
 
----
+## King
 
-### Exercícios Seleção King
-
---
-
-#### King 5.1
+### King 5.1 quantos digitos
 
 Escreve um programa que recebe um número inteiro e indica quantos digitos esse número tem.
 
@@ -163,9 +153,7 @@ Introduza numero inteiro (maximo 4 digitos): 42
 
 Ajuda: usa if para fazer essa verificação, e.g. se o número estiver entre 10 e 99, então tem 2 digitos.
 
---
-
-#### King 5.2
+### King 5.2 conversão AM/PM
 
 Escreve um programa que recebe uma hora no formato de 0-24h e converte para o formato 0-12h.
 
@@ -178,24 +166,25 @@ Hora no formato 12h:           10:32 AM
 
 ```
 
---
+### King 5.3. TODO
 
-#### King 5.3. TODO
-
---
-
-#### King 5.4
+### King 5.4 escala Beaufort
 
 A escala de Beaufort indica uma descrição do vento com base na sua velocidade.
 Uma versão simplificada é a seguinte:
 
-![](img/5_selection/king_5_4.png)
+| Speed (knots) | Description |
+| ------------- | ----------- |
+| <1 | Calm |
+| 1-3 | Light air |
+| 4-27 | Breeze |
+| 28-47 | Gale |
+| 48-63 | Storm |
+| >63 | Hurricane |
 
-Escreve um programa que recebe a valocidade do vento e indica a descrição correspondente.
+Escreve um programa que recebe a velocidade do vento e indica a descrição correspondente.
 
---
-
-#### King 5.5 escalões IRS
+### King 5.5 escalões IRS
 
 O imposto cobrado sobre o rendimento é feito de forma progressiva por escalões (exemplo no slide seguinte).
 Versão simplificada dos escalões de 2023:
@@ -203,8 +192,6 @@ Versão simplificada dos escalões de 2023:
 ![](img/5_selection/king_5_5.png)
 
 Escreve um programa que recebe o rendimento anual bruto e indica o imposto total sobre o rendimento e o rendimento líquido final.
-
---
 
 Imposto progressivo significa que o mesmo rendimento vai ser tributado em escalões diferentes, e.g.
 
@@ -217,13 +204,10 @@ Tributaçao no escalão 4 e 5 não existe porque o
 rendimento não é alto o suficiente.
 ```
 
---
 
-#### King 5.6 TODO
+### King 5.6 TODO
 
---
-
-#### King 5.7
+### King 5.7 min e max de 4 números
 
 Escreve um programa que recebe 4 números inteiros e indica o número mais alto e o mais pequeno.
 
@@ -235,15 +219,12 @@ Smallest : 10
 
 Usa o mínimo de ``if`` possível.
 
-Ajuda: se trocares o valor das variáveis, ``4`` if são suficientes.
+Ajuda: ``4`` if são suficientes.
 
---
 
-#### King 5.8 voo mais próximo TODO
+### King 5.8 voo mais próximo TODO
 
---
-
-#### King 5.9 data menor
+### King 5.9 data menor
 
 Escreve um programa que pede 2 datas ao utilizador e indica qual é a data que vem antes no calendário.
 
@@ -253,9 +234,8 @@ Data 2: 3/6/2005
 3/6/2005 vem antes de 3/6/2007
 ```
 
---
 
-#### King 5.10 nota para letra
+### King 5.10 nota para letra
 
 Escreve um programa que converte uma nota entre 0 e 100 para uma letra, segundo a seguinte correspondência: A = 90-100, B = 80-89, C = 70-79, D = 60-69, F = 0-59.
 
@@ -274,9 +254,8 @@ Erro, nota deve estar entre 0 e 100.
 Ajuda: usa o primeiro digito da nota para fazer a correspondência no switch.
 
 
---
 
-#### King 5.11 número por extenso
+### King 5.11 número por extenso
 
 Escreve um programa que recebe um inteiro de 2 digitos e escreve o número por extenso. Implementa o programa sem ``if``.
 
@@ -285,13 +264,11 @@ Nota: 42
 Letra: quarenta e dois
 ```
 
----
 
-### Exercícios Seleção AFA
+## Exercícios Seleção AFA
 
---
 
-#### AFA 5.1. Converte gramas para outras unidades
+### AFA 5.1. Converte gramas para outras unidades
 
 Escreve um programa que converte entre unidades de massa.
 O programa primeiro pede o valor da massa em gramas.
@@ -308,7 +285,7 @@ Escolha: 3
 500 g = 0.5000 kg
 ```
 
-#### AFA 5.2 Converter unidades de massa
+### AFA 5.2 Converter unidades de massa
 
 Altera o programa AFA 5.1 para se possa converter entre quaisquer 2 unidades.
 Para conseguir isto, o programa pede o valor da massa, depois pede a unidade desse valor e finalmente a unidade da conversão.
@@ -331,21 +308,18 @@ Escolha: 3
 500 g = 0.5000 kg
 ```
 
----
 
-## 6 Exercícios Ciclos
+# 6 Exercícios Ciclos
 <!-- .slide: data-background="Coral" id="6_ciclos_exercicios" -->
 
 [Slides da matéria](pdf/03_testes_condicoes.pptx.pdf)
 
 
----
 
-### Exercícios Ciclos King
+## Ciclos King
 
---
 
-#### King 6.1. Maior número de série recebida
+### King 6.1. Maior número de série recebida
 
 Escreve um programa que encontra o maior número numa série de números introduzidos pelo utilizador.
 O programa pede os números um a um, até encontrar um número seguido da letra f.
@@ -360,9 +334,7 @@ Número: 75.2295f
 Número maior: 100.62
 ```
 
---
-
-#### King 6.2. Máximo Divisor Comum
+### King 6.2. Máximo Divisor Comum
 
 Escreve um programa para calcular o máximo divisor comum (MCD) entre 2 inteiros.
 O programa pede 2 inteiros ao utilizador e indica o MCD.
@@ -392,9 +364,8 @@ A estratégia mais simples (embora menos eficiente) é verificar o resto da divi
 MCD = 4 -> parar ciclo
 ```
 
---
 
-#### King 6.3. Simplificar fração
+### King 6.3. Simplificar fração
 
 Escreve um programa que recebe 1 fração e simplifica-a.
 
@@ -405,16 +376,16 @@ Simplificada: 1/2
 
 Dica: usar a implementação do 6.2. para dividir o numerador e denominador pelo máximo divisor comum.
 
---
 
-#### king 6.5.
+
+### king 6.5.
 
 Escreve um programa que recebe um inteiro (de qualquer tamanho) e inverte os digitos.
 Usar apenas aritmética.
 
---
 
-#### King 6.6. Quadrados inferiores a n
+
+### King 6.6. Quadrados inferiores a n
 
 Escreve um programa que recebe um número n e escreve na consola todos os quadrados pares inferiores a n.
 Por exemplo, se o utilizador introduzir 100:
@@ -427,43 +398,20 @@ Por exemplo, se o utilizador introduzir 100:
 100
 ```
 
---
 
-#### king 6.8 Calendário
-<!-- .slide: data-visibility="hidden" -->
+## Exercícios Ciclos AFA
 
-Escreve um programa que escreve o calendário de um mês.
-O utilizador especifica o número de dias e o dia da semana onde começa o mês.
 
-```text
-Num dias no mes: 31
-Dia da semana (1=Domingo, 7=Sabado): 3
- D  2  3  4  5  6  S
-       1  2  3  4  5
- 6  7  8  9 10 11 12
-13 14 15 16 17 18 19
-20 21 22 23 24 25 26
-27 28 29 30 31
-```
-
----
-
-### Exercícios Ciclos AFA
-
----
-
-## 7 Exercícios Tipos
+# 7 Exercícios Tipos
 <!-- .slide: data-background="Coral" id="7_tipos_exercicios" -->
 
 [Slides da matéria]()
 
----
 
-### Exercícios Tipos King
+## Exercícios Tipos King
 
---
 
-#### King 7.1. modificado
+### King 7.1. modificado
 
 Escreve um programa que determina o menor número cujo quadrado causa overflow para int.
 Modifica o programa para usar short int, unsigned int, long, unsigned long.
@@ -481,17 +429,14 @@ Ultimo quadrado antes de overflow: 2147395600
 
 Dica: para verificar quando houve overflow, verifica quando um determinado quadrado passa a ser menor que o quadrado anterior.
 
---
 
-#### King 7.2 TODO
+### King 7.2 TODO
 
---
 
-#### King 7.3 TODO
+### King 7.3 TODO
 
---
 
-#### King 7.4 Número teclas telemóvel -> número
+### King 7.4 Número teclas telemóvel -> número
 
 Escreve um programa que recebe um conjunto de letras e converte para um número, com a conversão usada nos teclado alfanuméricos antigos.
 
@@ -515,26 +460,22 @@ Ajuda:
 - mesmo que um scanf peça apenas 1 char, o utilizador pode inserir um input do tamanho que quiser (até \n)
 - podemos ler os restantes carateres com sucessivas chamadas a scanf ou getchar.
 
---
 
-#### King 7.5. scrabble TODO
-
---
-
-#### King 7.7. frações
-
-Refaz o problema King 3.6, mas agora o utilizador pode também escolher a operação entre frações (+, -, *, /).
-
---
-
-#### King 7.8. TODO
-
---
+### King 7.5. scrabble TODO
 
 
-#### King 7.9. Horas AM/PM
+### King 7.7. frações
 
-Com base na lógica do programa King 5.2, faz um programa que agora recebe uma hora no formato 12h e converte para 24h.
+Refaz o problema [King 3.6](#king-3.6.-frações), mas agora o utilizador pode também escolher a operação entre frações (+, -, *, /).
+
+
+### King 7.8. TODO
+
+
+
+### King 7.9. Horas AM/PM
+
+Com base na lógica do exercício [King 5.2](#king-5.2), implementa um programa que agora recebe uma hora no formato 12h e converte para 24h.
 A hora pode ser recebida das seguintes formas:
 ```text
 1:15P
@@ -554,15 +495,13 @@ Hora 12: 9:11PM
 Hora 24: 21:11
 ```
 
---
 
-#### King 7.10 Contar vogais
+### King 7.10 Contar vogais
 
 Escreve um programa que recebe uma frase do utilizador e conta o número de vogais.
 
---
 
-#### King 7.11 Trocar nome
+### King 7.11 Trocar nome
 
 Escreve um programa que recebe o primeiro e último nome do utilizador, e depois apresenta o nome no formato
 ``Ultimo, Primeira letra do primeiro``.
@@ -572,9 +511,8 @@ Nome: Diogo Silva
 Silva, D.
 ```
 
---
 
-#### King 7.12 Avaliar expressão
+### King 7.12 Avaliar expressão
 
 Escreve um programa que avalia uma expressão matemática.
 
@@ -589,9 +527,8 @@ Notas:
 - Não introduzir parêntises.
 - Calcular as operações da esquerda para a direita sem atenção à precedência de operações.
 
---
 
-#### King 7.13. Tamanho médio das palavras
+### King 7.13. Tamanho médio das palavras
 
 Escreve um programa que recebe uma frase do utilizador e indica o tamanho médio das palavras.
 
@@ -602,31 +539,25 @@ Tamanho medio das palavras: 4.5
 
 Nota: para simplificar, assume que a pontuação faz parte da palavra.
 
---
 
-#### King 7.14 TODO
+### King 7.14 TODO
 
 
----
+## Exercícios Tipos AFA
 
-### Exercícios Tipos AFA
 
---
-
-#### AFA 7.1. minúscula -> maiúscula
+### AFA 7.1. minúscula -> maiúscula
 
 Escreve um programa que recebe uma letra minúscula e converte para maiúscula.
 
---
 
-#### AFA 7.2. frase -> minúsculas
+### AFA 7.2. frase -> minúsculas
 
 Escreve um programa que recebe uma frase e converte todas as letras para minúsculas.
 Todos os carateres que não são letras maiúsculas não são modificados.
 
---
 
-#### AFA 7.3. César letra
+### AFA 7.3. César letra
 
 - Escreve um programa que recebe uma letra e um inteiro (chave), e implementa a cifra de César.
 - A cifra de César é um método simples para codificar uma mensagem, com a simples translação do abecedário.
@@ -640,27 +571,24 @@ Letra: L
 Letra codificada: N
 ```
 
---
 
-#### AFA 7.4. César frase
+### AFA 7.4. César frase
 
-Escreve um programa que recebe uma frase e uma chave, e codifica a frase com a cifra de César.
+- Escreve um programa que recebe uma frase e uma chave, e codifica a frase com a cifra de César.
+- Usa a lógica do exercício [AFA 7.3.](#afa-7.3.-césar-letra).
 
----
 
-## 8 Exercícios Funções
+# 8 Exercícios Funções
 <!-- .slide: data-background="Coral" id="8_funcoes_exercicios" -->
 
 [Slides da matéria]()
 
----
 
 
-### Exercícios Funções King
+## Exercícios Funções King
 
---
 
-#### King 9.2. IRS
+### King 9.2. IRS
 
 Reimplementa o exercício King 5.5. na forma de função. A função tem o nome calcular_irs, recebe um rendimento sobre a forma de um valor real e devolve outro valor real correspondente ao imposto devido.
 
@@ -671,25 +599,23 @@ Notas:
 - leitura e escrita na consola é feita na função main
 
 
---
 
-#### King 9.6. polinómio
+### King 9.6. polinómio
 
 Escreve uma função que recebe um valor real x e devolve o resultado da avaliação desse valor no seguinte polinómio:
 
-`3x^5 + 2x^4 - 5x^3 - x^2 + 7x - 6`
+$3x^5 + 2x^4 - 5x^3 - x^2 + 7x - 6$
+
 
 Notas:
-- x^5 significa x*x*x*x*x, x^4=...
+
+- $x^5$ significa $x \times x \times x \times x \times x$, $x^4$=...
 - resolva primeiro o exercício AFA 8.1. e use essa função para calcular as potências
 
----
 
-### Exercícios Funções AFA
+## Exercícios Funções AFA
 
---
-
-#### AFA 8.1. potência
+### AFA 8.1. potência
 
 Escreve uma função chamada _potencia_ que recebe uma base _b_ (valor real) e um expoente _e_ (inteiro).
 A função devolve o revolve o resultado da potência.
@@ -699,9 +625,8 @@ Nota:
 - não ler nem escrever da consola
 - usar a função main para testar se a função está a funcionar correctamente.
 
---
 
-#### AFA 8.2. máximo divisor comum
+### AFA 8.2. máximo divisor comum
 
 - Reimplementa o exercício do máximo divisor comum (King 6.2.) na forma de função.
 - A função 
@@ -709,9 +634,8 @@ Nota:
   - recebe 2 valores inteiros
   - devolve o MDC entre esses 2 valores
 
---
 
-#### AFA 8.3. tabela de polinómio
+### AFA 8.3. tabela de polinómio
 
 - Implementa uma função que avalia um polinómio de 2º grau num determinado intervalo.
 - A função
@@ -745,9 +669,8 @@ Notas:
 - Valores introduzidos pelo utilziador (coeficiente, limite inferior, superior, e nº de pontos) são pedidos na função main.
 - Um dos primeiros cálculos será a distância entre 2 pontos, e.g. no exemplo acima a distância entre pontos é de 0.25.
 
---
 
-#### AFA 8.4. polinómio grau n
+### AFA 8.4. polinómio grau n
 
 - Escreve uma função que avalia um polinómio de grau N num determinado ponto.
 - A função 
@@ -772,21 +695,102 @@ Coeficiente do grau 3: 2f
 Resultado: 1.00
 ```
 
----
+### AFA 8.5. Lab1 - Part 1 Calendário
 
-## 9 Exercícios Array
+- Implementa uma função que recebe o número de dias de um mês e o dia da semana do primeiro dia do mês e escreve um calendário na consola.
+- O dia da semana é dado como um inteiro:
+  - 0=domingo, 1=segunda-feira, 2=terça-feira,...
+- Para um mês com 31 dias a começar a uma terça-feira, o calendário tem o seguinte formato.
+  ```text
+  ----------
+   D  2  3  4  5  6  S
+         1  2  3  4  5
+   6  7  8  9 10 11 12
+  13 14 15 16 17 18 19
+  20 21 22 23 24 25 26
+  27 28 29 30 31
+  ----------
+  ```
+- A função tem o seguinte cabeçalho:
+  - `void escrever_calendario_mes(unsigned char n_dias, unsigned char dia_semana_inicio)`
+
+### AFA 8.6. Lab1 - Part 2.1 Calendário de data
+
+- Escreve uma função que recebe um ano e um mês, e escreve na consola o calendário desse mês, usando a função da Parte 1.
+- Assume que o mês de fevereiro tem sempre 28 dias.
+- Assume que o mês começa sempre a uma terça-feira.
+- A função tem o seguinte cabeçalho:
+  - `void escrever_calendario_data(unsigned int ano, unsigned char mes)`
+- Se não resolveste a Parte 1, chama a função `escrever_calendario_mes` como se tivesse sido correctamente implementada. Nota que não vais conseguir executar o código, mas a pontuação será dada.
+
+
+Ajudas:
+- Código para o número de dias em cada mês:
+   ```c
+   int dias_no_mes;
+   switch(mes){
+     case 1:
+     case 3:
+     case 5:
+     case 7:
+     case 8:
+     case 10:
+     case 12:
+       dias_no_mes = 31; break;
+     case 4:
+     case 6:
+     case 9:
+     case 11:
+       dias_no_mes = 30; break;
+     case 2:
+       dias_no_mes = 28; break;
+     default:
+       dias_no_mes = 0;
+   }
+   ```
+
+### AFA 8.7. Lab 1 - Part 2.2 - dia da semana
+
+- Escreve uma função que recebe uma data e devolve o dia da semana dessa data, como um inteiro.
+- A função tem o seguinte cabeçalho:
+  - `unsigned char dia_da_semana(unsigned int ano, unsigned char mes, unsigned char dia)`
+- O lógica desta função já nos foi dado e é o seguinte:
+  ```c
+  if (mes < 3) {
+          mes += 12;
+          ano -= 1;
+      }
+      
+  seculo = ano / 100;
+  anoNoSeculo = ano % 100;
+  
+  diaDaSemana = dia + 13*(mes+1)/5 + anoNoSeculo + anoNoSeculo/4 + seculo/4 + 5*seculo;
+  diaDaSemana %= 7;
+  
+  // converter para que o domingo=0, segunda=1, ...
+  diaDaSemana = (diaDaSemana + 6) % 7;
+  ```
+- Modifica a função da parte 2.1. para que agora, o dia de início do mês seja calculado com esta função.
+
+### AFA 8.8. Lab 1 - Part 2.3 - Ano bissexto
+
+- Escreve uma função para calcular se um ano é bissexto.
+- Um ano é bissexto se for (múltiplo de 4 E múltiplo de 100) OU (múltiplo de 400).
+- O cabeçalho da função é o seguinte:
+  - `unsigned char ano_bissexto(unsigned int ano)`
+- Modifica a função da Parte 2.1. para que, se o mês for fevereiro, o número de dias do mês é correctamente calculado. 
+
+
+# 9 Exercícios Array
 <!-- .slide: data-background="Coral" id="9_arrays_exercicios" -->
 
 [Slides da matéria]()
 
 
----
+## Exercícios Array King
 
-### Exercícios Array King
 
---
-
-#### King 8.1. digitos repetidos
+### King 8.1. digitos repetidos
 
 - Implementa um programa que recebe um inteiro do utilizador e indica quais são os digitos repetidos.
 - No final o programa indica quais são os digitos repetidos, por ordem crescente.
@@ -803,9 +807,8 @@ Numero inteiro: 9339577
 Repetidos: 3 7 9
 ```
 
---
 
-#### King 8.2. histograma digitos
+### King 8.2. histograma digitos
 
 Modifica o programa King 8.1. para devolver quantas vezes cada digito aparece num dado número.
 
@@ -815,9 +818,8 @@ Digitos:    0   1   2   3   4   5   6   7   8   9
 Contagem:   1   2   2   0   1   0   0   1   0   1
 ```
 
---
 
-#### King 8.7. matriz 5x5 
+### King 8.7. matriz 5x5 
 
 - Escreve um programa que recebe uma matriz de 5x5, linha a linha, e escreve no final o total de cada linha e de cada coluna.
 - Guarda a matriz num array bidimensional.
@@ -834,17 +836,15 @@ Totais linhas: 30 27 40 36 28
 Totais colunas: 34 37 37 32 21
 ```
 
---
 
-#### King 8.8. notas testes alunos
+### King 8.8. notas testes alunos
 
 - Modifica o programa King 8.7. para que cada linha corresponda para as 5 notas de testes de um aluno
 - O programa indica a nota final (soma) do aluno, assim como a média de cada teste.
 - O programa indica ainda, para cada teste, qual foi a nota mínima, máxima e média.
 
---
 
-#### King 8.9. _random walk_
+### King 8.9. _random walk_
 
 - Escreve um programa que gera um passeio aleatório num array 10x10.
 - Inicialmente todas as posições do array têm o carater '.'
@@ -908,9 +908,8 @@ int main () {
 }
 ```
 
---
 
-#### King 9.1. _selection sort_
+### King 9.1. _selection sort_
 
 - Escreve um programa que recebe um conjunto de inteiros do utilizador e, no final, mostra esses números ordenados.
 - O programa recebe os números um a um até que um dos números tenha um 'f' após o último digito, e.g. `42f`.
@@ -925,9 +924,8 @@ int main () {
   - O uso de recursão é especialmente adequado.
 - Os inteiros são pedidos na main.
 
---
 
-#### King 9.3. modificado, _random walk_ 
+### King 9.3. modificado, _random walk_ 
 
 - Modifica o problema King 8.9 para que seja implementado com 3 funções:
   - *void fill_array(char walk[10][10], char f)* recebe a matriz e preenche em todas as posições da matriz o carater f.
@@ -935,9 +933,8 @@ int main () {
   - *print_array(char walk[10][10])* recebe a matriz e escreve-a na consola.
 - Na função main, apenas deve ser criada a matriz e o programa implementa as funcionalidades pretendidas chamando estas funções.
 
---
 
-#### King 9.5. _magic square_
+### King 9.5. _magic square_
 <!-- .slide: data-visibility="hidden" -->
 
 - Escreve um programa que escreve uma matriz n x n:
@@ -966,14 +963,9 @@ Introduza um inteiro ímpar entre 1 e 99: 5
 11 18 25  2  9
 ```
 
----
+## Exercícios Array AFA
 
-
-### Exercícios Array AFA
-
---
-
-#### AFA 9.1. polinómio
+### AFA 9.1. polinómio
 
 - Escreve uma função poliN que recebe um vetor _coef_ de reais que pode ter qualquer tamanho (deve também receber outro parâmetro _n_ com o tamanho real do vector) e um real _x_.
 - A função avalia um polinómio de grau n-1 no ponto _x_.
@@ -996,10 +988,8 @@ int main(){
 }
 ```
 
---
 
-#### AFA 9.2. IRS generalizado
-
+### AFA 9.2. IRS generalizado
 
 - Reimplementa o exercício King 9.2. para funcionar para qualquer número de escalões e com quaisquer limites dos escalões.
 - A função recebe um vetor de reais (_escaloes_) com _n_ elementos, correspondentes aos limites dos escalões.
@@ -1013,26 +1003,17 @@ Dicas:
 - implementa uma função auxiliar para calcular o imposto num determinado escalão;
 - usa vetores de tamanho variável;
 
---
 
-#### AFA 9.3. Ordenar array
-
-- Implementa uma função que recebe um vector de inteiros de qualquer tamanho e ordena os seus elementos por ordem crescente.
-
---
-
-#### AFA 9.4. Ordenar array 2
+### AFA 9.3. Ordenar array 2
 
 - Implementa uma função  que recebe um vector de inteiros de qualquer tamanho e um char.
 - O char indica se o vetor deve ser ordenado de forma crescente ou decrescente.
 - A função ordena o vector da forma indicada pelo char.
-- Usa a implementação do AFA 9.3.
+- Usa a implementação do King 9.1
   - Podes criar outra função para ordenar de forma decrescente e a função deste exercício chama a função do AFA 9.3 (crescente) ou a função para ordenar de forma decrescente, conforme o que seja indicado pelo char.
 
 
---
-
-#### AFA 9.5. Ordenar indices array
+### AFA 9.4. Ordenar indices array
 <!-- .slide: data-visibility="hidden" -->
 
 - Implementa uma função que recebe:
@@ -1057,104 +1038,90 @@ Depois de ordenar:
 indeces:    1  2  0   3
 ```
 
-
----
-
-## 10 Exercícios Strings
+# 10 Exercícios Strings
 <!-- .slide: data-background="Coral" id="10_strings_exercicios" -->
 
 [Slides da matéria]()
 
----
 
-### 10 Exercícios Strings King
+## 10 Exercícios Strings King
 
----
 
-### 10 Exercícios Strings AFA
+## 10 Exercícios Strings AFA
 
---
 
-#### AFA 10.1. Cifras de césar
+### AFA 10.1. Cifras de césar
 
-- Refaz o exercício AFA 7.4. mas usando strings.
-  - Escreve uma função que recebe um char e uma cifra (int) e devolve esse char cifrado.
-  - Escreve uma função que recebe uma string com uma mensagem.
-    - A função converte essa mensagem numa mensagem cifrada, usando a função acima.
-    - A função reescreve a mensagem cifrada sobre a mensagem original (mesma string)
-  - A função main é a única que interage com o utilizador.
-    - Pede uma frase ao utilizador, guardando-a numa string.
-    - Essa string é passada para a função que a vai cifrar.
-    - No final, escrever na consola a mensagem cifrada.
-- Enunciado AFA 7.4. César frase
-  - Escreve um programa que recebe uma frase e uma chave, e codifica a frase com a cifra de César.
-- Enunciado AFA 7.3. César letra
-  - Escreve um programa que recebe uma letra e um inteiro (chave), e implementa a cifra de César.
-  - A cifra de César é um método simples para codificar uma mensagem, com a simples translação do abecedário.
-  - Por exemplo, se a chave tem o valor 1, então o 'A' é convertido para 'B', 'B' para 'C', 'Z' para 'A'.
-  - Se a chave for negativa, a conversão é no sentido oposto.
-  - Converte apenas letras.
-    ```text
-    Chave: 2
-    Letra: L
-    Letra codificada: N
-    ```
+- Refaz o exercício [AFA 7.4.](#afa-7.4.-césar-frase) mas usando strings.
+- Escreve uma função que recebe um char e uma cifra (int) e devolve esse char cifrado.
+- Escreve uma função que recebe uma string com uma mensagem.
+  - A função converte essa mensagem numa mensagem cifrada, usando a função acima.
+  - A função reescreve a mensagem cifrada sobre a mensagem original (mesma string)
+- A função main é a única que interage com o utilizador.
+  - Pede uma frase ao utilizador, guardando-a numa string.
+  - Essa string é passada para a função que a vai cifrar.
+  - No final, escrever na consola a mensagem cifrada.
 
----
 
-## 11 Exercícios Apontadores
+# 11 Exercícios Apontadores
 <!-- .slide: data-background="Coral" id="11_pointers_exercicios" -->
 
 [Slides da matéria]()
 
----
 
-## 12 Exercícios Struct
+# 12 Exercícios Struct
 <!-- .slide: data-background="Coral" id="12_struct_exercicios" -->
 
 [Slides da matéria]()
 
----
 
-### 12 Exercícios Struct King
+##  King
 
----
 
-### 12 Exercícios Struct AFA
+##  AFA
 
----
+### AFA 12.1 timedelta
 
-## 13 Exercícios Ficheiros
+- Implementa uma função `calcular_dif_datahora` que recebe 2 marcas temporais (data e hora) e devolve a diferença temporal.
+- A marca temporal é uma estrutura ``DataHora`` com os campos:
+  - ano, mes, dia
+  - hora, minuto, segundo
+- A marca temporal é uma estrutura ``DataHoraDelta`` com os campos:
+  - dias, horas, minutos, segundos
+- Vai ter de implementar a lógica para saber se um ano é bissexto (ver [AFA 8.6.](#afa-8.6.-lab1---part-2.1-calendário-de-data))
+
+### AFA 12.2 aritmética DataHora
+
+- Implementa uma função `soma_DataHora` que recebe uma DataHora (ver [AFA 12.1](#afa-12.1-timedelta)) e um DataHoraDelta.
+- A função devolve uma nova DataHora, que resulta da soma entre a DataHora recebida e a DataHoraDelta.
+- Imaplementa uma função `sub_DataHora` que faz o mesmo, mas o resultado é a subtração e não a soma.
+
+
+# 13 Exercícios Ficheiros
 <!-- .slide: data-background="Coral" id="13_ficheiros_exercicios" -->
 
 [Slides da matéria]()
 
----
 
-### 13 Exercícios Ficheiros King
+## 13 Exercícios Ficheiros King
 
----
 
-### 13 Exercícios Ficheiros AFA
+## 13 Exercícios Ficheiros AFA
 
----
 
-## 14 Exercícios Memória
+# 14 Exercícios Memória
 <!-- .slide: data-background="Coral" id="14_memory_exercicios" -->
 
 [Slides da matéria]()
 
----
 
-### 14 Exercícios Memória King
+## 14 Exercícios Memória King
 
----
 
-### 14 Exercícios Memória AFA
+## 14 Exercícios Memória AFA
 
---
 
-#### AFA 14.1. Image padding
+### AFA 14.1. Image padding
 
 - Em domínio da visão computacional, é comum termos de adicionar pixeis à volta de uma imagem.
 - Implementa uma função que recebe uma imagem (vector de _unsigned char_ com 3 dimensões) com uma determinada altura ``h`` (1ª dimensão) e largura ``w`` (2ª dimensão) e o número de pixeis de padding.
@@ -1164,126 +1131,14 @@ indeces:    1  2  0   3
 - O espaço de padding deve estar inicializado com zeros.
 - A função retorna a imagem com padding.
 
----
 
-## 15 Exercícios Estruturas de Dados Dinâmicas
+# 15 Exercícios Estruturas de Dados Dinâmicas
 <!-- .slide: data-background="Coral" id="15_dynamic_structures_exercicios" -->
 
 [Slides da matéria]()
 
----
 
-### 15 Exercícios Estruturas de Dados Dinâmicas King
+## 15 Exercícios Estruturas de Dados Dinâmicas King
 
----
 
-### 15 Exercícios Estruturas de Dados Dinâmicas AFA
-
----
-
-## Table of contents
-
-- [Exercícios](#exercícios)
-  - [2 Exercícios Fundamentos](#2-exercícios-fundamentos)
-  - [Exercícios 3 I/O Formatado](#exercícios-3-io-formatado)
-    - [Exercícios I/O Formatado King](#exercícios-io-formatado-king)
-      - [King 3.1.](#king-31)
-      - [King 3.2.](#king-32)
-      - [King 3.3. TODO](#king-33-todo)
-      - [King 3.4. TODO](#king-34-todo)
-      - [King 3.5. TODO](#king-35-todo)
-      - [King 3.6. frações](#king-36-frações)
-  - [4 Exercícios Expressões](#4-exercícios-expressões)
-    - [Exercícios Expressões King](#exercícios-expressões-king)
-      - [King 4.1.](#king-41)
-      - [King 4.2](#king-42)
-      - [King 4.3](#king-43)
-  - [5 Exercícios Seleção](#5-exercícios-seleção)
-    - [Exercícios Seleção King](#exercícios-seleção-king)
-      - [King 5.1](#king-51)
-      - [King 5.2](#king-52)
-      - [King 5.3. TODO](#king-53-todo)
-      - [King 5.4](#king-54)
-      - [King 5.5 escalões IRS](#king-55-escalões-irs)
-      - [King 5.6 TODO](#king-56-todo)
-      - [King 5.7](#king-57)
-      - [King 5.8 voo mais próximo TODO](#king-58-voo-mais-próximo-todo)
-      - [King 5.9 data menor](#king-59-data-menor)
-      - [King 5.10 nota para letra](#king-510-nota-para-letra)
-      - [King 5.11 número por extenso](#king-511-número-por-extenso)
-    - [Exercícios Seleção AFA](#exercícios-seleção-afa)
-      - [AFA 5.1. Converte gramas para outras unidades](#afa-51-converte-gramas-para-outras-unidades)
-      - [AFA 5.2 Converter unidades de massa](#afa-52-converter-unidades-de-massa)
-  - [6 Exercícios Ciclos](#6-exercícios-ciclos)
-    - [Exercícios Ciclos King](#exercícios-ciclos-king)
-      - [King 6.1. Maior número de série recebida](#king-61-maior-número-de-série-recebida)
-      - [King 6.2. Máximo Divisor Comum](#king-62-máximo-divisor-comum)
-      - [King 6.3. Simplificar fração](#king-63-simplificar-fração)
-      - [king 6.5.](#king-65)
-      - [King 6.6. Quadrados inferiores a n](#king-66-quadrados-inferiores-a-n)
-      - [king 6.8 Calendário](#king-68-calendário)
-    - [Exercícios Ciclos AFA](#exercícios-ciclos-afa)
-  - [7 Exercícios Tipos](#7-exercícios-tipos)
-    - [Exercícios Tipos King](#exercícios-tipos-king)
-      - [King 7.1. modificado](#king-71-modificado)
-      - [King 7.2 TODO](#king-72-todo)
-      - [King 7.3 TODO](#king-73-todo)
-      - [King 7.4 Número teclas telemóvel -\> número](#king-74-número-teclas-telemóvel---número)
-      - [King 7.5. scrabble TODO](#king-75-scrabble-todo)
-      - [King 7.7. frações](#king-77-frações)
-      - [King 7.8. TODO](#king-78-todo)
-      - [King 7.9. Horas AM/PM](#king-79-horas-ampm)
-      - [King 7.10 Contar vogais](#king-710-contar-vogais)
-      - [King 7.11 Trocar nome](#king-711-trocar-nome)
-      - [King 7.12 Avaliar expressão](#king-712-avaliar-expressão)
-      - [King 7.13. Tamanho médio das palavras](#king-713-tamanho-médio-das-palavras)
-      - [King 7.14 TODO](#king-714-todo)
-    - [Exercícios Tipos AFA](#exercícios-tipos-afa)
-      - [AFA 7.1. minúscula -\> maiúscula](#afa-71-minúscula---maiúscula)
-      - [AFA 7.2. frase -\> minúsculas](#afa-72-frase---minúsculas)
-      - [AFA 7.3. César letra](#afa-73-césar-letra)
-      - [AFA 7.4. César frase](#afa-74-césar-frase)
-  - [8 Exercícios Funções](#8-exercícios-funções)
-    - [Exercícios Funções King](#exercícios-funções-king)
-      - [King 9.2. IRS](#king-92-irs)
-      - [King 9.6. polinómio](#king-96-polinómio)
-    - [Exercícios Funções AFA](#exercícios-funções-afa)
-      - [AFA 8.1. potência](#afa-81-potência)
-      - [AFA 8.2. máximo divisor comum](#afa-82-máximo-divisor-comum)
-      - [AFA 8.3. tabela de polinómio](#afa-83-tabela-de-polinómio)
-      - [AFA 8.4. polinómio grau n](#afa-84-polinómio-grau-n)
-  - [9 Exercícios Array](#9-exercícios-array)
-    - [Exercícios Array King](#exercícios-array-king)
-      - [King 8.1. digitos repetidos](#king-81-digitos-repetidos)
-      - [King 8.2. histograma digitos](#king-82-histograma-digitos)
-      - [King 8.7. matriz 5x5](#king-87-matriz-5x5)
-      - [King 8.8. notas testes alunos](#king-88-notas-testes-alunos)
-      - [King 8.9. _random walk_](#king-89-random-walk)
-      - [King 9.1. _selection sort_](#king-91-selection-sort)
-      - [King 9.3. modificado, _random walk_](#king-93-modificado-random-walk)
-      - [King 9.5. _magic square_](#king-95-magic-square)
-    - [Exercícios Array AFA](#exercícios-array-afa)
-      - [AFA 9.1. polinómio](#afa-91-polinómio)
-      - [AFA 9.2. IRS generalizado](#afa-92-irs-generalizado)
-      - [AFA 9.3. Ordenar array](#afa-93-ordenar-array)
-      - [AFA 9.4. Ordenar array 2](#afa-94-ordenar-array-2)
-      - [AFA 9.5. Ordenar indices array](#afa-95-ordenar-indices-array)
-  - [10 Exercícios Strings](#10-exercícios-strings)
-    - [10 Exercícios Strings King](#10-exercícios-strings-king)
-    - [10 Exercícios Strings AFA](#10-exercícios-strings-afa)
-      - [AFA 10.1. Cifras de césar](#afa-101-cifras-de-césar)
-  - [11 Exercícios Apontadores](#11-exercícios-apontadores)
-  - [12 Exercícios Struct](#12-exercícios-struct)
-    - [12 Exercícios Struct King](#12-exercícios-struct-king)
-    - [12 Exercícios Struct AFA](#12-exercícios-struct-afa)
-  - [13 Exercícios Ficheiros](#13-exercícios-ficheiros)
-    - [13 Exercícios Ficheiros King](#13-exercícios-ficheiros-king)
-    - [13 Exercícios Ficheiros AFA](#13-exercícios-ficheiros-afa)
-  - [14 Exercícios Memória](#14-exercícios-memória)
-    - [14 Exercícios Memória King](#14-exercícios-memória-king)
-    - [14 Exercícios Memória AFA](#14-exercícios-memória-afa)
-      - [AFA 14.1. Image padding](#afa-141-image-padding)
-  - [15 Exercícios Estruturas de Dados Dinâmicas](#15-exercícios-estruturas-de-dados-dinâmicas)
-    - [15 Exercícios Estruturas de Dados Dinâmicas King](#15-exercícios-estruturas-de-dados-dinâmicas-king)
-    - [15 Exercícios Estruturas de Dados Dinâmicas AFA](#15-exercícios-estruturas-de-dados-dinâmicas-afa)
-  - [Table of contents](#table-of-contents)
+## 15 Exercícios Estruturas de Dados Dinâmicas AFA
