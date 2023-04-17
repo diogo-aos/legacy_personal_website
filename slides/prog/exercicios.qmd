@@ -1046,6 +1046,89 @@ indeces:    1  2  0   3
 
 ## 10 Exercícios Strings King
 
+### King 13.1 palavras ordem alfabética
+
+- Escreve um programa que recebe uma série de palavras.
+- O programa pára de pedir palavras quando receber uma palavra de 4 letras.
+- Assume-se que nenhuma palavra tem mais de 20 letras.
+- No final o programa indica a primeira e última palavras, se as palavras recebidas tivessem ordenadas por ordem alfabética.
+
+
+```text
+Palavra: peixe
+Palavra: rinoceronte
+Palavra: laranja
+Palavra: livro
+Palavra: ananas
+Palavra: gato
+
+Primeira: ananas
+Última: rinoceronte
+
+```
+
+Dica:
+- Usa a função strcmp da biblioteca string.h, que recebe 2 strings (s1 e s2) e devolve -1, 0 ou 1, se s1 for inferior, igual ou maior que s2, respetivamente.
+
+### King 13.4 inverter frase, modificado
+
+- Escreve um programa que recebe uma frase do utilizador.
+- O programa escreve as palavras na ordem inversa às que as recebeu.
+
+```text
+Frase:
+exercicio demasiado facil
+
+facil demasiado exercicio
+```
+
+### King 13.5 executar string de soma, modificado
+
+- Escreve um programa que recebe uma frase do utilizador do tipo "soma 8 24 62"
+- Assume que soma é a única operação.
+- Para implementar o programa, implementa uma função que recebe uma string com uma lista de números e devolve a soma desses números.
+- A main pede uma string com fgets e usa esta função para calcular a soma.
+- Dicas:
+  - A função strtok da biblioteca string.h divide uma string de acordo com um separador
+    - recebe a string a separar e a string que contém o separador
+    - depois da primeira chamada de strtok, o primeiro argumento deve ser NULL
+    - strtok devolve uma string com a próxima "palavra" (token) separada pelo separador indicado, ou NULL se não houverem mais tokens.
+  - A função atof da biblioteca stdlib.h recebe uma string (com um número) e devolve um número real.
+- Exemplo strtok
+  - este programa divide a string `str` nas suas palavras constituintes (separadas por um espaço) e escreve essas palavras, uma a uma, em linhas separadas.
+  - repara que só a primeira chamada de strtok é que contém a string a processar, as restantes usam NULL nesse argumento.
+  - repara que verificamos se a string devolvida é NULL para verificar quando existem algum valor de interesse.
+  - código:
+    ````c
+    #include <stdio.h>
+    #include <string.h>
+
+    int main() {
+        char str[] = "The quick brown fox";
+        char* token = strtok(str, " ");
+        
+        while (token != NULL) {
+            printf("%s\n", token);
+            token = strtok(NULL, " ");
+        }
+
+        return 0;
+    }
+    ```
+- Exemplo atof
+  ````c
+  #include <stdlib.h>
+  int main(){
+    printf("num=%lf", atof("3.14"));
+  }
+  ```
+
+### King 13.11 tamanho media das palavras, modificado
+
+- Com base no exercício [King 7.13](#king-7.13.-tamanho-médio-das-palavras), escreve um programa que pede frases ao utilizados.
+- O programa indica qual é o tamanho médio das palavras de cada frase recebida.
+- O programa pára de pedir frases quando receber uma frase apenas com a palavra "parar".
+- Deve implementar uma função que recebe uma string e devolve o tamanaho médio das palavras dessa string.
 
 ## 10 Exercícios Strings AFA
 
@@ -1061,6 +1144,8 @@ indeces:    1  2  0   3
   - Pede uma frase ao utilizador, guardando-a numa string.
   - Essa string é passada para a função que a vai cifrar.
   - No final, escrever na consola a mensagem cifrada.
+
+
 
 
 # 11 Exercícios Apontadores
