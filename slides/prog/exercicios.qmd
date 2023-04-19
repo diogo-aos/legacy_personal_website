@@ -1193,6 +1193,161 @@ facil demasiado exercicio
 
 ## 13 Exercícios Ficheiros AFA
 
+### A 13.1 Jogadores
+
+- Escreva um programa que a partir dum ficheiro chamado "jogadores.txt", guarde a informação dos jogadores num vetor de registos e escreva um simples número real que indique qual a média de golos dos jogadores.
+- O ficheiro "jogadores.txt" tem um conteúdo semelhante ao seguinte: 
+  ```text
+	Joao 5 Leixoes 
+	Tarquineo 6 Benfica 
+	Pedro 3 Sporting 
+	Luis 8 Belenenses 
+	Miguel 2 Leixoes 
+	Joao 1 Sporting 
+	Manuel 5 Academica 
+	Camoes 5 Porto 
+	Fernando 10 Benfica 
+	Joaquim 7 Boavista 
+	Gervasio 7 Belenenses 
+  ```
+- Se não tiver o ficheiro "jogadores.txt", comece por criar esse ficheiro com o conteúdo apresentado acima.
+
+### A 13.2 
+
+- O seguinte ficheiro de texto - "alice.txt" – contém uma tradução para português do Brasil de uma das mais famosas obras da literatura em Inglês do século XIX: "Alice no País das Maravilhas". Pedimos-lhe para escrever um programa para fazer algumas contagens no ficheiro "alice.txt". Escreva o programa pouco e pouco, introduzindo uma contagem de cada vez: 
+  - O número de linhas do ficheiro; 
+  - O número de linhas vazias do ficheiro; 
+  - O número de linhas do ficheiro, onde ocorre a palavra "Alice". 
+- Resolva este problema sem carregar o ficheiro num vetor. Percorra o ficheiro lendo uma linha de cada vez usando a função fgets. Enquanto faz isso, vá atualizando alguns contadores, que foram inicializados a zero. 
+- Organize o seu programa por forma a percorrer o ficheiro apenas uma vez. Isto faz com que o programa não possa ser decomposto em muitas funções. Portanto, escreva uma função chamada "processar_ficheiro" que recebe o nome do ficheiro, faz as contagens e escreve os resultados. 
+- Para testar se a palavra "Alice" ocorre numa linha, pode usar a função `char *strstr ( char  *str1, char  *str2)`
+  - função da biblioteca string.h
+  - Esta função devolve NULL caso str2 não se encontre em str1;
+
+
+### A 13.3
+
+Escreva um programa que leia todas as linhas de um ficheiro e diga quantas palavras existem em cada linha do ficheiro.
+
+### A 13.4
+
+Escreva um programa que leia todas as linhas de um ficheiro “ler.txt” e escreva no ficheiro “escrever.txt” por ordem inversa todas as linhas do primeiro ficheiro.
+
+
+### A 13.5
+
+- Escreva um programa que inverta as palavras de cada linha de um ficheiro “inverter.txt”.
+- Exemplo:
+  - Ficheiro
+    ```text
+    A hora de almoco e as 12h00.
+    A hora de jantar e as 19h00.
+    ```
+  - Output
+    ```text
+    .00h21 as e ocomla ed aroh A
+    .00h91 sa e ratnaj ed aroh A
+    ```
+
+
+
+### A 13.6 grep
+
+- Escreva uma função grep que recebe o nome de um ficheiro de texto e uma string e imprime na consola todas as linhas que contêm a string.
+- Começa por escrever num ficheiro de texto o primeiro e último nome dos alunos da turma (pelo menos 5-10). Podes partilhar o ficheiro com o resto da turma.
+- Neste exemplo, a string é "a"
+  ```text
+  Soares, 1189
+  Fontainha, 1172
+  Fernandes, 1198
+  Pedrosa, 1179
+  Branco, 1184
+  Cebola, 1171
+  Ramalho, 1190
+  Santos, 1201
+  Salgado, 1174
+  ```
+
+
+
+### A 13.7 grep -i
+
+- Com base em [A 13.6 grep](#a-13.6-grep), crie outra função `grep_ignora` que ignora a capitalização da string.
+- Neste exemplo a string é "r".
+  ```text
+  Rodrigues, 1195
+  Soares, 1189
+  Fernandes, 1198
+  Pedrosa, 1179
+  Branco, 1184
+  Ramalho, 1190
+  ```
+
+### A 13.8 grep -c
+
+- Com base em [A 13.6 grep](#a-13.6-grep), crie outra função `grep_conta` que imprime apenas o número de linhas em que a string foi encontrada.
+- Neste caso, a capitalização da string interessa. 
+- Neste exemplo a string é "r".
+  ```text
+  5
+  ```
+
+### A 13.9 grep -i, modificada
+
+- Melhore a função [grep_ignora](#a-13.7-grep--i), dando a opção para parar a procura após encontrar a string N vezes.
+- Se N=0, então não há limite, e.g. procurar “al” no ficheiro “alunos.txt” com N=2.
+  ```text
+  Mariana Relvão Carvalho
+  Inês Carvalho
+  ```
+
+### A 13.10 grep -c, múltiplos ficheiros
+
+- Crie uma função grep_conta_varios dando a opção para para receber vários ficheiros e realizar a procura em cada um deles.
+- Deve ser adicionado um prefixo com o nome do ficheiro em cada linha impressa na consola.
+- A função recebe um vector de strings e uma string.
+- Cada string no vector tem um nome de ficheiro e um tamanho máximo definido numa constante.
+- A outra string é a “palavra” (pode ser uma frase) a procurar.
+- Para cada ficheiro, deve ser chamada a função [grep_conta](#a-13.8-grep--c).
+- E.g. procurar “al” nos ficheiros 
+  ```text
+  alunos.txt: 8
+  alunos1718.txt: 2
+  ```
+- E.g. procurar “fon” nos ficheiros `alunos.txt` e `alunos1718.txt`
+  ```text
+  alunos.txt: 1
+  alunos1718.txt: 1
+  ```
+
+
+# A 13.11 grep -i, vários ficheiros
+
+- Crie uma função grep_ignora_varios dando a opção para para receber vários ficheiros e realizar a procura em cada um deles.
+- Deve ser adicionado um prefixo com o nome do ficheiro em cada linha impressa na consola.
+- A função recebe um vector de strings, uma string e um inteiro.
+- Cada string no vector tem um nome de ficheiro.
+- A outra string é a “palavra” (pode ser uma frase) a procurar.
+- O inteiro é o número a partir do qual não se deve contar mais (o N no exercicio anterior).
+- Para cada ficheiro, deve ser chamada a função [grep_ignora melhorada](#a-13.9-grep--i-modificada).
+- Exemplo para procurar a string “al” nos ficheiros `alunos.txt` e `alunos1718.txt`, com N=2:
+  ```text
+  alunos.txt: Mariana Relvão Carvalho
+  alunos.txt: Inês Carvalho
+  alunos1718.txt: 1174 Salgado
+  alunos1718.txt: 1190 Ramalho
+  ```
+
+
+
+
+
+
+
+
+
+
+
 
 # 14 Exercícios Memória
 <!-- .slide: data-background="Coral" id="14_memory_exercicios" -->

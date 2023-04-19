@@ -246,8 +246,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#exercícios-ficheiros" id="toc-exercícios-ficheiros" class="nav-link" data-scroll-target="#exercícios-ficheiros">13 Exercícios Ficheiros</a>
   <ul class="collapse">
   <li><a href="#exercícios-ficheiros-king" id="toc-exercícios-ficheiros-king" class="nav-link" data-scroll-target="#exercícios-ficheiros-king">13 Exercícios Ficheiros King</a></li>
-  <li><a href="#exercícios-ficheiros-afa" id="toc-exercícios-ficheiros-afa" class="nav-link" data-scroll-target="#exercícios-ficheiros-afa">13 Exercícios Ficheiros AFA</a></li>
+  <li><a href="#exercícios-ficheiros-afa" id="toc-exercícios-ficheiros-afa" class="nav-link" data-scroll-target="#exercícios-ficheiros-afa">13 Exercícios Ficheiros AFA</a>
+  <ul class="collapse">
+  <li><a href="#a-13.1-jogadores" id="toc-a-13.1-jogadores" class="nav-link" data-scroll-target="#a-13.1-jogadores">A 13.1 Jogadores</a></li>
+  <li><a href="#a-13.2" id="toc-a-13.2" class="nav-link" data-scroll-target="#a-13.2">A 13.2</a></li>
+  <li><a href="#a-13.3" id="toc-a-13.3" class="nav-link" data-scroll-target="#a-13.3">A 13.3</a></li>
+  <li><a href="#a-13.4" id="toc-a-13.4" class="nav-link" data-scroll-target="#a-13.4">A 13.4</a></li>
+  <li><a href="#a-13.5" id="toc-a-13.5" class="nav-link" data-scroll-target="#a-13.5">A 13.5</a></li>
+  <li><a href="#a-13.6-grep" id="toc-a-13.6-grep" class="nav-link" data-scroll-target="#a-13.6-grep">A 13.6 grep</a></li>
+  <li><a href="#a-13.7-grep--i" id="toc-a-13.7-grep--i" class="nav-link" data-scroll-target="#a-13.7-grep--i">A 13.7 grep -i</a></li>
+  <li><a href="#a-13.8-grep--c" id="toc-a-13.8-grep--c" class="nav-link" data-scroll-target="#a-13.8-grep--c">A 13.8 grep -c</a></li>
+  <li><a href="#a-13.9-grep--i-modificada" id="toc-a-13.9-grep--i-modificada" class="nav-link" data-scroll-target="#a-13.9-grep--i-modificada">A 13.9 grep -i, modificada</a></li>
+  <li><a href="#a-13.10-grep--c-múltiplos-ficheiros" id="toc-a-13.10-grep--c-múltiplos-ficheiros" class="nav-link" data-scroll-target="#a-13.10-grep--c-múltiplos-ficheiros">A 13.10 grep -c, múltiplos ficheiros</a></li>
   </ul></li>
+  </ul></li>
+  <li><a href="#a-13.11-grep--i-vários-ficheiros" id="toc-a-13.11-grep--i-vários-ficheiros" class="nav-link" data-scroll-target="#a-13.11-grep--i-vários-ficheiros">A 13.11 grep -i, vários ficheiros</a></li>
   <li><a href="#exercícios-memória" id="toc-exercícios-memória" class="nav-link" data-scroll-target="#exercícios-memória">14 Exercícios Memória</a>
   <ul class="collapse">
   <li><a href="#exercícios-memória-king" id="toc-exercícios-memória-king" class="nav-link" data-scroll-target="#exercícios-memória-king">14 Exercícios Memória King</a></li>
@@ -1283,7 +1296,149 @@ return 0;</code></pre>
 </section>
 <section id="exercícios-ficheiros-afa" class="level2">
 <h2 class="anchored" data-anchor-id="exercícios-ficheiros-afa">13 Exercícios Ficheiros AFA</h2>
+<section id="a-13.1-jogadores" class="level3">
+<h3 class="anchored" data-anchor-id="a-13.1-jogadores">A 13.1 Jogadores</h3>
+<ul>
+<li><p>Escreva um programa que a partir dum ficheiro chamado “jogadores.txt”, guarde a informação dos jogadores num vetor de registos e escreva um simples número real que indique qual a média de golos dos jogadores.</p></li>
+<li><p>O ficheiro “jogadores.txt” tem um conteúdo semelhante ao seguinte:</p>
+<pre class="text"><code>  Joao 5 Leixoes 
+  Tarquineo 6 Benfica 
+  Pedro 3 Sporting 
+  Luis 8 Belenenses 
+  Miguel 2 Leixoes 
+  Joao 1 Sporting 
+  Manuel 5 Academica 
+  Camoes 5 Porto 
+  Fernando 10 Benfica 
+  Joaquim 7 Boavista 
+  Gervasio 7 Belenenses </code></pre></li>
+<li><p>Se não tiver o ficheiro “jogadores.txt”, comece por criar esse ficheiro com o conteúdo apresentado acima.</p></li>
+</ul>
 </section>
+<section id="a-13.2" class="level3">
+<h3 class="anchored" data-anchor-id="a-13.2">A 13.2</h3>
+<ul>
+<li>O seguinte ficheiro de texto - “alice.txt” – contém uma tradução para português do Brasil de uma das mais famosas obras da literatura em Inglês do século XIX: “Alice no País das Maravilhas”. Pedimos-lhe para escrever um programa para fazer algumas contagens no ficheiro “alice.txt”. Escreva o programa pouco e pouco, introduzindo uma contagem de cada vez:
+<ul>
+<li>O número de linhas do ficheiro;</li>
+<li>O número de linhas vazias do ficheiro;</li>
+<li>O número de linhas do ficheiro, onde ocorre a palavra “Alice”.</li>
+</ul></li>
+<li>Resolva este problema sem carregar o ficheiro num vetor. Percorra o ficheiro lendo uma linha de cada vez usando a função fgets. Enquanto faz isso, vá atualizando alguns contadores, que foram inicializados a zero.</li>
+<li>Organize o seu programa por forma a percorrer o ficheiro apenas uma vez. Isto faz com que o programa não possa ser decomposto em muitas funções. Portanto, escreva uma função chamada “processar_ficheiro” que recebe o nome do ficheiro, faz as contagens e escreve os resultados.</li>
+<li>Para testar se a palavra “Alice” ocorre numa linha, pode usar a função <code>char *strstr ( char  *str1, char  *str2)</code>
+<ul>
+<li>função da biblioteca string.h</li>
+<li>Esta função devolve NULL caso str2 não se encontre em str1;</li>
+</ul></li>
+</ul>
+</section>
+<section id="a-13.3" class="level3">
+<h3 class="anchored" data-anchor-id="a-13.3">A 13.3</h3>
+<p>Escreva um programa que leia todas as linhas de um ficheiro e diga quantas palavras existem em cada linha do ficheiro.</p>
+</section>
+<section id="a-13.4" class="level3">
+<h3 class="anchored" data-anchor-id="a-13.4">A 13.4</h3>
+<p>Escreva um programa que leia todas as linhas de um ficheiro “ler.txt” e escreva no ficheiro “escrever.txt” por ordem inversa todas as linhas do primeiro ficheiro.</p>
+</section>
+<section id="a-13.5" class="level3">
+<h3 class="anchored" data-anchor-id="a-13.5">A 13.5</h3>
+<ul>
+<li>Escreva um programa que inverta as palavras de cada linha de um ficheiro “inverter.txt”.</li>
+<li>Exemplo:
+<ul>
+<li><p>Ficheiro</p>
+<pre class="text"><code>A hora de almoco e as 12h00.
+A hora de jantar e as 19h00.</code></pre></li>
+<li><p>Output</p>
+<pre class="text"><code>.00h21 as e ocomla ed aroh A
+.00h91 sa e ratnaj ed aroh A</code></pre></li>
+</ul></li>
+</ul>
+</section>
+<section id="a-13.6-grep" class="level3">
+<h3 class="anchored" data-anchor-id="a-13.6-grep">A 13.6 grep</h3>
+<ul>
+<li><p>Escreva uma função grep que recebe o nome de um ficheiro de texto e uma string e imprime na consola todas as linhas que contêm a string.</p></li>
+<li><p>Começa por escrever num ficheiro de texto o primeiro e último nome dos alunos da turma (pelo menos 5-10). Podes partilhar o ficheiro com o resto da turma.</p></li>
+<li><p>Neste exemplo, a string é “a”</p>
+<pre class="text"><code>Soares, 1189
+Fontainha, 1172
+Fernandes, 1198
+Pedrosa, 1179
+Branco, 1184
+Cebola, 1171
+Ramalho, 1190
+Santos, 1201
+Salgado, 1174</code></pre></li>
+</ul>
+</section>
+<section id="a-13.7-grep--i" class="level3">
+<h3 class="anchored" data-anchor-id="a-13.7-grep--i">A 13.7 grep -i</h3>
+<ul>
+<li><p>Com base em <a href="#a-13.6-grep">A 13.6 grep</a>, crie outra função <code>grep_ignora</code> que ignora a capitalização da string.</p></li>
+<li><p>Neste exemplo a string é “r”.</p>
+<pre class="text"><code>Rodrigues, 1195
+Soares, 1189
+Fernandes, 1198
+Pedrosa, 1179
+Branco, 1184
+Ramalho, 1190</code></pre></li>
+</ul>
+</section>
+<section id="a-13.8-grep--c" class="level3">
+<h3 class="anchored" data-anchor-id="a-13.8-grep--c">A 13.8 grep -c</h3>
+<ul>
+<li><p>Com base em <a href="#a-13.6-grep">A 13.6 grep</a>, crie outra função <code>grep_conta</code> que imprime apenas o número de linhas em que a string foi encontrada.</p></li>
+<li><p>Neste caso, a capitalização da string interessa.</p></li>
+<li><p>Neste exemplo a string é “r”.</p>
+<pre class="text"><code>5</code></pre></li>
+</ul>
+</section>
+<section id="a-13.9-grep--i-modificada" class="level3">
+<h3 class="anchored" data-anchor-id="a-13.9-grep--i-modificada">A 13.9 grep -i, modificada</h3>
+<ul>
+<li><p>Melhore a função <a href="#a-13.7-grep--i">grep_ignora</a>, dando a opção para parar a procura após encontrar a string N vezes.</p></li>
+<li><p>Se N=0, então não há limite, e.g.&nbsp;procurar “al” no ficheiro “alunos.txt” com N=2.</p>
+<pre class="text"><code>Mariana Relvão Carvalho
+Inês Carvalho</code></pre></li>
+</ul>
+</section>
+<section id="a-13.10-grep--c-múltiplos-ficheiros" class="level3">
+<h3 class="anchored" data-anchor-id="a-13.10-grep--c-múltiplos-ficheiros">A 13.10 grep -c, múltiplos ficheiros</h3>
+<ul>
+<li><p>Crie uma função grep_conta_varios dando a opção para para receber vários ficheiros e realizar a procura em cada um deles.</p></li>
+<li><p>Deve ser adicionado um prefixo com o nome do ficheiro em cada linha impressa na consola.</p></li>
+<li><p>A função recebe um vector de strings e uma string.</p></li>
+<li><p>Cada string no vector tem um nome de ficheiro e um tamanho máximo definido numa constante.</p></li>
+<li><p>A outra string é a “palavra” (pode ser uma frase) a procurar.</p></li>
+<li><p>Para cada ficheiro, deve ser chamada a função <a href="#a-13.8-grep--c">grep_conta</a>.</p></li>
+<li><p>E.g. procurar “al” nos ficheiros</p>
+<pre class="text"><code>alunos.txt: 8
+alunos1718.txt: 2</code></pre></li>
+<li><p>E.g. procurar “fon” nos ficheiros <code>alunos.txt</code> e <code>alunos1718.txt</code></p>
+<pre class="text"><code>alunos.txt: 1
+alunos1718.txt: 1</code></pre></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="a-13.11-grep--i-vários-ficheiros" class="level1">
+<h1>A 13.11 grep -i, vários ficheiros</h1>
+<ul>
+<li><p>Crie uma função grep_ignora_varios dando a opção para para receber vários ficheiros e realizar a procura em cada um deles.</p></li>
+<li><p>Deve ser adicionado um prefixo com o nome do ficheiro em cada linha impressa na consola.</p></li>
+<li><p>A função recebe um vector de strings, uma string e um inteiro.</p></li>
+<li><p>Cada string no vector tem um nome de ficheiro.</p></li>
+<li><p>A outra string é a “palavra” (pode ser uma frase) a procurar.</p></li>
+<li><p>O inteiro é o número a partir do qual não se deve contar mais (o N no exercicio anterior).</p></li>
+<li><p>Para cada ficheiro, deve ser chamada a função <a href="#a-13.9-grep--i-modificada">grep_ignora melhorada</a>.</p></li>
+<li><p>Exemplo para procurar a string “al” nos ficheiros <code>alunos.txt</code> e <code>alunos1718.txt</code>, com N=2:</p>
+<pre class="text"><code>alunos.txt: Mariana Relvão Carvalho
+alunos.txt: Inês Carvalho
+alunos1718.txt: 1174 Salgado
+alunos1718.txt: 1190 Ramalho</code></pre></li>
+</ul>
 </section>
 <section id="exercícios-memória" class="level1">
 <h1>14 Exercícios Memória</h1>
