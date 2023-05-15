@@ -46,3 +46,7 @@ ghp-import output/ -b gh-pages -p -c www.diogoaos.com
 python -m http.server 8000 --dir content\slides\
 ```
 
+
+
+Configure line endings git:
+https://docs.github.com/en/get-started/getting-started-with-git/configuring-git-to-handle-line-endings#global-settings-for-line-endings
