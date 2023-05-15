@@ -1,0 +1,47 @@
+---
+format:
+  html:
+    embed-resources: true
+---
+
+# Laboratório 2 - Medidas estatisticas
+
+Notas
+- Apenas é permitido o uso do computador para
+  - aceder ao replit.com (para resolução do laboratório)
+  - aceder ao conteúdo das aulas e exercícios passados
+  - aceder aos livros da bibliografia
+- A resoluçã dos laboratório é individual.
+- No final, submeter a solução no replit.
+
+## Parte 1 20%
+- Escreve uma função que recebe um vector de reais e devolve a média.
+
+## Parte 2 35%
+- Escreve uma função que recebe um vector de reais.
+- A função devolve o desvio padrão dos valores do vector.
+- O desvio padrão é dado por $\sqrt{\frac{\sum(x_i - \mu)^2}{N}}$
+  - $N$ é o tamanho do vector
+  - $x_i$ são os valores do vector
+  - $\mu$ é a média do vector
+- Pode usar a função da parte 1 para calcular a média.
+  - - Se não fez a parte 1, use a função como se a tivesse resolvido, chamando a seguinte função:
+    - `media(10, vec)` calcularia a média de um vector chamado vec de tamanho 10.
+- Pode usar as seguintes funções da biblioteca math.h
+  - `sqrt` calcula a raiz quadrada do argumento
+  ```c
+  double sqrt(double x);
+  ```
+  - `pow`, devolve a potência da base `x` elevada ao expoente `y`
+  ```c
+  double pow(double x, double y);
+  ```
+
+## Parte 3 45%
+- Escreve um programa que pede ao utilizador quantos valores reais quer introduzir.
+- O programa cria um vector cujo tamanho é o número de valores que o utilizador quer introduzir.
+- Posteriormente, pede ao utilizador esses valores e grava-os.
+- No final, o programa usa as funções da parte 1 e 2 para calcular a média e o desvio padrão e mostra-os na consola.
+- Se não fez as partes 1 e/ou 2, use as funções como se as tivesse resolvido, chamando as seguintes funções como se tivessem implementadas:
+    - `media(10, vec)` calcularia a média de um vector chamado vec de tamanho 10.
+    - `std(10, vec)` calcularia o desvio padrão de um vector chamado vec de tamanho 10.

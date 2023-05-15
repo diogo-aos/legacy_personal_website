@@ -14,7 +14,7 @@ dasilva@academiafa.edu.pt
 ## Memória
 
 
-- [Videos TODO](#/memory_videos)
+- [Videos](#/memory_videos)
 - [Slides, PDF](pdf/12_memoria.pptx.pdf)
 
 
@@ -22,4 +22,7 @@ dasilva@academiafa.edu.pt
 
 <!-- .slide: id="memory_videos"-->
 
-#### videos 1/2
+#### videos
+
+- [Intro](https://www.loom.com/share/2c9e5aa739764e05a8cb664ad0d5afef)
+- [malloc, calloc, free](https://www.loom.com/share/35d2a5b215e84870889b33be33f2ef27)

@@ -1321,7 +1321,7 @@ Escreva um programa que leia todas as linhas de um ficheiro “ler.txt” e escr
   ```
 
 
-# A 13.11 grep -i, vários ficheiros
+### A 13.11 grep -i, vários ficheiros
 
 - Crie uma função grep_ignora_varios dando a opção para para receber vários ficheiros e realizar a procura em cada um deles.
 - Deve ser adicionado um prefixo com o nome do ficheiro em cada linha impressa na consola.
@@ -1341,14 +1341,6 @@ Escreva um programa que leia todas as linhas de um ficheiro “ler.txt” e escr
 
 
 
-
-
-
-
-
-
-
-
 # 14 Exercícios Memória
 <!-- .slide: data-background="Coral" id="14_memory_exercicios" -->
 
@@ -1363,7 +1355,7 @@ Escreva um programa que leia todas as linhas de um ficheiro “ler.txt” e escr
 
 ### AFA 14.1. Image padding
 
-- Em domínio da visão computacional, é comum termos de adicionar pixeis à volta de uma imagem.
+- No domínio da visão computacional, é comum termos de adicionar pixeis à volta de uma imagem.
 - Implementa uma função que recebe uma imagem (vector de _unsigned char_ com 3 dimensões) com uma determinada altura ``h`` (1ª dimensão) e largura ``w`` (2ª dimensão) e o número de pixeis de padding.
 - A 3ª dimensão é o número de canais de cor, que será 3.
 - A função cria um novo vector (alocado dinâmicamente) com o mesmo tamanho da imagem recebida, mas com a primeira e segunda dimensões incrementadas com o número de pixeis de padding.

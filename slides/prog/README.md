@@ -6,3 +6,7 @@ this is necessary for loading external markdown files as source of slides
 ```text
 quarto render content/slides/prog/exercicios.qmd --to html
 ```
+
+
+## encrypt html files
+https://robinmoisson.github.io/staticrypt/
