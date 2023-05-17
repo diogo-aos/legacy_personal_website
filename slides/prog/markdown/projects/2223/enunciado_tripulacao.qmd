@@ -1,0 +1,90 @@
+---
+format:
+  html:
+    embed-resources: true
+---
+
+# Introdução
+
+Estão responsáveis por desenvolver o Sistema de Informação para a Gestão Integrada de Frotas (SIGIF). Irão construir este projecto de raiz
+
+# Estrutura & Organização
+
+-   Existem Aeronaves e Voos
+-   Cada Voo está associado a uma Aeronave
+-   Dados da Aeronave
+    -   número de cauda
+    -   esquadra
+    -   fabricante & modelo
+    -   número de horas inicial
+-   Dados de Voo
+    -   data
+    -   número de cauda
+    -   duração
+-   O programa guarda uma base de dados em formato binário.
+
+# Funcionalidades
+
+1.  Importar dados de ficheiro de texto
+    a.  Aeronaves
+    b.  Voos
+2.  Listas
+    a.  Lista com todas as aeronaves
+    b.  Lista com todas as aeronaves de determinada esquadra
+    c.  Lista com todos os voos
+    d.  Lista com todos os voos de determinada aeronave
+    e.  Lista com todos os voos entre 2 datas
+    f.  Qualquer uma destas listas pode ser exportada para um fiheiro de texto
+3.  Estatísticas
+    a.  Indicar a esquadra com mais horas de voo
+    b.  Indicar as 5 aeronaves com mais horas de voo
+    c.  Histograma das horas de voo de toda a Força Aérea, por ano (⚠️ para grupos de 4 elementos)
+
+# Formato dos ficheiros de texto para importar
+
+-   Aeronaves
+
+    ``` text
+    123 RedSquadron Boeing747 1000
+    456 BlueSquadron AirbusA320 800
+    789 GreenSquadron EmbraerE190 600
+    ```
+
+-   Voos (duração dada em minutos)
+
+    ``` text
+    2023-05-17
+    15133
+    120
+
+    2023-05-18
+    15133
+    180
+
+    2023-05-19
+    15134
+    90
+    ```
+
+# Notas
+
+-   Pode assumir que nunca existirão mais de 500 aeronaves e 1000 voos em sistema, caso não use alocação dinâmica de memória.
+-   Para efeitos de implementação da funcionalidade 2.f, ajuda manter a base de dados dos voos ordenada por data.
+
+# Entrega do trabalho
+
+- O trabalho deve implementar uma aplicação para o problema enunciado. Os ficheiros de código (.c e .h) assim como documentação auxiliar (.txt, .pdf) são submetidos pelo chefe do grupo no Moodle. Ficheiros a submeter:
+  - todos os ficheiros .c e .h necessários para a compilação e execução do programa;
+  - todos os ficheiros necessários para a execução do programa (e.g. ficheiros de configuração, devem ser do tipo .txt);
+  - um manual de utilização MANUAL.pdf com uma descrição simples e curta de como utilizar o programa (é o documento que um utilizador iria ler para aprender a utilizar o programa);
+  - um relatório REPORT.pdf simples e curto sobre como implementaram as diversas funcionalidades e as decisões que tomaram, e onde se clarifica a estrutura do código (e.g. o ficheiro comandos.c contém as funções que manipulam a lista de comandos, grava a lista em ficheiro; optámos por manter a base de dados dos voos ordenada porque...; a estratégia para exportar os relatórios para ficheiro foi....; etc.);
+- Caso necessário, irão ocorrer discussões para defesa dos trabalhos.
+
+# Critérios de avaliação
+- A avaliação do trabalho será feita de acordo com os seguintes princípios:
+  - O programa deve estar estruturado em funções consideradas necessárias para a resolução do problema. O programa deve estar dividido em vários ficheiros quando for relevante.
+  - O programa pode e deve reutilizar código tanto quanto possível e for adequado.
+  - O programa deve executar todas as funcionalidades tal como pedido.
+  - Devem ser escolhidos nomes apropriados para os tipos de dados, operações, variáveis e constantes de modo a facilitar o entendimento do programa. A formatação do código é importante.
+  - O código deve ser comentado. Todas as funções devem ter um breve comentário sobre a sua função, imediatamente abaixo do cabeçalho.
+  - Devem ser utilizadas as estruturas de dados (e.g. vectores, registos) apropriadas para cada problema.

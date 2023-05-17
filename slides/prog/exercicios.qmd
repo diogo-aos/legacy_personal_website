@@ -9,6 +9,7 @@ format:
     toc-depth: 3
     code-fold: true
     html-math-method: katex
+    embed-resources: true
 ---
 
 # Notas
@@ -1338,6 +1339,19 @@ Escreva um programa que leia todas as linhas de um ficheiro “ler.txt” e escr
   alunos1718.txt: 1190 Ramalho
   ```
 
+### A 13.12 ficheiro binário, alunos
+
+- Considera a seguinte estrutura
+  ```c
+  typedef struct {
+    char name[100];
+    char address[300];
+    int id_num;
+    float weight;
+  } Aluno;
+  ```
+- O ficheiro [alunos.bin](exercicios_assets/a_13_12/alunos.bin) contém vários Aluno.
+- Escreve um programa que indica a morada do aluno com o menor peso (_weight_).
 
 
 
@@ -1374,3 +1388,9 @@ Escreva um programa que leia todas as linhas de um ficheiro “ler.txt” e escr
 
 
 ## 15 Exercícios Estruturas de Dados Dinâmicas AFA
+
+
+
+# Labs
+## 22/23
+### Lab 1
