@@ -1344,14 +1344,14 @@ Escreva um programa que leia todas as linhas de um ficheiro “ler.txt” e escr
 - Considera a seguinte estrutura
   ```c
   typedef struct {
-    char name[100];
-    char address[300];
+    char nome[100];
+    char morada[300];
     int id_num;
-    float weight;
+    float media;
   } Aluno;
   ```
 - O ficheiro [alunos.bin](exercicios_assets/a_13_12/alunos.bin) contém vários Aluno.
-- Escreve um programa que indica a morada do aluno com o menor peso (_weight_).
+- Escreve um programa que indica o nome do aluno com a média mais alta.
 
 
 
