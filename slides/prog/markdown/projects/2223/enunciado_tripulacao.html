@@ -3023,27 +3023,43 @@ vertical-align: -.125em;
 
 <section id="introdução" class="level1">
 <h1>Introdução</h1>
-<p>A Força Aérea Portuguesa, com a sua missão de garantir a defesa do espaço aéreo nacional, tem à sua disposição várias aeronaves com características diversas. A correcta manutenção destas aeronaves é fundamental para o seu uso continuado em segurança. Para este efeito, existem vários engenheiros encarregues da gestão das frotas. Os dados necessários a esta função são bastantes e um sistema digital integrado é necessário. A sua missão é desenhar e implementar o <strong>Sistema de Informação para a Gestão Integrada de Frotas (SIGIF)</strong>. O sistema recebe dados de todas as aeronaves de todas as frotas e o registo de todos os voos.</p>
+<p>A Força Aérea Portuguesa, com a sua missão de garantir a defesa do espaço aéreo nacional, tem à sua responsabilidade um diverso leque de missões que são cumpridas por muitas tripulações distintas, de naturezas variadas. A correcta gestão das tripulações é crucial para otimizar os recursos existentes, garantir o cumprimentos da missão e salvaguardar a saúde e bem-estar dos nossos militares. O esforço para criar tripulações e manter um registo atualiado das disponibilidades e tempos mínimos de descanso dos tripulantes é significativo e um sistema digital integrado é necessário. A sua missão é desenhar e implementar o <strong>Sistema de Informação para a Gestão Integrada de Tripulações (SIGIT)</strong>. O sistema contém os dados de todos os tripulantes e possíveis missões a realizar. O CA define as missões que devem ser executadas e em que datas. O SIGIT cria automaticamente, e de forma otimizada, as tripulações necessárias para o efeito.</p>
 </section>
 <section id="estrutura-organização" class="level1">
 <h1>Estrutura &amp; Organização</h1>
 <ul>
-<li>Existem Aeronaves e Voos</li>
-<li>Cada Voo está associado a uma Aeronave</li>
-<li>Dados da Aeronave
+<li>Existem Tripulante, Missão, Voo, Função</li>
+<li>Cada Tripulante está associado a uma Função</li>
+<li>Cada Missão está associado a uma ou mais Função</li>
+<li>Cada Voo está associado a uma missão e a um conjunto de Tripulante</li>
+<li>Dados de Tripulante
 <ul>
-<li>número de cauda</li>
-<li>esquadra</li>
-<li>fabricante &amp; modelo</li>
-<li>número de horas inicial</li>
+<li>id</li>
+<li>estado (operacional ou inop)</li>
+<li>nome</li>
+<li>função</li>
+</ul></li>
+<li>Dados de Missão
+<ul>
+<li>id da missão</li>
+<li>nome da missão</li>
+<li>número de tripulantes</li>
+<li>indicação das funções dos tripulantes</li>
 </ul></li>
 <li>Dados de Voo
 <ul>
+<li>id do voo</li>
 <li>data</li>
-<li>número de cauda</li>
-<li>duração</li>
+<li>id da Missão</li>
+<li>lista de ids dos tripulantes</li>
 </ul></li>
-<li>O programa guarda uma base de dados em formato binário.</li>
+<li>Dados de Função
+<ul>
+<li>id da função</li>
+<li>nome da função</li>
+</ul></li>
+<li>O programa guarda os tripulantes e voos numa base de dados binária.</li>
+<li>O programa guarda a lista de funções e missões em 2 ficheiros de texto de configuração</li>
 </ul>
 </section>
 <section id="funcionalidades" class="level1">
@@ -3051,52 +3067,117 @@ vertical-align: -.125em;
 <ol type="1">
 <li>Importar dados de ficheiro de texto
 <ol type="a">
-<li>Aeronaves</li>
+<li>Tripulantes</li>
 <li>Voos</li>
+</ol></li>
+<li>Marcar voos
+<ol type="a">
+<li>SIGIT mostra lista das missões disponíveis e utilizador escolhe.</li>
+<li>SIGIT pede uma data para o voo desejado.</li>
+<li>SIGIT cria tripulação para o voo automaticamente</li>
+<li>Condições
+<ol type="i">
+<li>Um tripulante não pode ser selecionado para 2 voos no mesmo dia.</li>
+<li>Um tripulante não pode ser selecionado para um voo se estiver inoperacional.</li>
+</ol></li>
 </ol></li>
 <li>Listas
 <ol type="a">
-<li>Lista com todas as aeronaves</li>
-<li>Lista com todas as aeronaves de determinada esquadra</li>
 <li>Lista com todos os voos</li>
-<li>Lista com todos os voos de determinada aeronave</li>
 <li>Lista com todos os voos entre 2 datas</li>
-<li>Qualquer uma destas listas pode ser exportada para um fiheiro de texto</li>
+<li>Lista com todos os tripulantes</li>
+<li>Qualquer uma destas listas pode ser exportada para um fiheiro de texto (⚠️ para grupos de 4 elementos)</li>
+<li>Notas:
+<ol type="i">
+<li>Os dados do voo incluem a sua missão, data e o nome e função de todos os tripulantes</li>
+<li>A lista de tripulantes inclui o nome, função e estado atual de cada tripulante</li>
 </ol></li>
-<li>Estatísticas
+</ol></li>
+<li>Mudar estado de tripulante
 <ol type="a">
-<li>Indicar a esquadra com mais horas de voo</li>
-<li>Indicar as 5 aeronaves com mais horas de voo</li>
-<li>Histograma das horas de voo de toda a Força Aérea, por ano (⚠️ para grupos de 4 elementos)</li>
+<li>Recebe id do tripulante</li>
+<li>Comuta o estado desse tripulante para o contrário do que está</li>
 </ol></li>
 </ol>
 </section>
-<section id="formato-dos-ficheiros-de-texto-para-importar" class="level1">
-<h1>Formato dos ficheiros de texto para importar</h1>
+<section id="formato-dos-ficheiros" class="level1">
+<h1>Formato dos ficheiros</h1>
 <ul>
-<li><p>Aeronaves</p>
-<pre class="text"><code>15133 201 F-16 800
-15134 301 F-16 100
-1319 802 Chipmunk 2300</code></pre></li>
-<li><p>Voos (duração dada em minutos)</p>
-<pre class="text"><code>2023-05-17
-15133
-120
-= = = = =
-2023-05-18
-15133
-180
-= = = = =
-2023-05-19
-15134
-90
-= = = = =</code></pre></li>
+<li>Tripulantes
+<ul>
+<li>cada tripulante em cada linha</li>
+<li>id estado função nome</li>
+<li>e.g.</li>
+</ul>
+<pre class="text"><code>135531 1 1 João Silva
+136535 0 5 Maria Santos</code></pre></li>
+<li>Voo
+<ul>
+<li>cada campo em cada linha
+<ul>
+<li>id do voo</li>
+<li>id do tipo de missão</li>
+<li>data</li>
+<li>ids dos tripulantes, um por linha</li>
+</ul></li>
+<li>cada voo separado por “% % % % %”</li>
+<li>exemplo</li>
+</ul>
+<pre class="text"><code>1
+2
+2023-05-17
+135658
+136797
+% % % % %
+2
+5
+2023-04-13
+135658
+% % % % %</code></pre></li>
+<li>Tipos de missão
+<ul>
+<li>cada campo em cada linha
+<ul>
+<li>id do tipo de missão</li>
+<li>nome do tipo de missão</li>
+<li>número de tripulantes</li>
+<li>ids das funções, um por linha</li>
+</ul></li>
+<li>exemplo</li>
+</ul>
+<pre class="text"><code>1
+Transporte de Doentes
+4
+1
+2
+5
+6
+% % % % %
+2
+Transporte de Carga
+3
+1
+2
+4
+% % % % %</code></pre></li>
+<li>Funções
+<ul>
+<li>cada função numa linha</li>
+<li>campos separados por espaço</li>
+<li>exemplo</li>
+</ul>
+<pre class="text"><code>1 Piloto
+2 Co-Piloto
+3 Navegador
+4 Load Master
+5 Médico
+6 Enfermeiro</code></pre></li>
 </ul>
 </section>
 <section id="notas" class="level1">
 <h1>Notas</h1>
 <ul>
-<li>Caso seja conveniente, podes assumir que nunca existirão mais de 500 aeronaves e 1000 voos em sistema.</li>
+<li>Se for conveniente, podes assumir que nunca existirão mais de 500 tripulantes e 1000 voos em sistema.</li>
 <li>Pode ajudar manter a base de dados dos voos ordenada por data.</li>
 <li>Não usar qualquer biblioteca além das que foram introduzidas nas aulas sem aprovação do docente.</li>
 </ul>

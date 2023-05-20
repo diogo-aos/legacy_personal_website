@@ -1,4 +1,9 @@
 ---
+title-block-banner: true
+title: Enunciado SIGA
+author: Diogo Silva
+date: 2023-05-20
+subtitle: Programação 22/23 2º Semestre
 format:
   html:
     embed-resources: true
@@ -6,70 +11,141 @@ format:
 
 # Introdução
 
-Estão responsáveis por desenvolver o Sistema de Informação para a Gestão Integrada de Frotas (SIGIF). Irão construir este projecto de raiz
+A Força Aérea Portuguesa, com a sua missão de garantir a defesa do espaço aéreo nacional, tem à sua responsabilidade um diverso leque de missões que são cumpridas por muitas tripulações distintas, de naturezas variadas.
+A correcta gestão das tripulações é crucial para otimizar os recursos existentes, garantir o cumprimentos da missão e salvaguardar a saúde e bem-estar dos nossos militares.
+O esforço para criar tripulações e manter um registo atualiado das disponibilidades e tempos mínimos de descanso dos tripulantes é significativo e um sistema digital integrado é necessário.
+A sua missão é desenhar e implementar o **Sistema de Informação para a Gestão Integrada de Tripulações (SIGIT)**. 
+O sistema contém os dados de todos os tripulantes e possíveis missões a realizar.
+O CA define as missões que devem ser executadas e em que datas.
+O SIGIT cria automaticamente, e de forma otimizada, as tripulações necessárias para o efeito.
+
 
 # Estrutura & Organização
 
--   Existem Aeronaves e Voos
--   Cada Voo está associado a uma Aeronave
--   Dados da Aeronave
-    -   número de cauda
-    -   esquadra
-    -   fabricante & modelo
-    -   número de horas inicial
+-   Existem Tripulante, Missão, Voo, Função
+-   Cada Tripulante está associado a uma Função
+-   Cada Missão está associado a uma ou mais Função
+-   Cada Voo está associado a uma missão e a um conjunto de Tripulante
+-   Dados de Tripulante
+    -   id
+    -   estado (operacional ou inop)
+    -   nome
+    -   função
+-   Dados de Missão
+    -   id da missão
+    -   nome da missão
+    -   número de tripulantes
+    -   indicação das funções dos tripulantes
 -   Dados de Voo
-    -   data
-    -   número de cauda
-    -   duração
--   O programa guarda uma base de dados em formato binário.
+    - id do voo
+    - data
+    - id da Missão
+    - lista de ids dos tripulantes
+-   Dados de Função
+    - id da função
+    - nome da função
+-   O programa guarda os tripulantes e voos numa base de dados binária.
+-   O programa guarda a lista de funções e missões em 2 ficheiros de texto de configuração
 
 # Funcionalidades
 
 1.  Importar dados de ficheiro de texto
-    a.  Aeronaves
-    b.  Voos
-2.  Listas
-    a.  Lista com todas as aeronaves
-    b.  Lista com todas as aeronaves de determinada esquadra
-    c.  Lista com todos os voos
-    d.  Lista com todos os voos de determinada aeronave
-    e.  Lista com todos os voos entre 2 datas
-    f.  Qualquer uma destas listas pode ser exportada para um fiheiro de texto
-3.  Estatísticas
-    a.  Indicar a esquadra com mais horas de voo
-    b.  Indicar as 5 aeronaves com mais horas de voo
-    c.  Histograma das horas de voo de toda a Força Aérea, por ano (⚠️ para grupos de 4 elementos)
+    a.  Tripulantes
+    b. Voos
+2.  Marcar voos
+    a. SIGIT mostra lista das missões disponíveis e utilizador escolhe.
+    b. SIGIT pede uma data para o voo desejado.
+    c. SIGIT cria tripulação para o voo automaticamente
+    d. Condições
+        i. Um tripulante não pode ser selecionado para 2 voos no mesmo dia.
+        ii. Um tripulante não pode ser selecionado para um voo se estiver inoperacional.
+3.  Listas
+    a.  Lista com todos os voos
+    b.  Lista com todos os voos entre 2 datas
+    c.  Lista com todos os tripulantes
+    d.  Qualquer uma destas listas pode ser exportada para um fiheiro de texto (⚠️ para grupos de 4 elementos)
+    e.  Notas:
+        i. Os dados do voo incluem a sua missão, data e o nome e função de todos os tripulantes
+        ii. A lista de tripulantes inclui o nome, função e estado atual de cada tripulante
+4. Mudar estado de tripulante
+    a. Recebe id do tripulante
+    b. Comuta o estado desse tripulante para o contrário do que está
 
-# Formato dos ficheiros de texto para importar
+# Formato dos ficheiros
 
--   Aeronaves
+-   Tripulantes
+    -   cada tripulante em cada linha
+    -   id estado função nome
+    -   e.g.
 
     ``` text
-    123 RedSquadron Boeing747 1000
-    456 BlueSquadron AirbusA320 800
-    789 GreenSquadron EmbraerE190 600
+    135531 1 1 João Silva
+    136535 0 5 Maria Santos
     ```
 
--   Voos (duração dada em minutos)
-
+-   Voo
+    -   cada campo em cada linha
+        -   id do voo
+        -   id do tipo de missão
+        -   data
+        -   ids dos tripulantes, um por linha
+    -   cada voo separado por "% % % % %"
+    -   exemplo
     ``` text
+    1
+    2
     2023-05-17
-    15133
-    120
-
-    2023-05-18
-    15133
-    180
-
-    2023-05-19
-    15134
-    90
+    135658
+    136797
+    % % % % %
+    2
+    5
+    2023-04-13
+    135658
+    % % % % %
+    ```
+-   Tipos de missão
+    -   cada campo em cada linha
+        -   id do tipo de missão
+        -   nome do tipo de missão
+        -   número de tripulantes
+        -   ids das funções, um por linha
+    -   exemplo
+    ```text
+    1
+    Transporte de Doentes
+    4
+    1
+    2
+    5
+    6
+    % % % % %
+    2
+    Transporte de Carga
+    3
+    1
+    2
+    4
+    % % % % %
+    ```
+-   Funções
+    -   cada função numa linha
+    -   campos separados por espaço
+    -   exemplo
+    ```text
+    1 Piloto
+    2 Co-Piloto
+    3 Navegador
+    4 Load Master
+    5 Médico
+    6 Enfermeiro
     ```
 
 # Notas
 
--   Pode assumir que nunca existirão mais de 500 aeronaves e 1000 voos em sistema, caso não use alocação dinâmica de memória.
--   Para efeitos de implementação da funcionalidade 2.f, ajuda manter a base de dados dos voos ordenada por data.
+-   Se for conveniente, podes assumir que nunca existirão mais de 500 tripulantes e 1000 voos em sistema.
+-   Pode ajudar manter a base de dados dos voos ordenada por data.
+- Não usar qualquer biblioteca além das que foram introduzidas nas aulas sem aprovação do docente.
 
 # Entrega do trabalho
 

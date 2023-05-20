@@ -3023,27 +3023,40 @@ vertical-align: -.125em;
 
 <section id="introdução" class="level1">
 <h1>Introdução</h1>
-<p>A Força Aérea Portuguesa, com a sua missão de garantir a defesa do espaço aéreo nacional, tem à sua disposição várias aeronaves com características diversas. A correcta manutenção destas aeronaves é fundamental para o seu uso continuado em segurança. Para este efeito, existem vários engenheiros encarregues da gestão das frotas. Os dados necessários a esta função são bastantes e um sistema digital integrado é necessário. A sua missão é desenhar e implementar o <strong>Sistema de Informação para a Gestão Integrada de Frotas (SIGIF)</strong>. O sistema recebe dados de todas as aeronaves de todas as frotas e o registo de todos os voos.</p>
+<p>Estão responsáveis por desenvolver um programa protótipo para gestão de carteiras de investimento, denominado <strong>Sistema de Informação para a Gestão de Ativos (SIGA)</strong>. Este sistema suportará os analistas e gestores de carteiras no seu trabalho, ao centralizar os dados dos ativos e carteiras dos clientes.</p>
 </section>
 <section id="estrutura-organização" class="level1">
 <h1>Estrutura &amp; Organização</h1>
 <ul>
-<li>Existem Aeronaves e Voos</li>
-<li>Cada Voo está associado a uma Aeronave</li>
-<li>Dados da Aeronave
+<li>Existem Carteira, AtivoFinanceiro, ValorAtivo, AtivoCarteira</li>
+<li>Cada Carteira está associada a uma série de AtivoCarteira</li>
+<li>Cada AtivoCarteira está associada a um AtivoFinanceiro</li>
+<li>Cada AtivoFinanceiro está associado a um ValorAtivo</li>
+<li>Dados de AtivoFinanceiro
 <ul>
-<li>número de cauda</li>
-<li>esquadra</li>
-<li>fabricante &amp; modelo</li>
-<li>número de horas inicial</li>
+<li>id</li>
+<li>tipo (acção, bond, crypto, …)</li>
+<li>nome</li>
 </ul></li>
-<li>Dados de Voo
+<li>Dados de ValorAtivo
 <ul>
+<li>id do AtivoFinanceiro</li>
 <li>data</li>
-<li>número de cauda</li>
-<li>duração</li>
+<li>valor</li>
 </ul></li>
-<li>O programa guarda uma base de dados em formato binário.</li>
+<li>Dados de Carteira
+<ul>
+<li>id da Carteira</li>
+<li>descrição</li>
+<li>lista de AtivoCarteira</li>
+</ul></li>
+<li>Dados de AtivoCarteira
+<ul>
+<li>id de AtivoFinanceiro</li>
+<li>quantidade desse AtivoFinanceiro que está guardado em Carteira</li>
+</ul></li>
+<li>O programa guarda uma base de dados em formato binário com as carteiras, as quantidades de cada ativo em cada carteira e os valores atuais dos ativos financeiros.</li>
+<li>A lista de ativos financeiros disponível está num ficheiro de texto.</li>
 </ul>
 </section>
 <section id="funcionalidades" class="level1">
@@ -3051,53 +3064,76 @@ vertical-align: -.125em;
 <ol type="1">
 <li>Importar dados de ficheiro de texto
 <ol type="a">
-<li>Aeronaves</li>
-<li>Voos</li>
+<li>Carteira nova</li>
+<li>Atualização dos novos valores dos AtivoFinanceiro</li>
 </ol></li>
-<li>Listas
+<li>Compra/Venda de AtivoFinanceiro para determinada Carteira
 <ol type="a">
-<li>Lista com todas as aeronaves</li>
-<li>Lista com todas as aeronaves de determinada esquadra</li>
-<li>Lista com todos os voos</li>
-<li>Lista com todos os voos de determinada aeronave</li>
-<li>Lista com todos os voos entre 2 datas</li>
-<li>Qualquer uma destas listas pode ser exportada para um fiheiro de texto</li>
+<li>Programa lista as carteiras existentes com id e nome</li>
+<li>Programa mostra lista de ativos atuais em carteira e questiona se utilizador quer comprar ou vender mais unidades de algum desses ativos
+<ol type="i">
+<li>Comprar/vender ativos atuais: utilizador seleciona o que quer, se quer vender ou comprar e quantidade</li>
+<li>Comprar outros ativos: programa mostra lista de todos os ativos existentes, utilizador seleciona o que quer e quantidade a comprar.</li>
+</ol></li>
+</ol></li>
+<li>Relatórios
+<ol type="a">
+<li>Descrever uma determinada Carteira
+<ol type="i">
+<li>mostrar todos os AtivoCarteira</li>
+<li>mostrar valor total da Carteira actal</li>
+</ol></li>
 </ol></li>
 <li>Estatísticas
 <ol type="a">
-<li>Indicar a esquadra com mais horas de voo</li>
-<li>Indicar as 5 aeronaves com mais horas de voo</li>
-<li>Histograma das horas de voo de toda a Força Aérea, por ano (⚠️ para grupos de 4 elementos)</li>
+<li>5 AtivoFinanceiros com maior valor</li>
+<li>Média do valor de AtivoFinanceiro por tipo</li>
+<li>Gráfico com evolução do preço de um determinato AtivoFinanceiro (⚠️ para grupos de 4 elementos)</li>
 </ol></li>
 </ol>
 </section>
 <section id="formato-dos-ficheiros-de-texto-para-importar" class="level1">
 <h1>Formato dos ficheiros de texto para importar</h1>
 <ul>
-<li><p>Aeronaves</p>
-<pre class="text"><code>15133 201 F-16 800
-15134 301 F-16 100
-1319 802 Chipmunk 2300</code></pre></li>
-<li><p>Voos (duração dada em minutos)</p>
-<pre class="text"><code>2023-05-17
-15133
-120
-= = = = =
-2023-05-18
-15133
-180
-= = = = =
-2023-05-19
-15134
-90
-= = = = =</code></pre></li>
+<li><p>Ficheiro de texto para importar conjunto de Carteira</p>
+<pre class="text"><code>CarteiraId 2
+CarteiraDescrição
+Id de AtivoFinanceiro 1
+Quantidade de AtivoFinanceiro 1
+Id de AtivoFinanceiro 2
+Quantidade de AtivoFinanceiro 2
+... (representativo de mais ativos financeiros)
+Id de AtivoFinanceiro N
+Quantidade de AtivoFinanceiro N
+---
+CarteiraId 2
+CarteiraDescrição
+Id de AtivoFinanceiro 1
+Quantidade de AtivoFinanceiro 1
+Id de AtivoFinanceiro 2
+Quantidade de AtivoFinanceiro 2
+...
+Id de AtivoFinanceiro N
+Quantidade de AtivoFinanceiro N</code></pre></li>
+<li><p>Ficheiro de texto para importar novos valores de AtivoFinanceiro (duração dada em minutos), i.e. lista de ValorAtivo</p>
+<ul>
+<li>em cada linha o formato é <code>data[espaço]id de ativo[espaço]novo valor</code></li>
+<li>exemplo</li>
+</ul>
+<pre class="text"><code>2023-05-17 1 13.13
+2023-05-17 2 34.12
+2023-05-17 3 42.12</code></pre></li>
+<li><p>Ficheiro de texto com lista de AtivoFinanceiro disponível.</p>
+<pre class="text"><code>1,A,Tesla
+2,C,Bitcoin
+3,B,iShares iBoxx ETF</code></pre></li>
 </ul>
 </section>
 <section id="notas" class="level1">
 <h1>Notas</h1>
 <ul>
-<li>Caso seja conveniente, podes assumir que nunca existirão mais de 500 aeronaves e 1000 voos em sistema.</li>
-<li>Pode ajudar manter a base de dados dos voos ordenada por data.</li>
+<li>Se for conveniente, podes assumir que nunca existirão mais de 100 carteiras e que uma carteira nunca tem mais de 50 AtivoCarteira.</li>
+<li>Pode ajudar manter a base de dados de ValorAtivo ordenada por data.</li>
 <li>Não usar qualquer biblioteca além das que foram introduzidas nas aulas sem aprovação do docente.</li>
 </ul>
 </section>

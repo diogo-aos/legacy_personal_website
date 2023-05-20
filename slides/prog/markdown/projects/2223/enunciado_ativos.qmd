@@ -1,4 +1,9 @@
 ---
+title-block-banner: true
+title: Enunciado SIGA
+author: Diogo Silva
+date: 2023-05-20
+subtitle: Programação 22/23 2º Semestre
 format:
   html:
     embed-resources: true
@@ -6,19 +11,20 @@ format:
 
 # Introdução
 
-Estão responsáveis por desenvolver o Sistema de Informação para a Gestão Integrada de Frotas (SIGIF). Irão construir este projecto de raiz
+Estão responsáveis por desenvolver um programa protótipo para gestão de carteiras de investimento, denominado **Sistema de Informação para a Gestão de Ativos (SIGA)**.
+Este sistema suportará os analistas e gestores de carteiras no seu trabalho, ao centralizar os dados dos ativos e carteiras dos clientes.
 
 # Estrutura & Organização
 
--   Existem Carteira, AtivoFinanceiro, ValorAtual, AtivoCarteira
--   Cada Carteira está associado a uma série de AtivosFinanceiro
-- Cada AtivoFinanceiro está associado a um ValorAtual
+-   Existem Carteira, AtivoFinanceiro, ValorAtivo, AtivoCarteira
+-   Cada Carteira está associada a uma série de AtivoCarteira
+-   Cada AtivoCarteira está associada a um AtivoFinanceiro
+-   Cada AtivoFinanceiro está associado a um ValorAtivo
 -   Dados de AtivoFinanceiro
     -   id
     -   tipo (acção, bond, crypto, ...)
-    - nome
-    -   descrição
--   Dados de ValorAtual
+    -   nome
+-   Dados de ValorAtivo
     -   id do AtivoFinanceiro
     -   data
     -   valor
@@ -29,17 +35,23 @@ Estão responsáveis por desenvolver o Sistema de Informação para a Gestão In
 - Dados de AtivoCarteira
     - id de AtivoFinanceiro
     - quantidade desse AtivoFinanceiro que está guardado em Carteira
--   O programa guarda uma base de dados dos dados em formato binário.
+-   O programa guarda uma base de dados em formato binário com as carteiras, as quantidades de cada ativo em cada carteira e os valores atuais dos ativos financeiros.
+-   A lista de ativos financeiros disponível está num ficheiro de texto.
 
 # Funcionalidades
 
 1.  Importar dados de ficheiro de texto
-    a.  Carteira
+    a. Carteira nova
+    b. Atualização dos novos valores dos AtivoFinanceiro 
 2.  Compra/Venda de AtivoFinanceiro para determinada Carteira
+    a.  Programa lista as carteiras existentes com id e nome
+    b.  Programa mostra lista de ativos atuais em carteira e questiona se utilizador quer comprar ou vender mais unidades de algum desses ativos
+        i.  Comprar/vender ativos atuais: utilizador seleciona o que quer, se quer vender ou comprar e quantidade
+        ii. Comprar outros ativos: programa mostra lista de todos os ativos existentes, utilizador seleciona o que quer e quantidade a comprar.
 3.  Relatórios
     a.  Descrever uma determinada Carteira
         i. mostrar todos os AtivoCarteira
-        ii. mostrar valor total da Carteira
+        ii. mostrar valor total da Carteira actal
 4.  Estatísticas
     a. 5 AtivoFinanceiros com maior valor
     b. Média do valor de AtivoFinanceiro por tipo
@@ -47,34 +59,53 @@ Estão responsáveis por desenvolver o Sistema de Informação para a Gestão In
 
 # Formato dos ficheiros de texto para importar
 
--   Aeronaves
+-   Ficheiro de texto para importar conjunto de Carteira
 
-    ``` text
-    123 RedSquadron Boeing747 1000
-    456 BlueSquadron AirbusA320 800
-    789 GreenSquadron EmbraerE190 600
+    ```text
+    CarteiraId 2
+    CarteiraDescrição
+    Id de AtivoFinanceiro 1
+    Quantidade de AtivoFinanceiro 1
+    Id de AtivoFinanceiro 2
+    Quantidade de AtivoFinanceiro 2
+    ... (representativo de mais ativos financeiros)
+    Id de AtivoFinanceiro N
+    Quantidade de AtivoFinanceiro N
+    ---
+    CarteiraId 2
+    CarteiraDescrição
+    Id de AtivoFinanceiro 1
+    Quantidade de AtivoFinanceiro 1
+    Id de AtivoFinanceiro 2
+    Quantidade de AtivoFinanceiro 2
+    ...
+    Id de AtivoFinanceiro N
+    Quantidade de AtivoFinanceiro N
     ```
 
--   Voos (duração dada em minutos)
+-   Ficheiro de texto para importar novos valores de AtivoFinanceiro (duração dada em minutos), i.e. lista de ValorAtivo
+    - em cada linha o formato é `data[espaço]id de ativo[espaço]novo valor`
+    - exemplo
 
-    ``` text
-    2023-05-17
-    15133
-    120
+    ```text
+    2023-05-17 1 13.13
+    2023-05-17 2 34.12
+    2023-05-17 3 42.12
+    ```
 
-    2023-05-18
-    15133
-    180
+-   Ficheiro de texto com lista de AtivoFinanceiro disponível.
 
-    2023-05-19
-    15134
-    90
+    ```text
+    1,A,Tesla
+    2,C,Bitcoin
+    3,B,iShares iBoxx ETF
     ```
 
 # Notas
 
--   Pode assumir que nunca existirão mais de 500 aeronaves e 1000 voos em sistema, caso não use alocação dinâmica de memória.
--   Para efeitos de implementação da funcionalidade 2.f, ajuda manter a base de dados dos voos ordenada por data.
+-   Se for conveniente, podes assumir que nunca existirão mais de 100 carteiras e que uma carteira nunca tem mais de 50 AtivoCarteira.
+-   Pode ajudar manter a base de dados de ValorAtivo ordenada por data.
+- Não usar qualquer biblioteca além das que foram introduzidas nas aulas sem aprovação do docente.
 
 # Entrega do trabalho
 
