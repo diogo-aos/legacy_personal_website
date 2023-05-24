@@ -4,8 +4,12 @@ title: Enunciado SIGIT
 author: Diogo Silva
 date: 2023-05-20
 subtitle: Programação 22/23 2º Semestre
-format:
+format: 
   html:
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    html-math-method: katex
     embed-resources: true
 ---
 

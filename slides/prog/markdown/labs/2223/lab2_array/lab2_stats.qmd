@@ -6,7 +6,7 @@ format:
 
 # Laboratório 2 - Medidas estatisticas
 
-Notas
+## Notas
 - Apenas é permitido o uso do computador para
   - aceder ao replit.com (para resolução do laboratório)
   - aceder ao conteúdo das aulas e exercícios passados

@@ -61,3 +61,19 @@ Espaço | slide seguinte
 ---
 
 [Setup VSCode locally](https://www.youtube.com/watch?v=HiyfEbbCWT4)
+
+---
+
+# Labs
+
+- [Lab 1](markdown/labs/2223/lab2_array/lab2_stats.html)
+- [Lab 2](markdown/labs/2223/lab2_array/lab2_stats.qmd)
+- [Lab 3](content/slides/prog/markdown/labs/2223/lab3_file_struct/lab3_encrypted.html)
+
+---
+
+# Projectos
+
+- [SIGIF](markdown/projects/2223/enunciado_frota.html)
+- [SIGIT](markdown/projects/2223/enunciado_tripulacao.html)
+- [SIGA](markdown/projects/2223/enunciado_ativos.html)
