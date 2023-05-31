@@ -1,0 +1,89 @@
+---
+title: "Programação"
+subtitle: "Laboratório 3"
+institute: "Academia da Força Aérea"
+author: CAP Diogo Silva
+format: 
+  html:
+    toc: true
+    toc-depth: 3
+    code-fold: true
+    html-math-method: katex
+    embed-resources: true
+---
+
+# Laboratório 3 - Relatórios por zona
+
+## Notas
+- Apenas é permitido o uso do computador para
+  - aceder ao replit.com (para resolução do laboratório)
+  - aceder ao conteúdo das aulas e exercícios passados
+  - aceder aos livros da bibliografia
+- A resolução dos laboratório é individual.
+- No final, submeter a solução no replit.
+
+## Setup
+
+- Para a resolução deste laboratório considera a seguinte struct
+  ```c
+  typedef struct {
+    int id;
+    char cidade[50];
+    char nome[50];
+  } Estudante;
+  ```
+- Copia a definição deste tipo para a tua solução.
+
+
+## Parte 1 - Ler base de dados [20%]
+- Escreve uma função que recebe o nome de um ficheiro binário, um vetor de `Estudante` e número máximo de `Estudante` a ler do ficheiro.
+- Implementa a função os dados de `Estudante` existentes no ficheiro binário. Nunca podem ser lidos mais que o número máximo recebido como argumento da função.
+- A função devolve o número de estudantes (`int`) efetivamente lido.
+
+## Parte 2 - Filtro por localidade [50%]
+- Escreve uma função que recebe:
+  - um vetor de `Estudante`
+  - número de elementos do vetor que está preenchido (usar vetor de tamanho variável nos argumentos).
+  - uma string com o nome de uma cidade
+- A função cria um ficheiro de texto com o nome da cidade recebida, terminado por ".txt", e.g. "Lisboa.txt".
+  - Podes usar a função `strcat` da biblioteca `string.h` para concatenar 2 strings, e.g.
+  ```c
+  #include <stdio.h>
+  #include <string.h>
+
+  int main() {
+    char str1[100] = "Hello ";
+    char str2[100] = "world!";
+    char result[100];
+
+    strcpy(result, str1);
+    strcat(result, str2);  // tem a str1 seguida da str2
+
+    printf("%s", result);
+    return 0;
+  }
+  ```
+- A função escreve no ficheiro de texto os dados de todos os alunos que pertencem à cidade recebida, um por linha, no formato `id nome`, e.g.
+  ```text
+  1743 Silva
+  1755 Ramos
+  1733 Veríssimo
+  ```
+- A função devolve o número de estudantes (`int`) guardados no ficheiro.
+
+
+## Parte 3 - Integração [30%]
+- Escreve a função main que cria um vetor de 200 `Estudante`.
+- Adiciona à função main o seguinte vetor de cidades a procurar.
+  ```c
+  char cidades[5][50] = {
+    "Lisboa",
+    "Porto",
+    "Coimbra",
+    "Braga",
+    "Funchal"
+  };
+  ```
+- O programa usa a função da parte 1 para ler os dados dos estudantes contidos no ficheiro binário `estudantes.bd` e guardá-los no vetor `estudantes`. O número máximo de estudantes a ler é o tamanho do vetor.
+  - Ficheiro acessível neste [link](markdown/labs/2223/lab3_file_struct/estudantes.bd).
+- Para cada cidade no vetor `cidades`, o programa cria um ficheiro de texto com os alunos pertencentes a essa cidade com a função da parte 2. Nota que tens de passar o número de elementos que efetivamente existem no vetor (que pode ser diferente do tamanho total do vetor).

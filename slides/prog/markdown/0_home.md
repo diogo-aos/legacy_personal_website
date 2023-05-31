@@ -67,7 +67,7 @@ Espaço | slide seguinte
 # Labs
 
 - [Lab 1](markdown/labs/2223/lab1_funcoes/lab1_navigation.html)
-- [Lab 2](markdown/labs/2223/lab2_array/lab2_stats.qmd)
+- [Lab 2](markdown/labs/2223/lab2_array/lab2_stats.html)
 - [Lab 3](markdown/labs/2223/lab3_file_struct/lab3_encrypted.html)
 
 ---

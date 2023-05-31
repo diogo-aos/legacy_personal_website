@@ -1,3 +1,10 @@
+---
+title: "Estruturas de Dados Dinâmicas"
+author: "John Doe"
+format: revealjs
+---
+
+
 <img src="img/afa.png" height="100">
 
 ## Estruturas de Dados Dinâmicas
@@ -8,21 +15,19 @@ dasilva@academiafa.edu.pt
 
 <!-- .slide: data-background="Cornsilk" id="data_structs"-->
 
----
 
 ## O que são estruturas de dados estáticas?
 
---
 
 Estruturas de dados que vimos:
 - array
 - string (=array)
 - struct
 
---
 
 Estas estruturas são estáticas, i.e. o seu tamanho é fixo e definido no início.
-```C
+
+```c
 int mat[10][10];
 char frase[200];
 struct aluno {
@@ -147,10 +152,10 @@ mas cada nó aponta para o elemento anterior e para o seguinte.
 
 --
 
-#### LIFO (First In First out)
+![double_linked_list_node](img/13_dynamic_data_structures/stack-push.PNG)
+![double_linked_list_node](img/13_dynamic_data_structures/stack-pop.PNG)
 
-![double_linked_list_node](img/13_dynamic_data_structures/queue-enqueue.PNG)
-![double_linked_list_node](img/13_dynamic_data_structures/queue-dequeue.PNG)
+
 
 ---
 
@@ -158,10 +163,7 @@ mas cada nó aponta para o elemento anterior e para o seguinte.
 ## Pilha
 ### (stack)
 
-
 --
 
-#### LIFO (Last In First out)
-
-![double_linked_list_node](img/13_dynamic_data_structures/stack-push.PNG)
-![double_linked_list_node](img/13_dynamic_data_structures/stack-pop.PNG)
+![double_linked_list_node](img/13_dynamic_data_structures/queue-enqueue.PNG)
+![double_linked_list_node](img/13_dynamic_data_structures/queue-dequeue.PNG)

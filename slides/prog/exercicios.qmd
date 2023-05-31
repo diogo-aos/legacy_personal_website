@@ -1389,8 +1389,37 @@ Escreva um programa que leia todas as linhas de um ficheiro “ler.txt” e escr
 
 ## 15 Exercícios Estruturas de Dados Dinâmicas AFA
 
+### AFA 15.1 receber lista de números reais
+
+- Implementa uma lista ligada de números reais.
+- Escreve uma função que recebe uma lista ligada e um número real.
+  - A função cria um novo nó com o número real recebido e adiciona-o à lista recebida.
+- Na main, pede 5 números reais ao utilizador e guarda-os na lista lidada.
+- Escreve uma função que escreve na consola o conteúdo de todos os elementos da lista ligada.
+- Na main, usa esta função para escrever na consola os elementos introduzidos pelo utilizador.
+- Modifica a main para que o número de elementos pedidos ao utilizador não esteja pré-definido.
+  - O programa vai pedindo valores ao utilizador enquanto os quiser inserir.
+  - Para sinalizar que se inseriu o último valor, o utilizador irá escrever um "f" após o último número, e.g. `3.14f`.
+
+### AFA 15.2 listlen
+
+- Com base no AFA 15.1, adiciona escreve uma função que recebe uma lista ligada de números reais e devolve o número de elementos dessa lista.
+
+### AFA 15.3 soma e média
+
+- Com base no AFA 15.1, adiciona escrve 2 funções que recebem uma lista ligada de números reais e devolvem um valor:
+  - A função `soma` recebe uma lista ligada e devolve a soma de todos os elementos existentes na lista.
+  - A função `media` recebe uma lista ligada e devolve a média de todos os elementos existentes na lista.
+
+### AFA 15.4. filtro
+
+- Com base no AFA 15.1, adiciona uma função que recebe uma lista ligada e 2 valores `lower` e `upper`.
+- A função irá remover da lista todos os elementos que estão abaixo do valor `lower` e os que estão acima de `upper`.
 
 
 # Labs
 ## 22/23
 ### Lab 1
+### Lab 2
+### Lab 3
+### Lab 4
