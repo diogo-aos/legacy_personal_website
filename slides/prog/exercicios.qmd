@@ -1356,7 +1356,6 @@ Escreva um programa que leia todas as linhas de um ficheiro “ler.txt” e escr
 
 
 # 14 Exercícios Memória
-<!-- .slide: data-background="Coral" id="14_memory_exercicios" -->
 
 [Slides da matéria]()
 
@@ -1377,9 +1376,13 @@ Escreva um programa que leia todas as linhas de um ficheiro “ler.txt” e escr
 - O espaço de padding deve estar inicializado com zeros.
 - A função retorna a imagem com padding.
 
+### AFA 14.2. Computer Vision - augmentations 1 - occlusion
+
+- No domínio da visão computacional, é comum aumentar o número de imagens de um dataset com as imagens originais, mas com uma parte da imagem escondida.
+- O teu objetivo será criar uma função que recebe uma imagem (vector de _unsigned char_ com 3 dimensões) e vai criar uma cópia da imagem original, mas com partes da imagem escondida.
+- A função recebe a imagem original, assim como as suas dimensões e o tamanho do quadrado que vai esconder parte da imagem (`int`).
 
 # 15 Exercícios Estruturas de Dados Dinâmicas
-<!-- .slide: data-background="Coral" id="15_dynamic_structures_exercicios" -->
 
 [Slides da matéria]()
 

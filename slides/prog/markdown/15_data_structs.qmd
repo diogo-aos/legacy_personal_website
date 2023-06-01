@@ -1,29 +1,39 @@
 ---
 title: "Estruturas de Dados Dinâmicas"
-author: "John Doe"
-format: revealjs
+#subtitle: "Laboratório 3"
+institute: "Academia da Força Aérea"
+author: CAP Diogo Silva
+email: "dasilva@academiafa.edu.pt"
+logo: "afa.png"
+
+format:
+    revealjs:
+        toc: true
+        theme: "beige"
+        slideNumber: true
+        html-math-method: katex
+        embed-resources: true
+        output-file: 15_data_structs_slides.html
+    html:
+        theme: "sandstone"
+        toc: true
+        toc-depth: 3
+        code-fold: true
+        html-math-method: katex
+        embed-resources: true
 ---
 
 
-<img src="img/afa.png" height="100">
 
-## Estruturas de Dados Dinâmicas
-
-### Diogo Silva
-####  CAP / ENGEL
-dasilva@academiafa.edu.pt
-
-<!-- .slide: data-background="Cornsilk" id="data_structs"-->
-
-
-## O que são estruturas de dados estáticas?
-
+## Estruturas estáticas
 
 Estruturas de dados que vimos:
+
 - array
 - string (=array)
 - struct
 
+---
 
 Estas estruturas são estáticas, i.e. o seu tamanho é fixo e definido no início.
 
@@ -36,12 +46,14 @@ struct aluno {
 }
 ```
 
---
+---
+
+## Alocação dinâmica de memória
 
 Com alocação dinâmica de memória, aprendemos a criar estruturas de dados
 com um _tamanho definido durante a execução do programa_.
 
-```c [1-2|4-8]
+```c
 // allocate array, vec_size=size of vector
 int * vect = calloc(vec_size, sizeof(int));
 
@@ -51,30 +63,35 @@ int ** mat = calloc(dim1_size, sizeof(int*));
 for(int i=0; i<dim1_size; i++)
     mat[i] = calloc(dim2_size, sizeof(int));
 ```
-<!-- .element: class="fragment" -->
 
-Mas depois de criadas, o tamanho destas estruturas não é alterado,
+---
+
+
+Mas depois de criadas, o tamanho destas estruturas não é alterado[^1],
 i.e. um array não pode crescer ou diminuir conforme a necessidade.
-<!-- .element: class="fragment" -->
 
-<small>*a função realloc muda um pouco esta dinâmica</small>
-<!-- .element: class="fragment" -->
+
+[^1]: a função realloc muda um pouco esta dinâmica
+
+
 
 ---
 
 ## E as estruturas dinâmicas?
-Estas crescem e diminuem conforme adicionamos ou removemos dados. <!-- .element: class="fragment" -->
+Estas crescem e diminuem conforme adicionamos ou removemos dados.
 
 Além disso, a forma de organização e ligação entre os dados permite
-otimizar o tempo de várias operações ou o espaço ocupado. <!-- .element: class="fragment" -->
+otimizar o tempo de várias operações ou o espaço ocupado. 
 
---
+---
 
 Estruturas de dados dinâmicas:
+
 - Lista ligada simples
 - Lista duplamente ligada
 - Fila (queue)
 - Pilha (stack)
+- entre muitas outras...
 
 ---
 
@@ -83,24 +100,24 @@ Estruturas de dados dinâmicas:
 Um conjunto de elementos ligados não pela sua posição na memória (array),
 mas por <span style="color:DeepSkyBlue">referências explicitas entre elementos</span>.
 
+---
 
+## Lista ligada simples
 
---
+![](img/cap15/linked-list.PNG)
 
-![linked_list](img/13_dynamic_data_structures/linked-list.PNG)
+- HEAD é o elemento inicial da lista.
+- Cada elemento aponta para o elemento seguinte (apontador).
+- O último elemento aponta sempre para NULL.
 
-HEAD é o elemento inicial da lista.
+---
 
-Cada elemento aponta para o elemento seguinte (apontador).
-
-O último elemento aponta sempre para NULL.
-
---
+## Lista ligada simples
 
 Os elementos de uma lista ligada também são frequentemente 
 denominados por nós.
 
-Um nó pode ser implementado com um struct.
+Um nó pode ser implementado com `struct`.
 
 ```c
 struct node {
@@ -109,28 +126,68 @@ struct node {
 }
 ```
 
-![linked_list](img/13_dynamic_data_structures/linked-list-node.PNG)
+![](img/cap15/linked-list-node.PNG)
 
---
+---
 
-Operações em listas ligadas:
+## Exemplo
+
+- Criar lista e primeiro nó
+
+```c
+struct node * head;
+
+
+head = malloc(sizeof(struct node));
+head->data = 42;
+head->next = NULL;
+```
+
+- Criar segundo nó
+
+```c
+struct node * b = malloc(sizeof(struct node));
+b->data = 87;
+b->next = NULL;
+```
+
+- Adicionar segundo nó à lista
+
+```c
+// adicionar b à lista
+head->next = b;
+```
+
+---
+
+## Algumas operações em listas ligadas
+
 - inserir novo elemento em determinada posição
 - eliminar elemento em determinada posição
 - tirar elemento de determinada posição
 - procurar nó por valor
 - contar número de nós
 
---
+---
 
-Algumas caracteristicas:
+## Algumas caracteristicas
+
 - Só podemos percorrer a lista numa direção
 - se quisermos o elemento na posição X, temos de percorrer
-    todos os elementos nas posições [0,X[
+    todos os elementos nas posições $[0,X[$
 - sempre que removemos um elemento da lista, não esquecer de libertar a memória.
 
---
+---
 
-Demo implementação
+## Demo implementação
+
+- Gravação em aula
+    - Parte 1 [18min]
+        - [Loom](https://www.loom.com/share/3799c929dc2c4c088379b7348c578f23)
+        - [Sharepoint]()
+    - Parte 2 [10min]
+        - [Loom](https://www.loom.com/share/0a066eabbef54218b82de895c08b785f)
+        - [Sharepoint]()
 
 ---
 
@@ -139,23 +196,36 @@ Demo implementação
 Em tudo igual à lista ligada simples,
 mas cada nó aponta para o elemento anterior e para o seguinte.
 
-![double_linked_list_node](img/13_dynamic_data_structures/doubly-linked-list-node.PNG)
+![Diagram de um nó](img/cap15/doubly-linked-list-node.PNG){fig-align="center"}
 
---
+---
 
-![double_linked_list_node](img/13_dynamic_data_structures/doubly-linked-list.PNG)
+![Diagrama de como os nós se ligam](img/cap15/doubly-linked-list.PNG){fig-align="center"}
 
 ---
 
 ## Fila
 ### (queue)
 
---
+- Parecida com uma lista ligada, mas os elementos são sempre adicionados no fim e retirados do início.
+- O primeiro elemento a entrar é o primeiro elemento a sair (FIFO - _first in first out_)
 
-![double_linked_list_node](img/13_dynamic_data_structures/stack-push.PNG)
-![double_linked_list_node](img/13_dynamic_data_structures/stack-pop.PNG)
+---
 
+## Fila
 
+::: columns
+
+::: column
+![Adicionar um nó](img/cap15/stack-push.PNG){fig-align="center"}
+:::
+
+::: column
+![Remover um nó](img/cap15/stack-pop.PNG){fig-align="center"}
+
+:::
+
+:::
 
 ---
 
@@ -163,7 +233,22 @@ mas cada nó aponta para o elemento anterior e para o seguinte.
 ## Pilha
 ### (stack)
 
---
+- Parecida com uma lista ligada, mas os elementos são sempre adicionados no fim e retirados do fim, ou adicionados no início e retirados do início.
+- O último elemento a entrar é o primeiro elemento a sair (LIFO - _last in first out_)
 
-![double_linked_list_node](img/13_dynamic_data_structures/queue-enqueue.PNG)
-![double_linked_list_node](img/13_dynamic_data_structures/queue-dequeue.PNG)
+---
+
+## Pilha
+
+::: columns
+
+::: column
+![Adicionar um nó](img/cap15/queue-enqueue.PNG){fig-align="center"}
+:::
+
+::: column
+![Remover um nó](img/cap15/queue-dequeue.PNG){fig-align="center"}
+
+:::
+
+:::

@@ -49,7 +49,7 @@ Espaço | slide seguinte
     <li><a href="#/struct">Struct</a></li>
     <li><a href="#/files">Ficheiros</a></li>
     <li><a href="#/memory">Memória</a></li>
-    <li><a href="#/data_structs">Dynamic Data Structures</a></li>
+    <li><a href="markdown/15_data_structs_slides.html">Dynamic Data Structures</a></li>
     <li><a href="#/extra">Extra</a></li>
     <li><a href="exercicios.html">Exercícios</a></li>
 </ol>
