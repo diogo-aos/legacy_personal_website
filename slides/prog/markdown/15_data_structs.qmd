@@ -4,12 +4,11 @@ title: "Estruturas de Dados Dinâmicas"
 institute: "Academia da Força Aérea"
 author: CAP Diogo Silva
 email: "dasilva@academiafa.edu.pt"
-logo: "afa.png"
+logo: "afa.svg"
 
 format:
     revealjs:
-        toc: true
-        theme: "beige"
+        theme: "serif"
         slideNumber: true
         html-math-method: katex
         embed-resources: true
@@ -33,7 +32,7 @@ Estruturas de dados que vimos:
 - string (=array)
 - struct
 
----
+. . .
 
 Estas estruturas são estáticas, i.e. o seu tamanho é fixo e definido no início.
 
@@ -85,7 +84,7 @@ otimizar o tempo de várias operações ou o espaço ocupado.
 
 ---
 
-Estruturas de dados dinâmicas:
+## Estruturas de dados dinâmicas
 
 - Lista ligada simples
 - Lista duplamente ligada
@@ -93,29 +92,41 @@ Estruturas de dados dinâmicas:
 - Pilha (stack)
 - entre muitas outras...
 
----
 
 ## Lista ligada simples
 
 Um conjunto de elementos ligados não pela sua posição na memória (array),
-mas por <span style="color:DeepSkyBlue">referências explicitas entre elementos</span>.
+mas por **referências explicitas entre elementos**.
 
----
+
 
 ## Lista ligada simples
 
-![](img/cap15/linked-list.PNG)
+![Diagrama de lista ligada simples](img/cap15/linked-list.svg){fig-align="center"}
 
-- HEAD é o elemento inicial da lista.
+- HEAD aponta para o elemento inicial da lista.
 - Cada elemento aponta para o elemento seguinte (apontador).
-- O último elemento aponta sempre para NULL.
 
----
+
+## Algumas caracteristicas
+::: {.incremental}
+
+- O último elemento aponta sempre para `NULL`.
+    - Se a lista estiver vazia, `HEAD` aponta para `NULL`.
+- Só podemos percorrer a lista numa direção
+- se quisermos o elemento na posição X, temos de percorrer
+    todos os elementos nas posições $[0,X[$
+- sempre que removemos um elemento da lista, não esquecer de libertar a memória.
+- Sempre que removemos um elemento
+    -   libertar e memória associada.
+    -   mudar a referência da lista que apontava para esse elemento
+:::
 
 ## Lista ligada simples
 
-Os elementos de uma lista ligada também são frequentemente 
-denominados por nós.
+Os elementos de uma lista ligada também são frequentemente denominados por nós.
+
+. . .
 
 Um nó pode ser implementado com `struct`.
 
@@ -126,9 +137,9 @@ struct node {
 }
 ```
 
-![](img/cap15/linked-list-node.PNG)
+![Diagrama de um nó de lista ligada simples.](img/cap15/linked-list-node.svg){fig-align="center"}
 
----
+
 
 ## Exemplo
 
@@ -143,6 +154,8 @@ head->data = 42;
 head->next = NULL;
 ```
 
+. . .
+
 - Criar segundo nó
 
 ```c
@@ -150,6 +163,8 @@ struct node * b = malloc(sizeof(struct node));
 b->data = 87;
 b->next = NULL;
 ```
+
+. . .
 
 - Adicionar segundo nó à lista
 
@@ -168,14 +183,7 @@ head->next = b;
 - procurar nó por valor
 - contar número de nós
 
----
 
-## Algumas caracteristicas
-
-- Só podemos percorrer a lista numa direção
-- se quisermos o elemento na posição X, temos de percorrer
-    todos os elementos nas posições $[0,X[$
-- sempre que removemos um elemento da lista, não esquecer de libertar a memória.
 
 ---
 
@@ -196,11 +204,13 @@ head->next = b;
 Em tudo igual à lista ligada simples,
 mas cada nó aponta para o elemento anterior e para o seguinte.
 
-![Diagram de um nó](img/cap15/doubly-linked-list-node.PNG){fig-align="center"}
+. . .
 
----
+![Diagram de um nó](img/cap15/doubly-linked-list-node.svg){fig-align="center"}
 
-![Diagrama de como os nós se ligam](img/cap15/doubly-linked-list.PNG){fig-align="center"}
+. . .
+
+![Diagrama de como os nós se ligam](img/cap15/doubly-linked-list.svg){fig-align="center"}
 
 ---
 
@@ -217,11 +227,11 @@ mas cada nó aponta para o elemento anterior e para o seguinte.
 ::: columns
 
 ::: column
-![Adicionar um nó](img/cap15/stack-push.PNG){fig-align="center"}
+![Adicionar um nó](img/cap15/stack-push.svg){fig-align="center"}
 :::
 
 ::: column
-![Remover um nó](img/cap15/stack-pop.PNG){fig-align="center"}
+![Remover um nó](img/cap15/stack-pop.svg){fig-align="center"}
 
 :::
 
@@ -243,11 +253,11 @@ mas cada nó aponta para o elemento anterior e para o seguinte.
 ::: columns
 
 ::: column
-![Adicionar um nó](img/cap15/queue-enqueue.PNG){fig-align="center"}
+![Adicionar um nó](img/cap15/queue-enqueue.svg){fig-align="center"}
 :::
 
 ::: column
-![Remover um nó](img/cap15/queue-dequeue.PNG){fig-align="center"}
+![Remover um nó](img/cap15/queue-dequeue.svg){fig-align="center"}
 
 :::
 
