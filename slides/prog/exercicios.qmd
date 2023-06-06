@@ -21,7 +21,7 @@ Os exercícios denominados "King ..." são retirados do livro
 # 2 Fundamentos
 <!-- .slide: data-background="Coral" id="2_exercicios" -->
 
-[Slides da matéria](#/2_fundamentals)
+[Slides da matéria](https://www.diogoaos.com/slides/prog/#/2_fundamentals)
 
 ---
 
@@ -29,7 +29,7 @@ Os exercícios denominados "King ..." são retirados do livro
 # 3 I/O Formatado
 <!-- .slide: data-background="Coral" id="3_exercicios"-->
 
-[Slides da matéria](#/3_formated_io)
+[Slides da matéria](https://www.diogoaos.com/slides/prog/#/3_formated_io)
 
 ---
 
@@ -95,7 +95,7 @@ Soma: 38/24
 # 4 Expressões
 <!-- .slide: data-background="Coral" id="4_exercicios" -->
 
-[Slides da matéria](#/4_expressions)
+[Slides da matéria](https://www.diogoaos.com/slides/prog/#/4_expressions)
 
 ---
 
@@ -136,7 +136,7 @@ Reimplementa o programa do [King 4.2](#king-4.2) sem usar aritmética.
 # 5 Exercícios Seleção
 <!-- .slide: data-background="Coral" id="5_exercicios" -->
 
-[Slides da matéria](pdf/03_testes_condicoes.pptx.pdf)
+[Slides da matéria](https://www.diogoaos.com/slides/prog/pdf/03_testes_condicoes.pptx.pdf)
 
 
 ## King
@@ -313,7 +313,7 @@ Escolha: 3
 # 6 Exercícios Ciclos
 <!-- .slide: data-background="Coral" id="6_ciclos_exercicios" -->
 
-[Slides da matéria](pdf/03_testes_condicoes.pptx.pdf)
+[Slides da matéria](https://www.diogoaos.com/slides/prog/#/ciclos)
 
 
 
@@ -406,7 +406,7 @@ Por exemplo, se o utilizador introduzir 100:
 # 7 Exercícios Tipos
 <!-- .slide: data-background="Coral" id="7_tipos_exercicios" -->
 
-[Slides da matéria]()
+[Slides da matéria](https://www.diogoaos.com/slides/prog/#/7_basic_types)
 
 
 ## Exercícios Tipos King
@@ -582,7 +582,7 @@ Letra codificada: N
 # 8 Exercícios Funções
 <!-- .slide: data-background="Coral" id="8_funcoes_exercicios" -->
 
-[Slides da matéria]()
+[Slides da matéria](https://www.diogoaos.com/slides/prog/#/funcoes)
 
 
 
@@ -785,7 +785,7 @@ Ajudas:
 # 9 Exercícios Array
 <!-- .slide: data-background="Coral" id="9_arrays_exercicios" -->
 
-[Slides da matéria]()
+[Slides da matéria](https://www.diogoaos.com/slides/prog/#/array)
 
 
 ## Exercícios Array King
@@ -1042,7 +1042,7 @@ indeces:    1  2  0   3
 # 10 Exercícios Strings
 <!-- .slide: data-background="Coral" id="10_strings_exercicios" -->
 
-[Slides da matéria]()
+[Slides da matéria](https://www.diogoaos.com/slides/prog/#/string)
 
 
 ## 10 Exercícios Strings King
@@ -1152,13 +1152,13 @@ facil demasiado exercicio
 # 11 Exercícios Apontadores
 <!-- .slide: data-background="Coral" id="11_pointers_exercicios" -->
 
-[Slides da matéria]()
+[Slides da matéria](https://www.diogoaos.com/slides/prog/#/pointer)
 
 
 # 12 Exercícios Struct
 <!-- .slide: data-background="Coral" id="12_struct_exercicios" -->
 
-[Slides da matéria]()
+[Slides da matéria](https://www.diogoaos.com/slides/prog/#/struct)
 
 
 ##  King
@@ -1186,7 +1186,7 @@ facil demasiado exercicio
 # 13 Exercícios Ficheiros
 <!-- .slide: data-background="Coral" id="13_ficheiros_exercicios" -->
 
-[Slides da matéria]()
+[Slides da matéria](https://www.diogoaos.com/slides/prog/#/files)
 
 
 ## 13 Exercícios Ficheiros King
@@ -1357,7 +1357,7 @@ Escreva um programa que leia todas as linhas de um ficheiro “ler.txt” e escr
 
 # 14 Exercícios Memória
 
-[Slides da matéria]()
+[Slides da matéria](https://www.diogoaos.com/slides/prog/#/memory)
 
 
 ## 14 Exercícios Memória King
@@ -1384,8 +1384,85 @@ Escreva um programa que leia todas as linhas de um ficheiro “ler.txt” e escr
 
 # 15 Exercícios Estruturas de Dados Dinâmicas
 
-[Slides da matéria]()
+[Slides da matéria](https://www.diogoaos.com/slides/prog/markdown/15_data_structs_slides.html#/title-slide)
 
+
+## 15 Exercícios Estruturas de Dados Dinâmicas Aula
+
+### Aula 15.1. deleteNode
+
+- Considera o seguinte programa, onde está implementada uma lista ligada de inteiros.
+- O programa tem uma função `addNode` que adiciona um novo nó à lista.
+- Implementa uma função `deleteLastNode` que remove o último nó da lista.
+
+  ```c
+  #include <stdio.h>
+  #include <stdlib.h>
+
+  typedef struct node {
+    int data;
+    struct node *next;
+  } Node;
+
+  typedef struct {
+    Node * head;
+    int size;
+  } LinkedList;
+
+  void addNode(LinkedList * list, int data) {
+    // criar novo Node
+    Node *new_node = malloc(sizeof(Node));
+    new_node->data = data;
+    new_node->next = NULL;
+
+    Node *current = list->head;
+    Node *prev = NULL;
+
+    // procurar fim da lista
+    while (current != NULL) {
+      prev = current;
+      current = current->next;
+    }
+    // se prev for NULL, então lista está vazia
+    if (prev == NULL) {
+      list->head = new_node;
+    } else {
+      prev->next = new_node;
+    }
+
+    list->size++;
+  }
+
+  void deleteLastNode(LinkedList * list){
+    
+  }
+
+  int main(void) {
+    LinkedList lista = {NULL, 0};
+
+    addNode(&lista, 1);
+    addNode(&lista, 2);
+    addNode(&lista, 3);
+
+    //
+    printf("tamanho da list = %d\n", lista.size);
+
+    deleteLastNode(&lista);
+    deleteLastNode(&lista);
+
+    printf("tamanho da list = %d\n", lista.size);
+    
+    
+    // imprimir lista
+    Node *c = lista.head;
+    while (c != NULL){
+      printf("%d\n", c->data);
+      c = c->next;
+    }
+      
+    return 0;
+  }
+  ```
 
 ## 15 Exercícios Estruturas de Dados Dinâmicas King
 
@@ -1418,6 +1495,78 @@ Escreva um programa que leia todas as linhas de um ficheiro “ler.txt” e escr
 
 - Com base no AFA 15.1, adiciona uma função que recebe uma lista ligada e 2 valores `lower` e `upper`.
 - A função irá remover da lista todos os elementos que estão abaixo do valor `lower` e os que estão acima de `upper`.
+
+### AFA 15.5. círculos concêntricos - implementação de lista ligada
+
+- No desenvolvimento de um sistema de aterragem automática com base em visão, uma das tarefas foi a deteção dos círculos de um marcador, com base em visão computacional.
+- Considera a seguinte implementação de uma lista ligada de círculos.
+  ```c
+  typedef struct circle {
+    int x;
+    int y;
+    int radius;
+    struct circle *next;
+  } Circle;
+
+  typedef struct {
+    Circle * head;
+    int size;
+  } CircleList;
+  ```
+- Cria uma função `addCircle` que recebe uma lista ligada de círculos e os dados de um novo círculo.
+- A função cria um novo círculo com os dados recebidos e adiciona-o à lista ligada.
+  - exemplo:
+    - lista ligada: `c1 -> c2 -> c3 -> c4`
+    - novo círculo: `c5`
+    - lista ligada: `c1 -> c2 -> c3 -> c4 -> c5`
+- Usa o seguinte vector tridimensional de floats com os centros e raios como base dos dados para preencher a lista ligada:
+  ```c
+  float circles[5][3] = {
+    { 10, 10, 5 },
+    { 10.1, 10.1, 15},
+    { 9.9, 10.1, 10},
+
+    { 20, 20, 10 },
+    { 19.9, 20.2, 15},
+    { 19.8, 20.1, 2},
+   
+    { 5, 5.2, 5 },
+    { 5.3, 4.8, 10 },
+    { 4.9, 4.9, 15 },
+  };
+  ```
+- Implementa uma função `printCircleList` que recebe uma lista ligada de círculos e escreve na consola os dados de todos os círculos da lista.
+- Na main, cria uma nova lista ligada e adiciona os círculos do vector `circles` à lista ligada, usando a função `addCircle`.
+- No final da main, usa a função `printCircleList` para escrever na consola os dados de todos os círculos da lista ligada.
+  
+
+  
+### AFA 15.6. círculos concêntricos - família de círculos
+
+- Com base no AFA 15.5, adiciona uma função `newCircleFamily` que recebe uma lista ligada de círculos, as coordenadas de um centro e um desvio máximo.
+- A função devolve uma nova lista ligada com todos os círculos da lista recebida que estão dentro do desvio máximo em relação ao círculo recebido. Cada círculo adicionado é retirado da lista original.
+  - exemplo:
+    - lista ligada: `c1 -> c2 -> c3 -> c4`
+    - centro: `c2`
+    - desvio máximo: `2`
+    - lista ligada: `c1 -> c3`
+    - nova lista ligada: `c2 -> c4`
+- Na main, verifica o correto funcionamento da função escolhendo as coordenadas do centro de um dos círculos conhecidos e um desvio máximo adequado. Depois usa a função `printCircleList` para escrever na consola os dados de todos os círculos da nova lista ligada (com a família de círculos).
+- Confirma também que a lista ligada original ficou corretamente atualizada (sem os círculos da nova lista ligada).
+
+### AFA 15.7. círculos concêntricos - famílias de círculos
+
+- Com base no AFA 15.6, cria um vector de listas ligadas de círculos. Cada uma destas listas deve ser correctamente inicializada como estando vazia (head = NULL, size = 0).
+- Cada lista ligada do vector representa uma família de círculos.
+- Cria uma função que recebe o vector de listas ligadas de círculos (com o seu tamanho) e a lista ligada com os círculos detetados.
+- A função preenche o vector de listas ligadas de círculos atualizado e devolve o número de famílias criadas.
+  - exemplo:
+    - lista ligada de círculos detetados: `c1 -> c2 -> c3 -> c4 -> c5 -> c6`
+    - vector de listas ligadas de círculos:
+      - família 1: `c1 -> c5 -> c6`
+      - família 2: `c2 -> c4`
+      - família 3: `c3`
+- Na main, verifica o correto funcionamento da função imprimindo na consola cada uma das famílias de círculos.
 
 
 # Labs

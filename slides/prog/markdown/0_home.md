@@ -68,7 +68,8 @@ Espaço | slide seguinte
 
 - [Lab 1](markdown/labs/2223/lab1_funcoes/lab1_navigation.html)
 - [Lab 2](markdown/labs/2223/lab2_array/lab2_stats.html)
-- [Lab 3](markdown/labs/2223/lab3_file_struct/lab3_encrypted.html)
+- [Lab 3](markdown/labs/2223/lab3_file_struct/lab3.html)
+- [Lab 4](markdown/labs/2223/lab4_dynamic_data_structures/lab4_encrypted.html)
 
 ---
 

@@ -108,7 +108,7 @@ mas por **referências explicitas entre elementos**.
 - Cada elemento aponta para o elemento seguinte (apontador).
 
 
-## Algumas caracteristicas
+## Algumas caracteristicas 1/2
 ::: {.incremental}
 
 - O último elemento aponta sempre para `NULL`.
@@ -116,6 +116,12 @@ mas por **referências explicitas entre elementos**.
 - Só podemos percorrer a lista numa direção
 - se quisermos o elemento na posição X, temos de percorrer
     todos os elementos nas posições $[0,X[$
+:::
+
+## Algumas caracteristicas 2/2
+::: {.incremental}
+
+
 - sempre que removemos um elemento da lista, não esquecer de libertar a memória.
 - Sempre que removemos um elemento
     -   libertar e memória associada.
