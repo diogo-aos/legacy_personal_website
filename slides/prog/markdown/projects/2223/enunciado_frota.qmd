@@ -14,7 +14,7 @@ format:
 ---
 
 # Introdução
-
+ 
 A Força Aérea Portuguesa, com a sua missão de garantir a defesa do espaço aéreo nacional, tem à sua disposição várias aeronaves com características diversas. A correcta manutenção destas aeronaves é fundamental para o seu uso continuado em segurança. Para este efeito, existem vários engenheiros encarregues da gestão das frotas. Os dados necessários a esta função são bastantes e um sistema digital integrado é necessário. A sua missão é desenhar e implementar o **Sistema de Informação para a Gestão Integrada de Frotas (SIGIF)**. O sistema recebe dados de todas as aeronaves de todas as frotas e o registo de todos os voos.
 
 # Estrutura & Organização
@@ -99,3 +99,27 @@ A Força Aérea Portuguesa, com a sua missão de garantir a defesa do espaço a�
   - Devem ser escolhidos nomes apropriados para os tipos de dados, operações, variáveis e constantes de modo a facilitar o entendimento do programa. A formatação do código é importante.
   - O código deve ser comentado. Todas as funções devem ter um breve comentário sobre a sua função, imediatamente abaixo do cabeçalho.
   - Devem ser utilizadas as estruturas de dados (e.g. vectores, registos) apropriadas para cada problema.
+
+# Grelha de avaliação (preliminar)
+
+- [6] Genérico
+    - [1] Manual de utilização
+    - [1] Relatório
+    - [2] Legibilidade/Comentários/Reutilização de código
+    - [2] Estrutura do programa
+- [2] Importar
+    - [1] Importar aeronaves
+    - [1] Importar voos
+- [7] Listar
+    - [0.5] Listar aeronaves
+    - [1] Listar aeronaves de esquadra
+    - [0.5] Listar voos
+    - [1] Listar voos de aeronave
+    - [2] Listar voos entre datas
+    - [2] Exportar listas
+- [5] Estatísticas
+    - [2] Esquadra com mais horas
+    - [2] 5 aeronaves com mais horas
+    - [1] Histograma
+
+

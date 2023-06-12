@@ -168,3 +168,22 @@ O SIGIT cria automaticamente, e de forma otimizada, as tripulações necessária
   - Devem ser escolhidos nomes apropriados para os tipos de dados, operações, variáveis e constantes de modo a facilitar o entendimento do programa. A formatação do código é importante.
   - O código deve ser comentado. Todas as funções devem ter um breve comentário sobre a sua função, imediatamente abaixo do cabeçalho.
   - Devem ser utilizadas as estruturas de dados (e.g. vectores, registos) apropriadas para cada problema.
+
+
+# Grelha de avaliação (preliminar)
+- [6] Genérico
+    - [1] Manual de utilização
+    - [1] Relatório
+    - [2] Legibilidade/Comentários/Reutilização de código
+    - [2] Estrutura do programa
+- [2] Importar
+    - [1] Importar tripulantes
+    - [1] Importar voos
+- [4] Marcar voo
+- [7] Listar
+    - [1] Listar todos os voos
+    - [2] Listar voos entre datas
+    - [1] Listar todos os tripulantes
+    - [1] Listar tripulantes por estado
+    - [2] Exportar listas
+- [1] Mudar estado de tripulante

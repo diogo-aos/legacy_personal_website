@@ -128,3 +128,24 @@ Este sistema suportará os analistas e gestores de carteiras no seu trabalho, ao
   - Devem ser escolhidos nomes apropriados para os tipos de dados, operações, variáveis e constantes de modo a facilitar o entendimento do programa. A formatação do código é importante.
   - O código deve ser comentado. Todas as funções devem ter um breve comentário sobre a sua função, imediatamente abaixo do cabeçalho.
   - Devem ser utilizadas as estruturas de dados (e.g. vectores, registos) apropriadas para cada problema.
+
+# Grelha de avaliação (preliminar)
+
+- [6] Genérico
+    - [1] Manual de utilização
+    - [1] Relatório
+    - [2] Legibilidade/Comentários/Reutilização de código
+    - [2] Estrutura do programa
+- [2] Importar
+    - [1] Importar carteiras
+    - [1] Importar valores
+- [4] Comprar/vender
+    - [1] Comprar/vender ativos atuais
+    - [3] Comprar outros ativos
+- [2] Relatórios
+    - [2] Descrever uma determinada Carteira
+- [6] Estatísticas
+    - [2] 5 AtivoFinanceiros com maior valor
+    - [2] Média do valor de AtivoFinanceiro por tipo
+    - [2] Gráfico com evolução do preço de um determinato AtivoFinanceiro (⚠️ para grupos de 4 elementos)
+
