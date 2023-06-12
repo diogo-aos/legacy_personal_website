@@ -1039,6 +1039,73 @@ Depois de ordenar:
 indeces:    1  2  0   3
 ```
 
+### AFA 9.5. Redes neuronais: Perceptron
+
+- Escreve uma função que implementa um perceptron, que é um conceito da área de inteligência artificial.
+- O perceptron recebe um vetor de inteiros _x_ (o input do perceptron) e um vetor de reais _w_ (os pesos de cada input e o bias).
+- O vetor _x_ tem tamanho _n_ e o vetor _w_ tem tamanho _n+1_.
+- O perceptron calcula o produto escalar de _x_ e _w_ e devolve 1 se o resultado for positivo e 0 se for negativo ou zero.
+- O último elemento do vetor _w_ é o bias.
+- O bias é um valor que é adicionado ao produto escalar.
+- A fórmula do output do perceptron é a seguinte:
+
+
+$$
+\begin{equation}
+  output = \begin{cases}
+    1 & \text{se } (\sum_{i=1}^{n} x_i \times w_i) + b > 0 \\
+    0 & \text{caso contrário}
+  \end{cases}
+\end{equation}
+$$
+
+![Diagrama do Perceptron](https://www.nomidl.com/wp-content/uploads/2022/04/image-5.png)
+
+- O cabeçalho da função é o seguinte:
+
+```c
+int perceptron(int n, int x[n], double w[n+1]);
+```
+- Testa a função com pesos e inputs diferentes.
+
+### AFA 9.6. Redes neuronais: combinar perceptrons
+
+- Os perceptrons podem ser combinados para formar redes neuronais mais complexas.
+
+![Diagrama de uma rede neuronal](https://www.nomidl.com/wp-content/uploads/2022/04/image-6.png)
+
+- No diagrama acima, cada nó da primeira coluna é um dos inputs da rede $x_1, x_2, ..., x_n$.
+- Cada nó da segunda, terceira e quarta colunas é um perceptron que recebe os inputs da primeira coluna e devolve um output.
+- O output de cada perceptron é o input dos perceptrons da coluna seguinte.
+- Escreve uma função que recebe um vetor de reais _x_ (o input da rede) e uma matriz de reais _w_ (os pesos de cada perceptron e o bias).
+- O vetor _x_ tem tamanho _n_ e a matriz _w_ tem _m_ linhas e _n+1_ colunas.
+- Cada linha da matriz _w_ corresponde aos pesos de um perceptron, portanto a matriz tem _m_ perceptrons.
+- A função recebe ainda um vector de reais correspondente aos outputs de cada perceptron.
+- O cabeçalho da função é o seguinte:
+  
+  ```c
+  void camada_perceptron(int n, int m, double x[n], double w[m][n+1], double output[m]);
+  ```
+- A função calcula o output de cada perceptron e guarda-o no vetor _output_.
+- O output de cada perceptron é calculado da mesma forma que no [exercício anterior](#afa-9.5.-redes-neuronais-perceptron).
+- Por exemplo, para um input de 3 elementos e uma camada de 4 perceptrons, a função recebe um vetor _x_ de tamanho 3, uma matriz _w_ de tamanho 4x4 e um vetor _output_ de tamanho 4. O output de cada perceptron seria calculado da seguinte forma:
+  ```c
+  output[0] = perceptron(n, x, w[0]);
+  output[1] = perceptron(n, x, w[1]);
+  output[2] = perceptron(n, x, w[2]);
+  output[3] = perceptron(n, x, w[3]);
+  ```
+- Escreve a função para que funcione para qualquer tamanho de input e qualquer número de perceptrons.
+
+### AFA 9.7. Redes neuronais: rede completa
+
+- Escreve um programa completo que implemente uma rede neuronal com 3 elementos de input, uma camada de 4 perceptrons e uma camada final de 1 perceptron.
+- Cria os vectores necessários para acomodar os inputs e outputs de cada camada.
+- Cria as matrizes necessárias para acomodar os pesos de cada camada.
+- Usa valores arbitrários para os pesos e inputs e testa o programa.
+- Usa a função `camada_perceptron` do [exercício anterior](#afa-9.6.-redes-neuronais-combinar-perceptrons) para implementar a rede neuronal.
+
+
 # 10 Exercícios Strings
 <!-- .slide: data-background="Coral" id="10_strings_exercicios" -->
 
@@ -1575,3 +1642,102 @@ Escreva um programa que leia todas as linhas de um ficheiro “ler.txt” e escr
 ### Lab 2
 ### Lab 3
 ### Lab 4
+
+
+
+# Soluções
+
+## 15
+
+### AFA 15.1
+  
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct node {
+  float value;
+  struct node *next;
+} Node;
+
+typedef struct {
+  Node * head;
+  int size;
+} List;
+
+// adiciona no final da lista
+void add(List *list, float value) {
+  Node *newNode = (Node *) malloc(sizeof(Node));
+  newNode->value = value;
+  newNode->next = NULL;
+
+  if (list->head == NULL) {
+    list->head = newNode;
+  } else {
+    Node *current = list->head;
+    while (current->next != NULL) {
+      current = current->next;
+    }
+    current->next = newNode;
+  }
+  list->size++;
+}
+
+void printList(List *list) {
+  Node *current = list->head;
+  while (current != NULL) {
+    printf("%f\n", current->value);
+    current = current->next;
+  }
+}
+
+int main() {
+  List list;
+  list.head = NULL;
+  list.size = 0;
+
+  float value;
+  char c;
+  do {
+    scanf("%f%c", &value, &c);
+    add(&list, value);
+  } while (c != 'f');
+
+  printList(&list);
+
+  return 0;
+}
+```
+
+
+### AFA 15.2 listlen
+
+```c
+int listlen(List *list) {
+  int count = 0;
+  Node *current = list->head;
+  while (current != NULL) {
+    count++;
+    current = current->next;
+  }
+  return count;
+}
+```
+
+### AFA 15.3 soma e média
+```c
+
+float soma(List *list) {
+  float sum = 0;
+  Node *current = list->head;
+  while (current != NULL) {
+    sum += current->value;
+    current = current->next;
+  }
+  return sum;
+}
+
+float media(List *list) {
+  return soma(list) / listlen(list);
+}
+```
